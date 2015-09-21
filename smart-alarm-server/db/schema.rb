@@ -11,9 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150920205139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "morning_routines", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "breakfast",  default: 0, null: false
+    t.integer  "shower",     default: 0, null: false
+    t.integer  "exercise",   default: 0, null: false
+    t.integer  "other",      default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email",           limit: 30, null: false
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

@@ -1,0 +1,17 @@
+<h1>New User</h1>
+
+<%= form_for(:user, :url => {:action => 'create'}) do |f| %>
+	<div class="form-group">
+		<td>Email</td>
+		<td><%= f.text_field(:email) %></td>
+	</div>
+	<div class="form-group">
+		<th>Password</th>
+		<td><%= f.password_field(:password) %></td>
+	</div>
+	<div class="form-group">
+		<th>Confirm Password</th>
+		<td><%= f.password_field(:password_confirmation) %></td>
+	</div>
+	<%= submit_tag("Create Account") %>
+<% end %>

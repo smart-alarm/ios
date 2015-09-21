@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% unless flash[:notice].blank? %>
+	<div id="notice">
+		<%= simple_format(flash[:notice]) %>
+	</div>
+<% end %>
+
 <%= yield %>
 
 </body>
