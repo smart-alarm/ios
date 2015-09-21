@@ -1,7 +1,9 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the server portion of Smart Alarm.
+The backend for Smart Alarm is a Rails application hosted on {heroku}[https://www.heroku.com].
+
+The site for our live server is: {http://smart-alarm-server.herokuapp.com}[http://smart-alarm-server.herokuapp.com]
 
 Things you may want to cover:
 
