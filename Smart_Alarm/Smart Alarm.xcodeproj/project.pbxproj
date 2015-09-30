@@ -286,7 +286,6 @@
 					};
 					2056EB111BB06B770099FE31 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 4FRADE5ZJB;
 					};
 					2056EB281BB06B770099FE31 = {
 						CreatedOnToolsVersion = 7.0;
@@ -586,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Smart Alarm/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cs5356.Smart-Alarm";
@@ -597,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Smart Alarm/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cs5356.Smart-Alarm";
@@ -662,6 +663,7 @@
 				202735FD1BBC2F6A00656D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2027360A1BBC2FD300656D7F /* Build configuration list for PBXNativeTarget "UI_Tests" */ = {
 			isa = XCConfigurationList;
@@ -670,6 +672,7 @@
 				2027360C1BBC2FD300656D7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2056EB0D1BB06B770099FE31 /* Build configuration list for PBXProject "Smart Alarm" */ = {
 			isa = XCConfigurationList;
