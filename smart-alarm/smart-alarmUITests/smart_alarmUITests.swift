@@ -1,14 +1,14 @@
 //
-//  Smart_AlarmUITests.swift
-//  Smart AlarmUITests
+//  smart_alarmUITests.swift
+//  smart-alarmUITests
 //
-//  Created by Gideon I. Glass on 9/21/15.
+//  Created by Gideon I. Glass on 9/30/15.
 //  Copyright © 2015 Gideon I. Glass. All rights reserved.
 //
 
 import XCTest
 
-class Smart_AlarmUITests: XCTestCase {
+class smart_alarmUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
@@ -31,7 +31,6 @@ class Smart_AlarmUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-               
     }
     
 }

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Smart Alarm
+//  smart-alarm
 //
-//  Created by Gideon I. Glass on 9/21/15.
+//  Created by Gideon I. Glass on 9/30/15.
 //  Copyright © 2015 Gideon I. Glass. All rights reserved.
 //
 
@@ -47,14 +47,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "edu.cs5356.Smart_Alarm" in the application's documents Application Support directory.
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "edu.cs5356.smart_alarm" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
 
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("Smart_Alarm", withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource("smart_alarm", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
 

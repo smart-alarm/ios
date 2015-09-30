@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2056EB111BB06B770099FE31"
-               BuildableName = "Smart Alarm.app"
-               BlueprintName = "Smart Alarm"
-               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+               BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
+               BuildableName = "smart-alarm.app"
+               BlueprintName = "smart-alarm"
+               ReferencedContainer = "container:smart-alarm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2056EB281BB06B770099FE31"
-               BuildableName = "Smart AlarmTests.xctest"
-               BlueprintName = "Smart AlarmTests"
-               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+               BlueprintIdentifier = "2093B6791BBC740200EC5C7C"
+               BuildableName = "smart-alarmTests.xctest"
+               BlueprintName = "smart-alarmTests"
+               ReferencedContainer = "container:smart-alarm.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2056EB331BB06B770099FE31"
-               BuildableName = "Smart AlarmUITests.xctest"
-               BlueprintName = "Smart AlarmUITests"
-               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+               BlueprintIdentifier = "2093B6841BBC740200EC5C7C"
+               BuildableName = "smart-alarmUITests.xctest"
+               BlueprintName = "smart-alarmUITests"
+               ReferencedContainer = "container:smart-alarm.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2056EB111BB06B770099FE31"
-            BuildableName = "Smart Alarm.app"
-            BlueprintName = "Smart Alarm"
-            ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
+            BuildableName = "smart-alarm.app"
+            BlueprintName = "smart-alarm"
+            ReferencedContainer = "container:smart-alarm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2056EB111BB06B770099FE31"
-            BuildableName = "Smart Alarm.app"
-            BlueprintName = "Smart Alarm"
-            ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
+            BuildableName = "smart-alarm.app"
+            BlueprintName = "smart-alarm"
+            ReferencedContainer = "container:smart-alarm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2056EB111BB06B770099FE31"
-            BuildableName = "Smart Alarm.app"
-            BlueprintName = "Smart Alarm"
-            ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
+            BuildableName = "smart-alarm.app"
+            BlueprintName = "smart-alarm"
+            ReferencedContainer = "container:smart-alarm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

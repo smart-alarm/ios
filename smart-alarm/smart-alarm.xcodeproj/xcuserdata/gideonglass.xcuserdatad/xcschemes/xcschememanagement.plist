@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Smart Alarm.xcscheme</key>
+		<key>smart-alarm.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2056EB111BB06B770099FE31</key>
+		<key>2093B6621BBC740200EC5C7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2056EB281BB06B770099FE31</key>
+		<key>2093B6791BBC740200EC5C7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2056EB331BB06B770099FE31</key>
+		<key>2093B6841BBC740200EC5C7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

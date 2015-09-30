@@ -7,7 +7,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -92,7 +92,7 @@
         <!--Sign Up-->
         <scene sceneID="HSv-95-VIF">
             <objects>
-                <viewController id="GPw-9J-dS9" customClass="RegisterViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GPw-9J-dS9" customClass="RegisterViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6A2-fX-XnF"/>
                         <viewControllerLayoutGuide type="bottom" id="95V-eT-kry"/>
@@ -167,7 +167,7 @@
         <!--Routine-->
         <scene sceneID="Ljc-4h-A0k">
             <objects>
-                <viewController id="hpk-uM-W1T" customClass="RoutineViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hpk-uM-W1T" customClass="RoutineViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7M8-AY-7FC"/>
                         <viewControllerLayoutGuide type="bottom" id="Gje-qk-CFq"/>
@@ -253,7 +253,7 @@
         <!--Home-->
         <scene sceneID="546-mB-PsL">
             <objects>
-                <viewController id="PcG-VS-uB7" userLabel="Home" customClass="HomeViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PcG-VS-uB7" userLabel="Home" customClass="HomeViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Di1-mE-vts"/>
                         <viewControllerLayoutGuide type="bottom" id="pnt-zm-ZcM"/>

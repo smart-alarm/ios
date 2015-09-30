@@ -1,15 +1,15 @@
 //
-//  Smart_AlarmTests.swift
-//  Smart AlarmTests
+//  smart_alarmTests.swift
+//  smart-alarmTests
 //
-//  Created by Gideon I. Glass on 9/21/15.
+//  Created by Gideon I. Glass on 9/30/15.
 //  Copyright © 2015 Gideon I. Glass. All rights reserved.
 //
 
 import XCTest
-@testable import Smart_Alarm
+@testable import smart_alarm
 
-class Smart_AlarmTests: XCTestCase {
+class smart_alarmTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
