@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: Smart_Alarm/Smart\ Alarm.xcodeproj
+xcode_scheme: Smart\ Alarm
+osx_image: xcode7

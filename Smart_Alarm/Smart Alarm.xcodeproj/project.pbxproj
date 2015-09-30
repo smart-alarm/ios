@@ -22,6 +22,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		202735FA1BBC2F6A00656D7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2056EB0A1BB06B770099FE31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2056EB111BB06B770099FE31;
+			remoteInfo = "Smart Alarm";
+		};
+		202736081BBC2FD300656D7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2056EB0A1BB06B770099FE31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2056EB111BB06B770099FE31;
+			remoteInfo = "Smart Alarm";
+		};
 		2056EB2A1BB06B770099FE31 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2056EB0A1BB06B770099FE31 /* Project object */;
@@ -40,6 +54,8 @@
 
 /* Begin PBXFileReference section */
 		200741011BB0D1A8004ECB78 /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTP.swift; path = ../HTTP.swift; sourceTree = "<group>"; };
+		202735F51BBC2F6A00656D7F /* Smart AlarmUITests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smart AlarmUITests2.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		202736031BBC2FD300656D7F /* UI_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UI_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2056EB121BB06B770099FE31 /* Smart Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2056EB151BB06B770099FE31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2056EB171BB06B770099FE31 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +76,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		202735F21BBC2F6A00656D7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		202736001BBC2FD300656D7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2056EB0F1BB06B770099FE31 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,7 +119,7 @@
 			children = (
 				2056EB141BB06B770099FE31 /* Smart Alarm */,
 				2056EB2C1BB06B770099FE31 /* Smart AlarmTests */,
-				2056EB371BB06B770099FE31 /* Smart AlarmUITests */,
+				2056EB371BB06B770099FE31 /* UI_Tests */,
 				2056EB131BB06B770099FE31 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +130,8 @@
 				2056EB121BB06B770099FE31 /* Smart Alarm.app */,
 				2056EB291BB06B770099FE31 /* Smart AlarmTests.xctest */,
 				2056EB341BB06B770099FE31 /* Smart AlarmUITests.xctest */,
+				202735F51BBC2F6A00656D7F /* Smart AlarmUITests2.xctest */,
+				202736031BBC2FD300656D7F /* UI_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,18 +163,55 @@
 			path = "Smart AlarmTests";
 			sourceTree = "<group>";
 		};
-		2056EB371BB06B770099FE31 /* Smart AlarmUITests */ = {
+		2056EB371BB06B770099FE31 /* UI_Tests */ = {
 			isa = PBXGroup;
 			children = (
 				2056EB381BB06B770099FE31 /* Smart_AlarmUITests.swift */,
 				2056EB3A1BB06B770099FE31 /* Info.plist */,
 			);
+			name = UI_Tests;
 			path = "Smart AlarmUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		202735F41BBC2F6A00656D7F /* Smart AlarmUITests2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 202735FE1BBC2F6A00656D7F /* Build configuration list for PBXNativeTarget "Smart AlarmUITests2" */;
+			buildPhases = (
+				202735F11BBC2F6A00656D7F /* Sources */,
+				202735F21BBC2F6A00656D7F /* Frameworks */,
+				202735F31BBC2F6A00656D7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				202735FB1BBC2F6A00656D7F /* PBXTargetDependency */,
+			);
+			name = "Smart AlarmUITests2";
+			productName = "Smart AlarmUITests2";
+			productReference = 202735F51BBC2F6A00656D7F /* Smart AlarmUITests2.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		202736021BBC2FD300656D7F /* UI_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2027360A1BBC2FD300656D7F /* Build configuration list for PBXNativeTarget "UI_Tests" */;
+			buildPhases = (
+				202735FF1BBC2FD300656D7F /* Sources */,
+				202736001BBC2FD300656D7F /* Frameworks */,
+				202736011BBC2FD300656D7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				202736091BBC2FD300656D7F /* PBXTargetDependency */,
+			);
+			name = UI_Tests;
+			productName = UI_Tests;
+			productReference = 202736031BBC2FD300656D7F /* UI_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		2056EB111BB06B770099FE31 /* Smart Alarm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2056EB3D1BB06B770099FE31 /* Build configuration list for PBXNativeTarget "Smart Alarm" */;
@@ -205,6 +274,16 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Gideon I. Glass";
 				TargetAttributes = {
+					202735F41BBC2F6A00656D7F = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 4FRADE5ZJB;
+						TestTargetID = 2056EB111BB06B770099FE31;
+					};
+					202736021BBC2FD300656D7F = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = 4FRADE5ZJB;
+						TestTargetID = 2056EB111BB06B770099FE31;
+					};
 					2056EB111BB06B770099FE31 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 4FRADE5ZJB;
@@ -237,11 +316,27 @@
 				2056EB111BB06B770099FE31 /* Smart Alarm */,
 				2056EB281BB06B770099FE31 /* Smart AlarmTests */,
 				2056EB331BB06B770099FE31 /* Smart AlarmUITests */,
+				202735F41BBC2F6A00656D7F /* Smart AlarmUITests2 */,
+				202736021BBC2FD300656D7F /* UI_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		202735F31BBC2F6A00656D7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		202736011BBC2FD300656D7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2056EB101BB06B770099FE31 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +364,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		202735F11BBC2F6A00656D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		202735FF1BBC2FD300656D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2056EB0E1BB06B770099FE31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +411,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		202735FB1BBC2F6A00656D7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2056EB111BB06B770099FE31 /* Smart Alarm */;
+			targetProxy = 202735FA1BBC2F6A00656D7F /* PBXContainerItemProxy */;
+		};
+		202736091BBC2FD300656D7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2056EB111BB06B770099FE31 /* Smart Alarm */;
+			targetProxy = 202736081BBC2FD300656D7F /* PBXContainerItemProxy */;
+		};
 		2056EB2B1BB06B770099FE31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2056EB111BB06B770099FE31 /* Smart Alarm */;
@@ -334,6 +453,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		202735FC1BBC2F6A00656D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Smart AlarmUITests2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cs5356.Smart-AlarmUITests2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Smart Alarm";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		202735FD1BBC2F6A00656D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Smart AlarmUITests2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cs5356.Smart-AlarmUITests2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Smart Alarm";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		2027360B1BBC2FD300656D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UI_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cs5356.UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Smart Alarm";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		2027360C1BBC2FD300656D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = UI_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cs5356.UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Smart Alarm";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		2056EB3B1BB06B770099FE31 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -488,6 +655,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		202735FE1BBC2F6A00656D7F /* Build configuration list for PBXNativeTarget "Smart AlarmUITests2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				202735FC1BBC2F6A00656D7F /* Debug */,
+				202735FD1BBC2F6A00656D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2027360A1BBC2FD300656D7F /* Build configuration list for PBXNativeTarget "UI_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2027360B1BBC2FD300656D7F /* Debug */,
+				2027360C1BBC2FD300656D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2056EB0D1BB06B770099FE31 /* Build configuration list for PBXProject "Smart Alarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

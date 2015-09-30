@@ -48,6 +48,26 @@
                ReferencedContainer = "container:Smart Alarm.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "202735F41BBC2F6A00656D7F"
+               BuildableName = "Smart AlarmUITests2.xctest"
+               BlueprintName = "Smart AlarmUITests2"
+               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "202736021BBC2FD300656D7F"
+               BuildableName = "UI_Tests.xctest"
+               BlueprintName = "UI_Tests"
+               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
