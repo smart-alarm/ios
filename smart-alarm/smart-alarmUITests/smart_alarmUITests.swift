@@ -28,9 +28,48 @@ class smart_alarmUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testRegistration() {
+        let app = XCUIApplication()
+        app.buttons["Sign Up"].tap()
+        
+        let emailTextField = app.textFields["Email"]
+        emailTextField.tap()
+        emailTextField.typeText("test@test.com")
+        
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("password")
+        
+        let verifyPasswordSecureTextField = app.secureTextFields["Verify Password"]
+        verifyPasswordSecureTextField.tap()
+        verifyPasswordSecureTextField.typeText("password")
+        emailTextField.tap()
+        app.buttons["Register"].tap()
     }
+    
+    func testLogin() {
+        let app = XCUIApplication()
+        let emailTextField = app.textFields["Email"]
+        emailTextField.tap()
+        emailTextField.typeText("test@test.com")
+        
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("password")
+        app.buttons["Sign In"].tap()
+    }
+    
+    func testTabViews() {
+        testLogin()
+        let tabBarsQuery = XCUIApplication().tabBars
+        tabBarsQuery.buttons["Home"].tap()
+        tabBarsQuery.buttons["Routine"].tap()
+    }
+    
+    func randomTest() {
+        
+        
+    }
+    
     
 }
