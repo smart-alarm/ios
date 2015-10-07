@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200B12A71BC576280015B40F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A51BC576280015B40F /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
+		200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A61BC576280015B40F /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
 		2093B6671BBC740200EC5C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6661BBC740200EC5C7C /* AppDelegate.swift */; };
 		2093B6691BBC740200EC5C7C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6681BBC740200EC5C7C /* ViewController.swift */; };
 		2093B66C1BBC740200EC5C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2093B66A1BBC740200EC5C7C /* Main.storyboard */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		200B12A61BC576280015B40F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2093B6631BBC740200EC5C7C /* smart-alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "smart-alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2093B6661BBC740200EC5C7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2093B6681BBC740200EC5C7C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */,
+				200B12A71BC576280015B40F /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +109,8 @@
 				2093B67D1BBC740200EC5C7C /* smart-alarmTests */,
 				2093B6881BBC740200EC5C7C /* smart-alarmUITests */,
 				2093B6641BBC740200EC5C7C /* Products */,
+				200B12A51BC576280015B40F /* Fabric.framework */,
+				200B12A61BC576280015B40F /* Crashlytics.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +171,7 @@
 				2093B65F1BBC740200EC5C7C /* Sources */,
 				2093B6601BBC740200EC5C7C /* Frameworks */,
 				2093B6611BBC740200EC5C7C /* Resources */,
+				203272211BC573A800E1D35F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -280,6 +289,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		203272211BC573A800E1D35F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 7ec401665c34b95664efc7acee2d43ac7189ec9b bd3fa6a63bf4b05e78c6ab16070719c6dcdf7bafc4db53ec5a3011c85edf78b0";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2093B65F1BBC740200EC5C7C /* Sources */ = {
@@ -444,6 +469,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "smart-alarm/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm";
@@ -456,6 +485,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "smart-alarm/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm";
@@ -530,6 +563,7 @@
 				2093B6901BBC740200EC5C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2093B6911BBC740200EC5C7C /* Build configuration list for PBXNativeTarget "smart-alarmTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +572,7 @@
 				2093B6931BBC740200EC5C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2093B6941BBC740200EC5C7C /* Build configuration list for PBXNativeTarget "smart-alarmUITests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +581,7 @@
 				2093B6961BBC740200EC5C7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
