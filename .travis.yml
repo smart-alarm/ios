@@ -1,8 +1,3 @@
 language: objective-c
 
-<<<<<<< HEAD
 script: xcodebuild clean build test -sdk iphonesimulator9.0 -project "smart-alarm/smart-alarm.xcodeproj" -scheme "smart-alarm"
-=======
-script:
-xcodebuild clean build test -sdk iphonesimulator9.0 -project "smart-alarm/smart-alarm.xcodeproj" -scheme "smart-alarm"
->>>>>>> e6866f87c525e9cd235df076d73710d281d8dd88
