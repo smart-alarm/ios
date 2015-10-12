@@ -31,14 +31,14 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
         } else {
             signInButton.enabled = true
         }
-
+        
     }
     
     @IBAction func nextKey(sender: UITextField) {
         emailField.resignFirstResponder()
         passwordField.becomeFirstResponder()
     }
-
+    
     @IBAction func doneKey(sender: UITextField) {
         sender.resignFirstResponder()
     }
@@ -60,52 +60,34 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
         // TODO: HTTP GET request
         // Check if valid username and password
         
-    }
+        let email = emailField.text
+        let password = passwordField.text
+        
+        let baseUrl = "https://smart-alarm-server.herokuapp.com/users/authenticate?"
+        let url = baseUrl + "email=" + email! + "&password=" + password!
+        
+        let http = HTTP()
+        http.get(url, getCompleted: {
+            (succeeded: Bool, msg: String) -> () in
+            
+            if (succeeded) {
+                print("Successful login!")
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.performSegueWithIdentifier("signIn", sender: self)
+                }
+            } else {
+                print("Failed to post to server")
+            }
 
+        })
+        
+        
+    }
+    
     @IBAction func signUp(sender: UIButton) {
         print("Sign up")
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "homeShow" {
-            // TODO: HTTP POST request
-            let email = emailField.text
-            let password = passwordField.text
-            
-            let jsonDict: NSMutableDictionary = NSMutableDictionary()
-            jsonDict.setValue(email, forKey: "email")
-            jsonDict.setValue(password, forKey: "password")
-            
-            var shouldPerform = false
-            var message = "From server: "
-            
-            var locked = true
-            let http = HTTP()
-            http.post("https://smart-alarm-server.herokuapp.com/users/authenticate", body: jsonDict, callBack: {
-                (success: Bool, msg: String) -> () in
-                if msg == "Login successful!" {
-                    shouldPerform = true
-                }
-                message = msg
-                locked = false
-            })
-            
-            while (locked) {
-                //Do nothing, spin animation
-            }
-            
-            if shouldPerform {
-                return true
-            }
-            else {
-                let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Accept", style: .Cancel, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-                return false
-            }
-        }
-        return true
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "registerModal" {

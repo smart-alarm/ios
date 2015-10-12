@@ -51,7 +51,6 @@
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="signIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vzF-8G-vHc"/>
-                                    <segue destination="ofR-xc-Uun" kind="show" identifier="homeShow" id="pON-Xz-jmV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGB-il-Jh1">
@@ -91,6 +90,7 @@
                         <outlet property="passwordField" destination="Zu9-KA-LbC" id="YEO-pS-Tv0"/>
                         <outlet property="signInButton" destination="ibh-I3-75J" id="CjN-nB-xSD"/>
                         <outlet property="titleLabel" destination="UkS-3n-aiq" id="Sa8-Lv-Wso"/>
+                        <segue destination="ofR-xc-Uun" kind="presentation" identifier="signIn" modalTransitionStyle="flipHorizontal" id="x43-3U-9eF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

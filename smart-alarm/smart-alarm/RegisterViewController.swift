@@ -13,7 +13,7 @@ protocol RegisterViewControllerDelegate {
 }
 
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordVerifyField: UITextField!
@@ -24,19 +24,19 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         registerButton.enabled = false;
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Navigation
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -50,17 +50,10 @@ class RegisterViewController: UIViewController {
             registerButton.enabled = false;
         }
     }
-
+    
     @IBAction func registerUser(sender: UIButton) {
         // TODO: Get text from fields
         // HTTP POST
-//        let url = NSURL(string: "https://api.wunderground.com/api/73b5e3c030b52287/geolookup/conditions/q/IA/Cedar_Rapids.json")!
-//        
-//        let task = NSURLSession.sharedSession().dataTaskWithURL(url) {(data, response, error) in
-//            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-//        }
-//        
-//        task.resume()
         let userDict: NSMutableDictionary = NSMutableDictionary()
         userDict.setValue(emailField.text, forKey: "email")
         userDict.setValue(passwordField.text, forKey: "password")
@@ -70,11 +63,23 @@ class RegisterViewController: UIViewController {
         jsonDict.setValue(userDict, forKey: "user")
         
         let http = HTTP()
-        http.post("https://smart-alarm-server.herokuapp.com/users/create", body: jsonDict, callBack: {
-            (success: Bool, message: String) -> () in
-            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Accept", style: .Cancel, handler: {action in self.dismissViewControllerAnimated(true, completion: nil)}))
-            self.presentViewController(alert, animated: true, completion: nil)
+
+        let params:[String:String] = [
+            "email": emailField.text!,
+            "password": passwordField.text!,
+            "password_confirmation": passwordVerifyField.text!
+        ]
+        
+        http.post(params, url: "https://smart-alarm-server.herokuapp.com/users/create", postCompleted: {
+            (succeeded: Bool, msg: String) -> () in
+            
+            if (succeeded) {
+                print("Successful post to server")
+            } else {
+                print("Failed to post to server")
+            }
+            
+            
         })
         
         // Save the text fields to user defaults
@@ -82,9 +87,9 @@ class RegisterViewController: UIViewController {
         defaults.setObject(emailField.text, forKey: "email")
         defaults.setObject(passwordField.text, forKey: "password")
         view.endEditing(true)
-
-//      loading.startAnimating()
+        
+        //      loading.startAnimating()
         self.delegate?.registerInfo(emailField.text!, password: passwordField.text!)
-//        dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
 }
