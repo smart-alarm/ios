@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  DestinationViewController.swift
 //  Smart Alarm
 //
 //  Created by Gideon I. Glass on 9/21/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class DestinationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

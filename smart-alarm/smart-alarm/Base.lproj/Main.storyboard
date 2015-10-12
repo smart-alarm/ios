@@ -74,6 +74,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="d4c-p8-VXp">
+                                <rect key="frame" x="142" y="202" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1764705882352941" green="0.5490196078431373" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,6 +88,7 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="w9h-0g-X1e" id="R6K-hk-r5M"/>
+                        <outlet property="loading" destination="d4c-p8-VXp" id="4Nw-Rj-pyb"/>
                         <outlet property="passwordField" destination="Zu9-KA-LbC" id="YEO-pS-Tv0"/>
                         <outlet property="signInButton" destination="ibh-I3-75J" id="CjN-nB-xSD"/>
                         <outlet property="titleLabel" destination="UkS-3n-aiq" id="Sa8-Lv-Wso"/>
@@ -161,6 +169,13 @@
                                     <action selector="cancelRegistration:" destination="GPw-9J-dS9" eventType="touchUpInside" id="jy1-U8-ZNC"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="6t2-bP-PLP">
+                                <rect key="frame" x="142" y="250" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1764705882" green="0.54901960780000003" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -169,6 +184,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="lCU-kF-qej" id="4VF-KF-X5c"/>
                         <outlet property="emailField" destination="WVF-Zu-Hxf" id="4hR-cY-0w2"/>
+                        <outlet property="loading" destination="6t2-bP-PLP" id="NeT-3v-Zkm"/>
                         <outlet property="passwordField" destination="OTV-cj-plO" id="KTW-oE-GqM"/>
                         <outlet property="passwordVerifyField" destination="3Tk-Iu-zvc" id="07v-2T-0c8"/>
                         <outlet property="registerButton" destination="HZR-F0-ZeQ" id="UHP-QF-88w"/>
@@ -301,10 +317,10 @@
             </objects>
             <point key="canvasLocation" x="1519" y="955"/>
         </scene>
-        <!--Home-->
+        <!--Destination-->
         <scene sceneID="546-mB-PsL">
             <objects>
-                <viewController id="PcG-VS-uB7" userLabel="Home" customClass="HomeViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Destination" id="PcG-VS-uB7" customClass="DestinationViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rSM-ce-J6Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
