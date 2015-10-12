@@ -78,8 +78,6 @@ class RegisterViewController: UIViewController {
             } else {
                 print("Failed to post to server")
             }
-            
-            
         })
         
         // Save the text fields to user defaults
@@ -91,5 +89,11 @@ class RegisterViewController: UIViewController {
         //      loading.startAnimating()
         self.delegate?.registerInfo(emailField.text!, password: passwordField.text!)
         dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    func failedRegistration() {
+        let alertController = UIAlertController(title: "Registration Failed!", message: "Enter valid email/password", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }

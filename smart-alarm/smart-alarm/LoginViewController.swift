@@ -16,7 +16,6 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let email = defaults.stringForKey("email") {
@@ -44,7 +43,6 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func verifyLogin(sender: UITextField) {
@@ -56,10 +54,7 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     }
     
     @IBAction func signIn(sender: UIButton) {
-        
-        // TODO: HTTP GET request
         // Check if valid username and password
-        
         let email = emailField.text
         let password = passwordField.text
         
@@ -69,19 +64,29 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
         let http = HTTP()
         http.get(url, getCompleted: {
             (succeeded: Bool, msg: String) -> () in
-            
             if (succeeded) {
                 print("Successful login!")
+                
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.performSegueWithIdentifier("signIn", sender: self)
                 }
+                
             } else {
-                print("Failed to post to server")
+                print("Failed to login.")
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.failedLogin()
+                }
             }
 
         })
         
         
+    }
+    
+    func failedLogin() {
+        let alertController = UIAlertController(title: "Login Failed!", message: "Enter valid email/password", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func signUp(sender: UIButton) {
