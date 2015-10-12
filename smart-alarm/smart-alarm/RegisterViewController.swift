@@ -63,7 +63,6 @@ class RegisterViewController: UIViewController {
         jsonDict.setValue(userDict, forKey: "user")
         
         let http = HTTP()
-
         let params:[String:String] = [
             "email": emailField.text!,
             "password": passwordField.text!,
@@ -75,20 +74,22 @@ class RegisterViewController: UIViewController {
             
             if (succeeded) {
                 print("Successful post to server")
+                
+                // Save the text fields to user defaults
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(self.emailField.text, forKey: "email")
+                defaults.setObject(self.passwordField.text, forKey: "password")
+                self.view.endEditing(true)
+                
+                self.delegate?.registerInfo(self.emailField.text!, password: self.passwordField.text!)
+                self.dismissViewControllerAnimated(true, completion: {})
             } else {
                 print("Failed to post to server")
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.failedRegistration()
+                }
             }
         })
-        
-        // Save the text fields to user defaults
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(emailField.text, forKey: "email")
-        defaults.setObject(passwordField.text, forKey: "password")
-        view.endEditing(true)
-        
-        //      loading.startAnimating()
-        self.delegate?.registerInfo(emailField.text!, password: passwordField.text!)
-        dismissViewControllerAnimated(true, completion: {})
     }
     
     func failedRegistration() {

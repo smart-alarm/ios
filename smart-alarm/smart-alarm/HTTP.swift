@@ -67,8 +67,11 @@ class HTTP: NSObject {
                     let json = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary
                     if let parseJSON = json {
                         let status = parseJSON["status"] as! NSString
-                        print(status as String)
-                        postCompleted(succeeded: true, msg:"Success")
+                        if (status as String == "User created!") {
+                            postCompleted(succeeded: true, msg:"Successful registration")
+                        } else {
+                            postCompleted(succeeded: false, msg:"Failed registration")
+                        }
                     }
                     else {
                         print("Failed to find key")

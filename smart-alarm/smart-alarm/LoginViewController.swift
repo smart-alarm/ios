@@ -79,8 +79,6 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
             }
 
         })
-        
-        
     }
     
     func failedLogin() {
@@ -90,12 +88,12 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     }
     
     @IBAction func signUp(sender: UIButton) {
-        print("Sign up")
+        performSegueWithIdentifier("signUp", sender: self)
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "registerModal" {
+        if segue.identifier == "signUp" {
             if let registerModal = segue.destinationViewController as? RegisterViewController{
                 registerModal.delegate = self
             }

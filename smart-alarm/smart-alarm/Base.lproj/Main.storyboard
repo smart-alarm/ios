@@ -61,7 +61,6 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TwM-7l-BWZ"/>
-                                    <segue destination="GPw-9J-dS9" kind="presentation" identifier="registerModal" id="KhP-RO-C4U"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mh-34-xXK">
@@ -91,6 +90,7 @@
                         <outlet property="signInButton" destination="ibh-I3-75J" id="CjN-nB-xSD"/>
                         <outlet property="titleLabel" destination="UkS-3n-aiq" id="Sa8-Lv-Wso"/>
                         <segue destination="ofR-xc-Uun" kind="presentation" identifier="signIn" modalTransitionStyle="flipHorizontal" id="x43-3U-9eF"/>
+                        <segue destination="GPw-9J-dS9" kind="presentation" identifier="signUp" id="ceU-b4-CNF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -149,15 +149,10 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Mnv-Vj-45x">
-                                <rect key="frame" x="281" y="364" width="37" height="37"/>
-                                <animations/>
-                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1764705882" green="0.54901960780000003" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Mnv-Vj-45x" firstAttribute="centerX" secondItem="dzs-1e-lDF" secondAttribute="centerX" id="FeI-Gi-rfH"/>
                             <constraint firstItem="OTV-cj-plO" firstAttribute="centerX" secondItem="dzs-1e-lDF" secondAttribute="centerX" id="KbC-Wk-ef1"/>
                             <constraint firstItem="HZR-F0-ZeQ" firstAttribute="centerX" secondItem="dzs-1e-lDF" secondAttribute="centerX" id="UcJ-Ut-VT7"/>
                             <constraint firstItem="WVF-Zu-Hxf" firstAttribute="centerX" secondItem="dzs-1e-lDF" secondAttribute="centerX" id="di3-YU-hPO"/>
@@ -168,7 +163,6 @@
                     <navigationItem key="navigationItem" title="Sign Up" id="zih-Qo-fSc"/>
                     <connections>
                         <outlet property="emailField" destination="WVF-Zu-Hxf" id="4hR-cY-0w2"/>
-                        <outlet property="loading" destination="Mnv-Vj-45x" id="QR8-Fz-tam"/>
                         <outlet property="passwordField" destination="OTV-cj-plO" id="KTW-oE-GqM"/>
                         <outlet property="passwordVerifyField" destination="3Tk-Iu-zvc" id="07v-2T-0c8"/>
                         <outlet property="registerButton" destination="HZR-F0-ZeQ" id="UHP-QF-88w"/>
