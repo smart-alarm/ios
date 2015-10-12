@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,9 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
     }
     
     @IBAction func signIn(sender: UIButton) {
+        loading.startAnimating()
+        signInButton.enabled = false
+        
         // Check if valid username and password
         let email = emailField.text
         let password = passwordField.text
@@ -92,16 +96,19 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
                 print("Successful login!")
                 
                 NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.loading.stopAnimating()
+                    self.signInButton.enabled = false
                     self.performSegueWithIdentifier("signIn", sender: self)
                 }
                 
             } else {
                 print("Failed to login.")
                 NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.loading.stopAnimating()
+                    self.signInButton.enabled = false
                     self.failedLogin()
                 }
             }
-
         })
     }
     

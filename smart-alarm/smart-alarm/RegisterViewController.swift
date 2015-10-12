@@ -53,6 +53,9 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerUser(sender: UIButton) {
+        loading.startAnimating()
+        registerButton.enabled = false
+        
         // TODO: Get text from fields
         // HTTP POST
         let userDict: NSMutableDictionary = NSMutableDictionary()
@@ -84,9 +87,14 @@ class RegisterViewController: UIViewController {
                 
                 self.delegate?.registerInfo(self.emailField.text!, password: self.passwordField.text!)
                 self.dismissViewControllerAnimated(true, completion: {})
+                self.loading.stopAnimating()
+                self.registerButton.enabled = true
+
             } else {
                 print("Failed to post to server")
                 NSOperationQueue.mainQueue().addOperationWithBlock {
+                    self.loading.stopAnimating()
+                    self.registerButton.enabled = true
                     self.failedRegistration()
                 }
             }
