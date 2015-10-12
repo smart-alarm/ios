@@ -13,7 +13,6 @@ class DateUtilTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("breakfast")
         defaults.removeObjectForKey("exercise")
@@ -22,7 +21,6 @@ class DateUtilTests: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.removeObjectForKey("breakfast")
