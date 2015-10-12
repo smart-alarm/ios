@@ -61,6 +61,21 @@ class RegisterViewController: UIViewController {
 //        }
 //        
 //        task.resume()
+        let userDict: NSMutableDictionary = NSMutableDictionary()
+        userDict.setValue(emailField.text, forKey: "email")
+        userDict.setValue(passwordField.text, forKey: "password")
+        userDict.setValue(passwordVerifyField.text, forKey: "password_confirmation")
+        
+        let jsonDict: NSMutableDictionary = NSMutableDictionary()
+        jsonDict.setValue(userDict, forKey: "user")
+        
+        let http = HTTP()
+        http.post("https://smart-alarm-server.herokuapp.com/users/create", body: jsonDict, callBack: {
+            (success: Bool, message: String) -> () in
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Accept", style: .Cancel, handler: {action in self.dismissViewControllerAnimated(true, completion: nil)}))
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
         
         // Save the text fields to user defaults
         let defaults = NSUserDefaults.standardUserDefaults()
@@ -70,6 +85,6 @@ class RegisterViewController: UIViewController {
 
 //      loading.startAnimating()
         self.delegate?.registerInfo(emailField.text!, password: passwordField.text!)
-        dismissViewControllerAnimated(true, completion: {})
+//        dismissViewControllerAnimated(true, completion: {})
     }
 }
