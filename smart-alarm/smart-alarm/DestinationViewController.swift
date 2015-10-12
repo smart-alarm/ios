@@ -9,6 +9,8 @@
 import UIKit
 
 class DestinationViewController: UIViewController {
+    @IBOutlet weak var destinationTime: UIDatePicker!
+    @IBOutlet weak var estimatedWakeup: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,19 @@ class DestinationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func dateChanged(sender: UIDatePicker) {
+        // TODO: Call DateUtil function
+        // Change label to estimated wakeup time
+        let wakeUp = DateUtil.subtractRoutineFromTime(sender.date)
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        
+        let strDate = dateFormatter.stringFromDate(wakeUp)
+        estimatedWakeup.text = strDate
+    }
+    
     /*
     // MARK: - Navigation
 
