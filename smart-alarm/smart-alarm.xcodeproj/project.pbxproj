@@ -33,6 +33,7 @@
 		2093B6A91BBC749600EC5C7C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2093B6AA1BBC749600EC5C7C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		6439B6511BCC325D006306DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
+		6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6581BCC49F8006306DE /* DateUtilTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
 		6439B6501BCC325D006306DE /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
+		6439B6581BCC49F8006306DE /* DateUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			children = (
 				2093B67E1BBC740200EC5C7C /* smart_alarmTests.swift */,
 				2093B6801BBC740200EC5C7C /* Info.plist */,
+				6439B6581BCC49F8006306DE /* DateUtilTests.swift */,
 			);
 			path = "smart-alarmTests";
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			files = (
 				2093B69D1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */,
 				2093B6A91BBC749600EC5C7C /* RoutineViewController.swift in Sources */,
+				6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */,
 				2093B67F1BBC740200EC5C7C /* smart_alarmTests.swift in Sources */,
 				2093B6991BBC746C00EC5C7C /* HTTP.swift in Sources */,
 				2093B6A51BBC748D00EC5C7C /* LoginViewController.swift in Sources */,
