@@ -32,6 +32,8 @@
 		2093B6A81BBC749600EC5C7C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2093B6A91BBC749600EC5C7C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2093B6AA1BBC749600EC5C7C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
+		20C7473C1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
 		6439B6511BCC325D006306DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
 		6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6581BCC49F8006306DE /* DateUtilTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -338,6 +340,7 @@
 				6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */,
 				2093B67F1BBC740200EC5C7C /* smart_alarmTests.swift in Sources */,
 				2093B6991BBC746C00EC5C7C /* HTTP.swift in Sources */,
+				20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */,
 				2093B6A51BBC748D00EC5C7C /* LoginViewController.swift in Sources */,
 				2093B6A11BBC748600EC5C7C /* DestinationViewController.swift in Sources */,
 			);
@@ -353,6 +356,7 @@
 				2093B69A1BBC746C00EC5C7C /* HTTP.swift in Sources */,
 				2093B6A61BBC748D00EC5C7C /* LoginViewController.swift in Sources */,
 				2093B6A21BBC748600EC5C7C /* DestinationViewController.swift in Sources */,
+				20C7473C1BCC5AAC00AC3109 /* DateUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
