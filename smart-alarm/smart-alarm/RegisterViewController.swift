@@ -18,6 +18,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordVerifyField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     
     var delegate: RegisterViewControllerDelegate? = nil
@@ -90,6 +91,10 @@ class RegisterViewController: UIViewController {
                 }
             }
         })
+    }
+    
+    @IBAction func cancelRegistration(sender: UIButton) {
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     func failedRegistration() {
