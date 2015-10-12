@@ -48,6 +48,7 @@ class DateUtil {
         
         return wakeUp
         
+        
         //Format the return string
 //        let formatter : NSDateFormatter = NSDateFormatter()
 //        formatter.timeStyle = NSDateFormatterStyle.ShortStyle
