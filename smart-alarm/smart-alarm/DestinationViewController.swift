@@ -45,8 +45,11 @@ class DestinationViewController: UIViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         
-        let strDate = dateFormatter.stringFromDate(wakeUp)
-        arrivalInput.text = strDate
+        let actual = dateFormatter.stringFromDate(sender.date)
+        let estimate = dateFormatter.stringFromDate(wakeUp)
+        
+        arrivalInput.text = actual
+        estimatedWakeup.text = estimate
     }
     
     //Calls this function when the tap is recognized.
