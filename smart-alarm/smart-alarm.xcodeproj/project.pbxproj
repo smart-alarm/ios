@@ -34,6 +34,7 @@
 		2093B6AA1BBC749600EC5C7C /* RoutineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
 		20C7473C1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
+		20CD9B5F1BCE9ED500426DC9 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CD9B5E1BCE9ED500426DC9 /* TextField.swift */; settings = {ASSET_TAGS = (); }; };
 		6439B6511BCC325D006306DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
 		6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6581BCC49F8006306DE /* DateUtilTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		2093B69F1BBC748600EC5C7C /* DestinationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationViewController.swift; sourceTree = "<group>"; };
 		2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineViewController.swift; sourceTree = "<group>"; };
+		20CD9B5E1BCE9ED500426DC9 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		6439B6501BCC325D006306DE /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		6439B6581BCC49F8006306DE /* DateUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				2093B6661BBC740200EC5C7C /* AppDelegate.swift */,
 				2093B6681BBC740200EC5C7C /* ViewController.swift */,
 				2093B66A1BBC740200EC5C7C /* Main.storyboard */,
+				20CD9B5E1BCE9ED500426DC9 /* TextField.swift */,
 				2093B6701BBC740200EC5C7C /* Assets.xcassets */,
 				2093B6721BBC740200EC5C7C /* LaunchScreen.storyboard */,
 				2093B6751BBC740200EC5C7C /* Info.plist */,
@@ -322,6 +325,7 @@
 				2093B6A41BBC748D00EC5C7C /* LoginViewController.swift in Sources */,
 				2093B6691BBC740200EC5C7C /* ViewController.swift in Sources */,
 				2093B69C1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */,
+				20CD9B5F1BCE9ED500426DC9 /* TextField.swift in Sources */,
 				2093B6A81BBC749600EC5C7C /* RoutineViewController.swift in Sources */,
 				2093B6981BBC746C00EC5C7C /* HTTP.swift in Sources */,
 				2093B66F1BBC740200EC5C7C /* smart_alarm.xcdatamodeld in Sources */,
