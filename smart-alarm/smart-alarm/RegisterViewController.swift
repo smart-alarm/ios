@@ -31,21 +31,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-    @IBAction func nextKeyEmail(sender: AnyObject) {
-        sender.resignFirstResponder()
-        passwordField.becomeFirstResponder()
-    }
-    
-    @IBAction func nextKeyPassword(sender: AnyObject) {
-        sender.resignFirstResponder()
-        passwordVerifyField.becomeFirstResponder()
-    }
-    
-    @IBAction func doneKey(sender: AnyObject) {
-        sender.resignFirstResponder()
-//        registerUser(registerButton)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
