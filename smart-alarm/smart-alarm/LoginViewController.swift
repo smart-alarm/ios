@@ -52,14 +52,10 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
 //        passwordField.leftView = passwordImageView
 //        passwordField.leftViewMode = UITextFieldViewMode.Always
 
-        
-        
-        
-        
     }
     
     @IBAction func nextKey(sender: UITextField) {
-        emailField.resignFirstResponder()
+        sender.resignFirstResponder()
         passwordField.becomeFirstResponder()
     }
     

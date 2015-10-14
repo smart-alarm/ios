@@ -25,38 +25,25 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        registerButton.enabled = false;
-        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func nextKeyEmail(sender: UITextField) {
+        sender.resignFirstResponder()
+        passwordField.becomeFirstResponder()
     }
     
-    // MARK: - Navigation
     
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func nextKeyPassword(sender: UITextField) {
+        sender.resignFirstResponder()
+        passwordVerifyField.becomeFirstResponder()
     }
     
-    @IBAction func verifyPassword(sender: UITextField) {
-        if (passwordField.text == passwordVerifyField.text){
-            registerButton.enabled = true;
-        } else {
-            registerButton.enabled = false;
-        }
+    @IBAction func doneKey(sender: UITextField) {
+        sender.resignFirstResponder()
+        registerUser(registerButton)
     }
     
-    @IBAction func registerUser(sender: UIButton) {
-        loading.startAnimating()
-        registerButton.enabled = false
-        
-        // TODO: Get text from fields
+    func signUp () {
         // HTTP POST
         let userDict: NSMutableDictionary = NSMutableDictionary()
         userDict.setValue(emailField.text, forKey: "email")
@@ -78,18 +65,19 @@ class RegisterViewController: UIViewController {
             
             if (succeeded) {
                 print("Successful post to server")
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    // Save the text fields to user defaults
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setObject(self.emailField.text, forKey: "email")
+                    defaults.setObject(self.passwordField.text, forKey: "password")
+                    self.view.endEditing(true)
+                    
+                    self.delegate?.registerInfo(self.emailField.text!, password: self.passwordField.text!)
+                    self.dismissViewControllerAnimated(true, completion: {})
+                    self.loading.stopAnimating()
+                    self.registerButton.enabled = true
+                }
                 
-                // Save the text fields to user defaults
-                let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(self.emailField.text, forKey: "email")
-                defaults.setObject(self.passwordField.text, forKey: "password")
-                self.view.endEditing(true)
-                
-                self.delegate?.registerInfo(self.emailField.text!, password: self.passwordField.text!)
-                self.dismissViewControllerAnimated(true, completion: {})
-                self.loading.stopAnimating()
-                self.registerButton.enabled = true
-
             } else {
                 print("Failed to post to server")
                 NSOperationQueue.mainQueue().addOperationWithBlock {
@@ -101,12 +89,34 @@ class RegisterViewController: UIViewController {
         })
     }
     
+    
+    
+    
+    @IBAction func registerUser(sender: UIButton) {
+        loading.startAnimating()
+        registerButton.enabled = false
+        
+        if (emailField.text != "" && passwordField.text == passwordVerifyField.text && passwordVerifyField.text != ""){
+            signUp()
+        } else {
+            invalidPassword()
+            loading.stopAnimating()
+            registerButton.enabled = true
+        }
+    }
+    
     @IBAction func cancelRegistration(sender: UIButton) {
         dismissViewControllerAnimated(true, completion: {})
     }
     
     func failedRegistration() {
         let alertController = UIAlertController(title: "Registration Failed!", message: "Enter valid email/password", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func invalidPassword() {
+        let alertController = UIAlertController(title: "Try again!", message: "Password fields do not match.", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
