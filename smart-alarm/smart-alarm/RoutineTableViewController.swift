@@ -30,14 +30,16 @@ class RoutineTableViewController: UITableViewController {
     @IBAction func save (segue:UIStoryboardSegue) {
         print("Save")
         let activityTVC = segue.sourceViewController as! ActivityTableViewController
-        let name = activityTVC.activityName.text!
-        let time = activityTVC.activityTime.text!
-        let indexPath = NSIndexPath(forRow: activities.count, inSection: 0)
-        activities.append(["activity": name, "time": time])
-
-        self.tableView.beginUpdates()
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        self.tableView.endUpdates()
+        if activityTVC.activityName.text != "" && activityTVC.activityTime.text != "" {
+            let name = activityTVC.activityName.text!
+            let time = activityTVC.activityTime.text!
+            let indexPath = NSIndexPath(forRow: activities.count, inSection: 0)
+            activities.append(["activity": name, "time": time])
+            
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.endUpdates()
+        }
     }
 
     // MARK: - Table view data source

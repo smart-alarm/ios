@@ -13,10 +13,10 @@ class ActivityTableViewController: UITableViewController {
     
     @IBOutlet weak var activityName: UITextField!
     @IBOutlet weak var activityTime: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

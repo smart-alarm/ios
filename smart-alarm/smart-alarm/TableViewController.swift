@@ -17,6 +17,8 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timePicker.datePickerMode = .DateAndTime
+        timePicker.datePickerMode = .Time
         updateTimeLabels(timePicker)
         
         // Uncomment the following line to preserve selection between presentations
