@@ -13,10 +13,11 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var routineLabel: UILabel!
+    @IBOutlet weak var wakeupLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        updateTimeLabels(timePicker)
+        updateTimeLabels(timePicker)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,16 +26,31 @@ class TableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-//    @IBAction func timeChanged(sender: UIDatePicker) {
-//            updateTimeLabels(sender)
-//    }
+    @IBAction func timeChanged(sender: UIDatePicker) {
+            updateTimeLabels(sender)
+    }
 
-//    func updateTimeLabels (sender: UIDatePicker) {
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-//        let timeString = dateFormatter.stringFromDate(sender.date)
-//        timeLabel.text = timeString
-//    }
+    func updateTimeLabels (sender: UIDatePicker) {
+        let parsed = splitMinutes(routineLabel.text!)
+        let time = subtractRoutine(sender.date, routineMinutes: Int(parsed)!)
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        let timeString = dateFormatter.stringFromDate(time)
+        wakeupLabel.text = timeString
+    }
+    
+    func subtractRoutine (date: NSDate, routineMinutes: Int) -> NSDate {
+        let components: NSDateComponents = NSDateComponents()
+        components.setValue(routineMinutes*(-1), forComponent: NSCalendarUnit.Minute);
+        let result = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
+        return result!
+    }
+    
+    func splitMinutes (label: String) -> String {
+        print(label)
+        let split = label.characters.split{$0 == " "}.map(String.init)
+        return split[0]
+    }
     
     @IBAction func done (segue:UIStoryboardSegue) {
         print("Done")
@@ -45,8 +61,8 @@ class TableViewController: UITableViewController {
         for a in activities {
             time += Int(a["time"]!)!
         }
-        print(time)
-        routineLabel.text = "\(time)"
+        routineLabel.text = "\(time) minutes"
+        updateTimeLabels(timePicker)
     }
 
     // MARK: - Table view data source

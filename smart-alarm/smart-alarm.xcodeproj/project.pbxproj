@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		200B12A71BC576280015B40F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A51BC576280015B40F /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
 		200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A61BC576280015B40F /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
+		202F0FCC1BD54B8C00799850 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F0FCB1BD54B8C00799850 /* LocationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2037BDA71BD33CFA00F45644 /* RoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		2093B6671BBC740200EC5C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6661BBC740200EC5C7C /* AppDelegate.swift */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		200B12A61BC576280015B40F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		202F0FCB1BD54B8C00799850 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTableViewController.swift; sourceTree = "<group>"; };
 		208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		2093B6631BBC740200EC5C7C /* smart-alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "smart-alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 		2093B65A1BBC740200EC5C7C = {
 			isa = PBXGroup;
 			children = (
+				202F0FCB1BD54B8C00799850 /* LocationViewController.swift */,
 				2093B6651BBC740200EC5C7C /* smart-alarm */,
 				2093B67D1BBC740200EC5C7C /* smart-alarmTests */,
 				2093B6881BBC740200EC5C7C /* smart-alarmUITests */,
@@ -338,6 +341,7 @@
 				20A092B61BD0234200745784 /* TableViewController.swift in Sources */,
 				2093B6A81BBC749600EC5C7C /* RoutineViewController.swift in Sources */,
 				2093B6981BBC746C00EC5C7C /* HTTP.swift in Sources */,
+				202F0FCC1BD54B8C00799850 /* LocationViewController.swift in Sources */,
 				2037BDA71BD33CFA00F45644 /* RoutineTableViewController.swift in Sources */,
 				2093B66F1BBC740200EC5C7C /* smart_alarm.xcdatamodeld in Sources */,
 				208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */,
