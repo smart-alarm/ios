@@ -1,23 +1,21 @@
 //
-//  TableViewController.swift
+//  ActivityTableViewController.swift
 //  smart-alarm
 //
-//  Created by Gideon I. Glass on 10/15/15.
+//  Created by Gideon I. Glass on 10/18/15.
 //  Copyright © 2015 Gideon I. Glass. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController {
-
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var routineLabel: UILabel!
+class ActivityTableViewController: UITableViewController {
+    
+    @IBOutlet weak var activityName: UITextField!
+    @IBOutlet weak var activityTime: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        updateTimeLabels(timePicker)
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -25,50 +23,29 @@ class TableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-//    @IBAction func timeChanged(sender: UIDatePicker) {
-//            updateTimeLabels(sender)
-//    }
-
-//    func updateTimeLabels (sender: UIDatePicker) {
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-//        let timeString = dateFormatter.stringFromDate(sender.date)
-//        timeLabel.text = timeString
-//    }
-    
-    @IBAction func done (segue:UIStoryboardSegue) {
-        print("Done")
-        let routineTVC = segue.sourceViewController as! RoutineTableViewController
-        let activities = routineTVC.activities
-        Activities.update(activities)
-        var time = 0
-        for a in activities {
-            time += Int(a["time"]!)!
-        }
-        print(time)
-        routineLabel.text = "\(time)"
-    }
 
     // MARK: - Table view data source
 
 //    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 //        // #warning Incomplete implementation, return the number of sections
-//        return 3
+//        return 0
 //    }
 //
 //    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        // #warning Incomplete implementation, return the number of rows
-//        return 5
+//        return 0
 //    }
 
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-//
-//        // Configure the cell...
-//
-//        return cell
-//    }
-    
+    /*
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+
+        // Configure the cell...
+
+        return cell
+    }
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
