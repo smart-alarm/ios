@@ -1,5 +1,5 @@
 //
-//  TableViewController.swift
+//  HomeTableViewController.swift
 //  smart-alarm
 //
 //  Created by Gideon I. Glass on 10/15/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class HomeTableViewController: UITableViewController {
 
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var timePicker: UIDatePicker!
