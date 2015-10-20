@@ -270,19 +270,27 @@
                                             <segue destination="Dmc-45-QAz" kind="push" id="24Z-rh-4oN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="p3x-tk-5NB" style="IBUITableViewCellStyleDefault" id="GxZ-2h-30g">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="p3x-tk-5NB" detailTextLabel="Hah-6h-RsZ" style="IBUITableViewCellStyleValue1" id="GxZ-2h-30g">
                                         <rect key="frame" x="0.0" y="372.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GxZ-2h-30g" id="i9c-vh-eqj">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p3x-tk-5NB">
-                                                    <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p3x-tk-5NB">
+                                                    <rect key="frame" x="15" y="12" width="82.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hah-6h-RsZ">
+                                                    <rect key="frame" x="243.5" y="12" width="41.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -336,6 +344,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="tWJ-TC-xXV"/>
                     <connections>
+                        <outlet property="locationLabel" destination="Hah-6h-RsZ" id="256-aD-LCL"/>
                         <outlet property="routineLabel" destination="hdU-57-wW0" id="wvX-Mm-uhO"/>
                         <outlet property="timePicker" destination="SSp-qA-Elf" id="7kt-lY-auP"/>
                         <outlet property="wakeupLabel" destination="MiD-Zb-i8o" id="7gw-ff-DCl"/>
@@ -379,7 +388,18 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Location" id="dyg-oY-w9x"/>
+                    <navigationItem key="navigationItem" title="Location" id="dyg-oY-w9x">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0G7-uJ-Kn1">
+                            <connections>
+                                <segue destination="2hA-1G-m2K" kind="unwind" unwindAction="locationCancelled:" id="ulv-ez-1iy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Lqe-hj-4sB">
+                            <connections>
+                                <segue destination="2hA-1G-m2K" kind="unwind" unwindAction="locationSelected:" id="VfZ-dz-ETS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="Ykl-jb-XMa" id="opd-RQ-15M"/>
                         <outlet property="searchBar" destination="Qn4-pd-ajf" id="dJW-Ni-6qQ"/>
@@ -387,6 +407,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-Zf-S4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2hA-1G-m2K" userLabel="Exit" sceneMemberID="exit"/>
                 <searchDisplayController searchResultsTitle="Destinations" id="jTS-2U-fx0">
                     <connections>
                         <outlet property="delegate" destination="YDv-pD-Jmg" id="Xyf-f1-61p"/>
@@ -444,7 +465,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Morning Routine" id="y0u-jO-2Cu">
-                        <barButtonItem key="leftBarButtonItem" title="Done" id="yTq-HH-g1d">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="yTq-HH-g1d">
                             <connections>
                                 <segue destination="Ebd-lh-Ljf" kind="unwind" unwindAction="done:" id="X1e-ma-5Az"/>
                             </connections>

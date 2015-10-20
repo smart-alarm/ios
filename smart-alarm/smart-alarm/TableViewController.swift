@@ -14,12 +14,14 @@ class TableViewController: UITableViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var routineLabel: UILabel!
     @IBOutlet weak var wakeupLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         timePicker.datePickerMode = .DateAndTime
         timePicker.datePickerMode = .Time
         updateTimeLabels(timePicker)
+        locationLabel.text = ""
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -66,6 +68,20 @@ class TableViewController: UITableViewController {
         routineLabel.text = "\(time) minutes"
         updateTimeLabels(timePicker)
     }
+    
+    @IBAction func locationSelected (segue:UIStoryboardSegue) {
+        let locationVC = segue.sourceViewController as! LocationViewController
+        let location = locationVC.searchBar.text!
+        if location != "" {
+            locationLabel.text = location
+        }
+    }
+    
+    @IBAction func locationCancelled (segue:UIStoryboardSegue) {
+        print("cancelled")
+    }
+    
+    
 
     // MARK: - Table view data source
 
