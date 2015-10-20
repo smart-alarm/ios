@@ -366,6 +366,9 @@
                                 <animations/>
                                 <color key="barTintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YDv-pD-Jmg" id="96w-hp-A3g"/>
+                                </connections>
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Ykl-jb-XMa">
                                 <rect key="frame" x="0.0" y="106" width="320" height="462"/>
@@ -378,6 +381,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="dyg-oY-w9x"/>
                     <connections>
+                        <outlet property="mapView" destination="Ykl-jb-XMa" id="opd-RQ-15M"/>
+                        <outlet property="searchBar" destination="Qn4-pd-ajf" id="dJW-Ni-6qQ"/>
                         <outlet property="searchDisplayController" destination="jTS-2U-fx0" id="x3m-F9-V9i"/>
                     </connections>
                 </viewController>

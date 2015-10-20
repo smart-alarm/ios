@@ -63,7 +63,7 @@
 /* Begin PBXFileReference section */
 		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		200B12A61BC576280015B40F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		202F0FCB1BD54B8C00799850 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		202F0FCB1BD54B8C00799850 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = ../LocationViewController.swift; sourceTree = "<group>"; };
 		2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTableViewController.swift; sourceTree = "<group>"; };
 		208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		2093B6631BBC740200EC5C7C /* smart-alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "smart-alarm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,7 +121,6 @@
 		2093B65A1BBC740200EC5C7C = {
 			isa = PBXGroup;
 			children = (
-				202F0FCB1BD54B8C00799850 /* LocationViewController.swift */,
 				2093B6651BBC740200EC5C7C /* smart-alarm */,
 				2093B67D1BBC740200EC5C7C /* smart-alarmTests */,
 				2093B6881BBC740200EC5C7C /* smart-alarmUITests */,
@@ -144,6 +143,7 @@
 		2093B6651BBC740200EC5C7C /* smart-alarm */ = {
 			isa = PBXGroup;
 			children = (
+				202F0FCB1BD54B8C00799850 /* LocationViewController.swift */,
 				209999B71BD534CC00565322 /* Activities.swift */,
 				2093B6A71BBC749600EC5C7C /* RoutineViewController.swift */,
 				6439B6501BCC325D006306DE /* DateUtil.swift */,
