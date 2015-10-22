@@ -26,3 +26,6 @@ Using the calculated buffer time (from morning routine) and polling of traffic d
 * [Github](https://github.com/smart-alarm)
 * [Project Management](https://waffle.io/gidglass/smart-alarm)
 
+###Beta Distribution
+[Fabric.io - Beta by Crashlytics](https://betas.to/Eeuq33Mb)
+
