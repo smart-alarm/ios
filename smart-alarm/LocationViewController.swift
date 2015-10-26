@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class LocationViewController: UIViewController, UISearchBarDelegate {
+class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -21,6 +21,9 @@ class LocationViewController: UIViewController, UISearchBarDelegate {
     var pointAnnotation: MKPointAnnotation!
     var pinAnnotationView: MKPinAnnotationView!
     
+    let locationManager = CLLocationManager()
+    var etaMinutes: Double = 0.0
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         localSearchRequest = MKLocalSearchRequest()
@@ -29,6 +32,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate {
         localSearch.startWithCompletionHandler({
             (localSearchResponse, error) -> Void in
             if localSearchResponse == nil {
+                searchBar.text = ""
                 let alertController = UIAlertController(title: nil, message: "Address not found", preferredStyle: .Alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
@@ -45,6 +49,26 @@ class LocationViewController: UIViewController, UISearchBarDelegate {
             let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.pointAnnotation.coordinate,
                 regionRadius * 2.0, regionRadius * 2.0)
             self.mapView.setRegion(coordinateRegion, animated: true)
+            
+            searchBar.text = localSearchResponse?.mapItems.first?.name
+            let directionsRequest = MKDirectionsRequest()
+            directionsRequest.source = MKMapItem.mapItemForCurrentLocation()
+            directionsRequest.destination = localSearchResponse?.mapItems.first
+            directionsRequest.transportType = .Transit
+            directionsRequest.requestsAlternateRoutes = false
+            let direction = MKDirections(request: directionsRequest)
+            direction.calculateETAWithCompletionHandler({
+                (response, err) -> Void in
+                if response == nil {
+                    let alertController = UIAlertController(title: nil, message: "No routes found.", preferredStyle: .Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    self.etaMinutes = 0.0
+                    return
+                }
+                self.etaMinutes = (response?.expectedTravelTime)! / 60.0
+                //print(self.etaMinutes)
+            })
         })
     }
     
@@ -52,6 +76,9 @@ class LocationViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
