@@ -20,14 +20,14 @@ class RoutineTableViewController: UITableViewController {
         print("loaded")
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
-    @IBAction func cancel (segue:UIStoryboardSegue) {
+    @IBAction func cancelActivity (segue:UIStoryboardSegue) {
         print("Cancel")
     }
     
-    @IBAction func save (segue:UIStoryboardSegue) {
+    @IBAction func saveActivity (segue:UIStoryboardSegue) {
         print("Save")
         let activityTVC = segue.sourceViewController as! ActivityTableViewController
         if activityTVC.activityName.text != "" && activityTVC.activityTime.text != "" {
@@ -59,24 +59,6 @@ class RoutineTableViewController: UITableViewController {
         cell.detailTextLabel!.text = activities[indexPath.row]["time"]! + " minutes"
         return cell
     }
-
-    @IBAction func addRow(sender: UIBarButtonItem) {
-//        let newActivity: Dictionary<String,String> = ["activity": "Activity", "time": "0"]
-//        let indexPath = NSIndexPath(forRow: activities.count, inSection: 0)
-//        activities.append(newActivity)
-//        self.tableView.beginUpdates()
-//        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//        self.tableView.endUpdates()
-//        print("Adding!")
-//        performSegueWithIdentifier("addActivity", sender: self)
-    }
-
-//    // Override to support conditional editing of the table view.
-//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
-//        return true
-//    }
-    
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -88,22 +70,6 @@ class RoutineTableViewController: UITableViewController {
         }
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     /*
     // MARK: - Navigation
 

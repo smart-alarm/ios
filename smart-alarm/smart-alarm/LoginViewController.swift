@@ -31,27 +31,6 @@ class LoginViewController: UIViewController, RegisterViewControllerDelegate {
         } else {
             signInButton.enabled = true
         }
-        
-        
-        // TODO: Fix the leftview icons
-        // Set email icon
-//        let emailImageView = UIImageView()
-//        emailImageView.alpha = 0.5
-//        let emailIcon = UIImage(named: "email")
-//        emailImageView.image = emailIcon
-//        emailImageView.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
-//        emailField.leftView = emailImageView
-//        emailField.leftViewMode = UITextFieldViewMode.Always
-////
-////        // Password icon
-//        let passwordImageView = UIImageView()
-//        passwordImageView.alpha = 0.5
-//        let passwordIcon = UIImage(named: "password")
-//        passwordImageView.image = passwordIcon
-//        passwordImageView.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
-//        passwordField.leftView = passwordImageView
-//        passwordField.leftViewMode = UITextFieldViewMode.Always
-
     }
     
     @IBAction func nextKey(sender: UITextField) {

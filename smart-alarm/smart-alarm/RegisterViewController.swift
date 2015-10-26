@@ -89,9 +89,6 @@ class RegisterViewController: UIViewController {
         })
     }
     
-    
-    
-    
     @IBAction func registerUser(sender: UIButton) {
         loading.startAnimating()
         registerButton.enabled = false
