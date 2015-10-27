@@ -13,6 +13,8 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var transportationType: UISegmentedControl!
+    
     var annotation: MKAnnotation!
     var localSearchRequest: MKLocalSearchRequest!
     var localSearch: MKLocalSearch!
@@ -54,8 +56,17 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
             let directionsRequest = MKDirectionsRequest()
             directionsRequest.source = MKMapItem.mapItemForCurrentLocation()
             directionsRequest.destination = localSearchResponse?.mapItems.first
-            directionsRequest.transportType = .Transit
             directionsRequest.requestsAlternateRoutes = false
+            
+            // Determine which transportation method to use in ETA
+            if (self.transportationType.selectedSegmentIndex == 0) {
+                directionsRequest.transportType = .Automobile
+                print("Driving directions")
+            } else {
+                directionsRequest.transportType = .Transit
+                print("Transit directions")
+            }
+            
             let direction = MKDirections(request: directionsRequest)
             direction.calculateETAWithCompletionHandler({
                 (response, err) -> Void in
@@ -67,7 +78,6 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
                     return
                 }
                 self.etaMinutes = (response?.expectedTravelTime)! / 60.0
-                //print(self.etaMinutes)
             })
         })
     }

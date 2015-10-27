@@ -15,13 +15,18 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet weak var wakeupLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var travelTime: UILabel!
+    var routineMinutes: Int = 0
+    var etaMinutes: Int = 0
+    var transportationMode: String = "Driving"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         timePicker.datePickerMode = .DateAndTime
         timePicker.datePickerMode = .Time
-        updateTimeLabels(timePicker)
         locationLabel.text = ""
+        routineLabel.text = "0 minutes"
+        updateTimeLabels(timePicker)
         saveButton.enabled = false
         
         // Uncomment the following line to preserve selection between presentations
@@ -32,33 +37,32 @@ class HomeTableViewController: UITableViewController {
     }
     
     @IBAction func timeChanged(sender: UIDatePicker) {
-            updateTimeLabels(sender)
+        updateTimeLabels(sender)
     }
 
     func updateTimeLabels (sender: UIDatePicker) {
         let parsed = splitMinutes(routineLabel.text!)
-        let time = subtractRoutine(sender.date, routineMinutes: Int(parsed)!)
+        routineMinutes = Int(parsed)!
+        let  totalTime = subtractTimes(sender.date, routineMinutes: Int(parsed)!, etaMinutes: etaMinutes)
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        let timeString = dateFormatter.stringFromDate(time)
+        let timeString = dateFormatter.stringFromDate(totalTime)
         wakeupLabel.text = timeString
+        travelTime.text = "\(etaMinutes) minutes"
     }
     
-    func subtractRoutine (date: NSDate, routineMinutes: Int) -> NSDate {
+    func subtractTimes (date: NSDate, routineMinutes: Int, etaMinutes: Int) -> NSDate {
         let components: NSDateComponents = NSDateComponents()
-        components.setValue(routineMinutes*(-1), forComponent: NSCalendarUnit.Minute);
+        let combinedTime = routineMinutes + etaMinutes
+        components.setValue(combinedTime*(-1), forComponent: NSCalendarUnit.Minute);
         let result = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
         return result!
     }
     
     func splitMinutes (label: String) -> String {
-        print(label)
         let split = label.characters.split{$0 == " "}.map(String.init)
         return split[0]
     }
-    
-
-
     
     /*
     // MARK: - Navigation
@@ -72,21 +76,32 @@ class HomeTableViewController: UITableViewController {
     
     
     /* UNWIND SEGUES */
-    
-    
+
     @IBAction func saveLocation (segue:UIStoryboardSegue) {
         let locationVC = segue.sourceViewController as! LocationViewController
         let location = locationVC.searchBar.text!
         if location != "" {
             locationLabel.text = location
+            etaMinutes = Int(round(locationVC.etaMinutes))
+            switch (locationVC.transportationType.selectedSegmentIndex) {
+                case 0:
+                    transportationMode = "Driving"
+                    break
+                case 1:
+                    transportationMode = "Transit"
+                    break
+                default:
+                    break
+            }
+            print("ETA: \(etaMinutes)")
+            updateTimeLabels(timePicker)
+            self.saveButton.enabled = true
         }
-        self.saveButton.enabled = true
     }
     
     @IBAction func cancelLocation (segue:UIStoryboardSegue) {
         print("cancelled")
     }
-    
     
     @IBAction func saveRoutine (segue:UIStoryboardSegue) {
         print("Saved Routine")

@@ -13,6 +13,7 @@ class Alarm {
     private var destination: String
     private var transportation: String
     private var routine: Int
+    private var wakeup: String
     
     private static var alarms:[Alarm] = []
     
@@ -21,20 +22,23 @@ class Alarm {
         self.destination = "Home!"
         self.transportation = ""
         self.routine = 0
+        self.wakeup = ""
     } // default constructor
     
-    init (arrival: NSDate, destination: String, transportation: String) {
+    init (arrival: NSDate, destination: String, transportation: String, wakeup: String) {
         self.arrival = arrival
         self.destination = destination
         self.transportation = transportation
         self.routine = 0
+        self.wakeup = wakeup
     }
     
-    init (arrival: NSDate, destination: String, transportation: String, routine: Int) {
+    init (arrival: NSDate, destination: String, transportation: String, routine: Int, wakeup: String) {
         self.arrival = arrival
         self.destination = destination
         self.transportation = transportation
         self.routine = routine
+        self.wakeup = wakeup
     }
     
     func getArrival() -> NSDate {
@@ -43,6 +47,10 @@ class Alarm {
     
     func getDestination() -> String {
         return self.destination
+    }
+    
+    func getWakeup() -> String {
+        return self.wakeup
     }
     
     static func getAlarms () -> [Alarm] {

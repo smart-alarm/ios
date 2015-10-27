@@ -37,8 +37,9 @@ class AlarmTableViewController: UITableViewController {
         // Configure the cell...
         let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as! AlarmTableViewCell
         print(cell.alarmTime.text!)
-        cell.alarmTime.text! = formatDate(alarms[indexPath.row].getArrival())
+        cell.alarmTime.text! = alarms[indexPath.row].getWakeup()
         cell.alarmDestination!.text = alarms[indexPath.row].getDestination()
+        cell.accessoryView = cell.alarmToggle
         // TODO: Fix toggling of alarms
         return cell
     }
@@ -88,14 +89,15 @@ class AlarmTableViewController: UITableViewController {
         
         let arrival = alarmTVC.timePicker.date
         let destination = alarmTVC.locationLabel.text!
-        let transportation = ""
-        let routine = 0
+        let transportation = alarmTVC.transportationMode
+        let routine = alarmTVC.routineMinutes
+        let wakeup = alarmTVC.wakeupLabel.text!
         
         if (destination == "") {
             return
         }
         
-        let newAlarm = Alarm(arrival: arrival, destination: destination, transportation: transportation, routine: routine)
+        let newAlarm = Alarm(arrival: arrival, destination: destination, transportation: transportation, routine: routine, wakeup: wakeup)
         
         let indexPath = NSIndexPath(forRow: alarms.count, inSection: 0)
         
