@@ -83,7 +83,7 @@ class RegisterViewController: UIViewController {
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     self.loading.stopAnimating()
                     self.registerButton.enabled = true
-                    self.failedRegistration()
+                    self.failedRegistration(msg)
                 }
             }
         })
@@ -106,8 +106,8 @@ class RegisterViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: {})
     }
     
-    func failedRegistration() {
-        let alertController = UIAlertController(title: "Registration Failed!", message: "Enter valid email/password", preferredStyle: UIAlertControllerStyle.Alert)
+    func failedRegistration(status: String) {
+        let alertController = UIAlertController(title: "Registration Failed!", message: status, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }

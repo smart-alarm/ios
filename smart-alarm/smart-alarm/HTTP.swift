@@ -70,7 +70,7 @@ class HTTP: NSObject {
                         if (status as String == "User created!") {
                             postCompleted(succeeded: true, msg:"Successful registration")
                         } else {
-                            postCompleted(succeeded: false, msg:"Failed registration")
+                            postCompleted(succeeded: false, msg:status as String)
                         }
                     }
                     else {
