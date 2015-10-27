@@ -16,6 +16,8 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var travelTime: UILabel!
+    
+    var routine = Routine()
     var routineMinutes: Int = 0
     var etaMinutes: Int = 0
     var transportationMode: String = "Driving"
@@ -64,15 +66,15 @@ class HomeTableViewController: UITableViewController {
         return split[0]
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        // Update model and pass routine to destination controller
+        if (segue.identifier == "addRoutine") {
+            let routineTVC = segue.destinationViewController as! RoutineTableViewController
+            routineTVC.routine = self.routine
+        }
     }
-    */
     
     
     /* UNWIND SEGUES */
@@ -106,11 +108,14 @@ class HomeTableViewController: UITableViewController {
     @IBAction func saveRoutine (segue:UIStoryboardSegue) {
         print("Saved Routine")
         let routineTVC = segue.sourceViewController as! RoutineTableViewController
-        let activities = routineTVC.activities
-        Activities.update(activities)
+        
+        // Update model
+        routine = routineTVC.routine
+        
+        let activities = routineTVC.routine.getActivities()
         var time = 0
         for a in activities {
-            time += Int(a["time"]!)!
+            time += a.getTime()
         }
         routineLabel.text = "\(time) minutes"
         updateTimeLabels(timePicker)

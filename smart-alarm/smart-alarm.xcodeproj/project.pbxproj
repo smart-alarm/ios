@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		200B12A71BC576280015B40F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A51BC576280015B40F /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
-		200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A61BC576280015B40F /* Crashlytics.framework */; settings = {ASSET_TAGS = (); }; };
-		202F0FCC1BD54B8C00799850 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F0FCB1BD54B8C00799850 /* LocationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2037BDA71BD33CFA00F45644 /* RoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2092ED141BDEC97700D8F112 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED131BDEC97700D8F112 /* Alarm.swift */; settings = {ASSET_TAGS = (); }; };
-		2092ED161BDEC99E00D8F112 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED151BDEC99E00D8F112 /* AlarmTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */; };
+		200B12A71BC576280015B40F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A51BC576280015B40F /* Fabric.framework */; };
+		200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A61BC576280015B40F /* Crashlytics.framework */; };
+		202F0FCC1BD54B8C00799850 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202F0FCB1BD54B8C00799850 /* LocationViewController.swift */; };
+		2034B68C1BDFD2D300CB6FCA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68B1BDFD2D300CB6FCA /* Activity.swift */; };
+		2034B68E1BDFD3A700CB6FCA /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68D1BDFD3A700CB6FCA /* Routine.swift */; };
+		2037BDA71BD33CFA00F45644 /* RoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */; };
+		208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */; };
+		2092ED141BDEC97700D8F112 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED131BDEC97700D8F112 /* Alarm.swift */; };
+		2092ED161BDEC99E00D8F112 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED151BDEC99E00D8F112 /* AlarmTableViewCell.swift */; };
 		2093B6671BBC740200EC5C7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6661BBC740200EC5C7C /* AppDelegate.swift */; };
 		2093B66C1BBC740200EC5C7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2093B66A1BBC740200EC5C7C /* Main.storyboard */; };
 		2093B66F1BBC740200EC5C7C /* smart_alarm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2093B66D1BBC740200EC5C7C /* smart_alarm.xcdatamodeld */; };
@@ -22,21 +24,20 @@
 		2093B6741BBC740200EC5C7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2093B6721BBC740200EC5C7C /* LaunchScreen.storyboard */; };
 		2093B67F1BBC740200EC5C7C /* smart_alarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B67E1BBC740200EC5C7C /* smart_alarmTests.swift */; };
 		2093B68A1BBC740200EC5C7C /* smart_alarmUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6891BBC740200EC5C7C /* smart_alarmUITests.swift */; };
-		2093B6981BBC746C00EC5C7C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6971BBC746C00EC5C7C /* HTTP.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B6991BBC746C00EC5C7C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6971BBC746C00EC5C7C /* HTTP.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B69A1BBC746C00EC5C7C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6971BBC746C00EC5C7C /* HTTP.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B69C1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B69D1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B69E1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B6A41BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B6A51BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		2093B6A61BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		209999B81BD534CC00565322 /* Activities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209999B71BD534CC00565322 /* Activities.swift */; settings = {ASSET_TAGS = (); }; };
-		20A092B61BD0234200745784 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A092B51BD0234200745784 /* HomeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
-		20C7473C1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
-		6439B6511BCC325D006306DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; settings = {ASSET_TAGS = (); }; };
-		6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6581BCC49F8006306DE /* DateUtilTests.swift */; settings = {ASSET_TAGS = (); }; };
+		2093B6981BBC746C00EC5C7C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6971BBC746C00EC5C7C /* HTTP.swift */; };
+		2093B6991BBC746C00EC5C7C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6971BBC746C00EC5C7C /* HTTP.swift */; };
+		2093B69A1BBC746C00EC5C7C /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6971BBC746C00EC5C7C /* HTTP.swift */; };
+		2093B69C1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */; };
+		2093B69D1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */; };
+		2093B69E1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */; };
+		2093B6A41BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; };
+		2093B6A51BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; };
+		2093B6A61BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; };
+		20A092B61BD0234200745784 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A092B51BD0234200745784 /* HomeTableViewController.swift */; };
+		20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; };
+		20C7473C1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; };
+		6439B6511BCC325D006306DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; };
+		6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6581BCC49F8006306DE /* DateUtilTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		200B12A61BC576280015B40F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		202F0FCB1BD54B8C00799850 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationViewController.swift; path = ../LocationViewController.swift; sourceTree = "<group>"; };
+		2034B68B1BDFD2D300CB6FCA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		2034B68D1BDFD3A700CB6FCA /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTableViewController.swift; sourceTree = "<group>"; };
 		208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		2092ED131BDEC97700D8F112 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = ../Alarm.swift; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		2093B6971BBC746C00EC5C7C /* HTTP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		209999B71BD534CC00565322 /* Activities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Activities.swift; path = ../Activities.swift; sourceTree = "<group>"; };
 		20A092B51BD0234200745784 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		6439B6501BCC325D006306DE /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		6439B6581BCC49F8006306DE /* DateUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilTests.swift; sourceTree = "<group>"; };
@@ -117,7 +119,8 @@
 		2092ED181BDEE10500D8F112 /* helper-classes */ = {
 			isa = PBXGroup;
 			children = (
-				209999B71BD534CC00565322 /* Activities.swift */,
+				2034B68D1BDFD3A700CB6FCA /* Routine.swift */,
+				2034B68B1BDFD2D300CB6FCA /* Activity.swift */,
 				2092ED131BDEC97700D8F112 /* Alarm.swift */,
 				6439B6501BCC325D006306DE /* DateUtil.swift */,
 				2093B6971BBC746C00EC5C7C /* HTTP.swift */,
@@ -338,9 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2034B68C1BDFD2D300CB6FCA /* Activity.swift in Sources */,
 				2093B6A41BBC748D00EC5C7C /* LoginViewController.swift in Sources */,
 				200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */,
-				209999B81BD534CC00565322 /* Activities.swift in Sources */,
 				2093B69C1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */,
 				20A092B61BD0234200745784 /* HomeTableViewController.swift in Sources */,
 				2092ED161BDEC99E00D8F112 /* AlarmTableViewCell.swift in Sources */,
@@ -351,6 +354,7 @@
 				2093B66F1BBC740200EC5C7C /* smart_alarm.xcdatamodeld in Sources */,
 				208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */,
 				6439B6511BCC325D006306DE /* DateUtil.swift in Sources */,
+				2034B68E1BDFD3A700CB6FCA /* Routine.swift in Sources */,
 				2093B6671BBC740200EC5C7C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

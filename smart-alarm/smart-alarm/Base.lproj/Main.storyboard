@@ -205,10 +205,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.20392156862745098" green="0.28627450980392155" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Arrive by" id="uHZ-Xf-mk1" userLabel="Arrival Info">
                                 <cells>
@@ -251,7 +251,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 minutes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vj1-ey-whT">
@@ -267,7 +267,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="Dmc-45-QAz" kind="push" id="aSC-Ne-sSp"/>
+                                            <segue destination="Dmc-45-QAz" kind="push" identifier="addRoutine" id="aSC-Ne-sSp"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -337,7 +337,7 @@
                                             <animations/>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -409,7 +409,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zl9-dc-jDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="h4u-Jj-GTG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="275"/>
+            <point key="canvasLocation" x="1892" y="275"/>
         </scene>
         <!--Destination-->
         <scene sceneID="e4g-w7-pgv">
@@ -470,7 +470,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GbG-Zf-S4Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="2hA-1G-m2K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="-106"/>
+            <point key="canvasLocation" x="2482" y="-106"/>
         </scene>
         <!--Morning Routine-->
         <scene sceneID="3Jc-md-ZZp">
@@ -480,7 +480,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" textLabel="eOK-QZ-30F" detailTextLabel="N0j-78-eXm" style="IBUITableViewCellStyleValue1" id="ClV-Nc-IJf">
                                 <rect key="frame" x="0.0" y="92" width="320" height="44"/>
@@ -520,12 +523,12 @@
                     <navigationItem key="navigationItem" title="Morning Routine" id="y0u-jO-2Cu">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="8W5-Ep-ods">
                             <connections>
-                                <segue destination="Obc-49-J9w" kind="unwind" unwindAction="saveRoutine:" id="HIZ-7E-nmv"/>
+                                <segue destination="Obc-49-J9w" kind="unwind" unwindAction="saveRoutine:" id="cb2-bu-FSe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cFs-l1-rBT">
                             <connections>
-                                <segue destination="hWz-N7-2gN" kind="push" id="J95-f6-2ev"/>
+                                <segue destination="3pn-OM-Mah" kind="modal" id="enr-s8-2vP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -533,7 +536,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uj5-PR-SUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Obc-49-J9w" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="569"/>
+            <point key="canvasLocation" x="2482" y="569"/>
         </scene>
         <!--Add Activity-->
         <scene sceneID="eFY-7n-X43">
@@ -544,6 +547,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="New Activity" id="Rpw-AG-qMC">
@@ -623,23 +627,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="enr-kj-3N3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Mma-4E-4bH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2365" y="569"/>
+            <point key="canvasLocation" x="3552" y="569"/>
         </scene>
         <!--Smart Alarm-->
         <scene sceneID="VPa-Wn-Y7K">
             <objects>
                 <tableViewController id="Nl5-KJ-R68" customClass="AlarmTableViewController" customModule="smart_alarm" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="VXc-4X-DD0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="VXc-4X-DD0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmCell" editingAccessoryType="disclosureIndicator" rowHeight="84" id="H7B-2x-YDs" customClass="AlarmTableViewCell" customModule="smart_alarm" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H7B-2x-YDs" id="BdG-ij-7r4">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="83.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="mGQ-10-QZh">
@@ -652,7 +658,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:35 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VW5-Km-9aR">
@@ -660,7 +666,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -683,7 +689,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="zhd-i0-buG"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y8r-rw-XQe">
                             <connections>
-                                <segue destination="EhT-y1-SMn" kind="push" id="ayw-Dd-5Jc"/>
+                                <segue destination="MyL-5n-Etr" kind="modal" id="fH2-pR-JBv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -718,6 +724,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHk-W0-Yb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="671" y="275"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="od4-ya-tgd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3pn-OM-Mah" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ox7-9T-Kqb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hWz-N7-2gN" kind="relationship" relationship="rootViewController" id="CMM-vu-8E4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rzu-tR-PRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3020" y="569"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mCX-pZ-6fH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MyL-5n-Etr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7s1-43-wZk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="EhT-y1-SMn" kind="relationship" relationship="rootViewController" id="72D-3L-CNJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GIR-G2-5KK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1481" y="275"/>
         </scene>
     </scenes>
 </document>

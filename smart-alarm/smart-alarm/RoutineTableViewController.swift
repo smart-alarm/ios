@@ -10,21 +10,21 @@ import UIKit
 
 class RoutineTableViewController: UITableViewController {
     
-    var activities = Activities.getActivities()
+    // Model
+    var routine = Routine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        self.clearsSelectionOnViewWillAppear = false
-        print("loaded")
+        // self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.leftBarButtonItem = self.editButtonItem()
     }
     
     @IBAction func cancelActivity (segue:UIStoryboardSegue) {
-        print("Cancel")
+        print("Cancelled Activity")
     }
     
     @IBAction func saveActivity (segue:UIStoryboardSegue) {
@@ -33,12 +33,15 @@ class RoutineTableViewController: UITableViewController {
         if activityTVC.activityName.text != "" && activityTVC.activityTime.text != "" {
             let name = activityTVC.activityName.text!
             let time = activityTVC.activityTime.text!
-            let indexPath = NSIndexPath(forRow: activities.count, inSection: 0)
-            activities.append(["activity": name, "time": time])
+            let indexPath = NSIndexPath(forRow: routine.count, inSection: 0)
+            let newActivity = Activity(name: name, time: Int(time)!)
+            routine.addActivity(newActivity)
             
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.endUpdates()
+            
+            print("Saved Activity")
         }
     }
 
@@ -49,24 +52,26 @@ class RoutineTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activities.count
+        return routine.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Configure the cell...
         let cell = tableView.dequeueReusableCellWithIdentifier("activityCell", forIndexPath: indexPath)
-        cell.textLabel!.text = activities[indexPath.row]["activity"]!
-        cell.detailTextLabel!.text = activities[indexPath.row]["time"]! + " minutes"
+        let activities = routine.getActivities()
+        let name = activities[indexPath.row].getName()
+        let time = activities[indexPath.row].getTime()
+        cell.textLabel!.text = name
+        cell.detailTextLabel!.text = "\(time) minutes"
         return cell
     }
     
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            print("Deleting")
-            activities.removeAtIndex(indexPath.row)
+            routine.removeActivity(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            print("Deleted Activity")
         }
     }
     
