@@ -11,6 +11,7 @@ import UIKit
 class AlarmTableViewController: UITableViewController {
 
     var alarms:[Alarm] = Alarm.getAlarms() // Data source
+    var alarmToEdit: Alarm = Alarm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,10 @@ class AlarmTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        
+        // Manage selection during editing mode
+        self.tableView.allowsSelection = false
+        self.tableView.allowsSelectionDuringEditing = true
     }
 
     // MARK: - Table view data source
@@ -67,18 +72,29 @@ class AlarmTableViewController: UITableViewController {
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if (self.editing == true) {
+            let indexPath = tableView.indexPathForSelectedRow
+            self.alarmToEdit = alarms[indexPath!.row]
+//            let cell = tableView.cellForRowAtIndexPath(indexPath!)! as! AlarmTableViewCell
+//            print(cell.alarmTime.text!)
+            performSegueWithIdentifier("editAlarm", sender: self)
+        }
+        
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+//        let destVC = segue.destinationViewController.ch
+//        destVC.alarm = self.alarmToEdit
+//        print(destVC.alarm.getWakeup())
     }
-    */
     
     
     /* UNWIND SEGUES */

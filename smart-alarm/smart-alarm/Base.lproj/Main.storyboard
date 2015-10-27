@@ -553,7 +553,7 @@
                             <tableViewSection headerTitle="New Activity" id="Rpw-AG-qMC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="H2x-pO-kul">
-                                        <rect key="frame" x="0.0" y="113.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H2x-pO-kul" id="jNm-rE-cwR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -572,7 +572,7 @@
                                         <animations/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="o6y-BG-0aT">
-                                        <rect key="frame" x="0.0" y="157.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="93.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="o6y-BG-0aT" id="AAU-J8-w1Z">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -689,10 +689,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="zhd-i0-buG"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="y8r-rw-XQe">
                             <connections>
-                                <segue destination="MyL-5n-Etr" kind="modal" id="fH2-pR-JBv"/>
+                                <segue destination="MyL-5n-Etr" kind="modal" identifier="addAlarm" id="fH2-pR-JBv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="MyL-5n-Etr" kind="modal" identifier="editAlarm" id="Nck-LC-LaC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJ2-ZG-g0Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -776,4 +779,7 @@
             <point key="canvasLocation" x="1481" y="275"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nck-LC-LaC"/>
+    </inferredMetricsTieBreakers>
 </document>

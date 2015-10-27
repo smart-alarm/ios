@@ -17,6 +17,7 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var travelTime: UILabel!
     
+    var alarm = Alarm()
     var routine = Routine()
     var routineMinutes: Int = 0
     var etaMinutes: Int = 0
