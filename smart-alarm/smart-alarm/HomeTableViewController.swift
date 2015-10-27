@@ -19,18 +19,22 @@ class HomeTableViewController: UITableViewController {
     
     var alarm = Alarm()
     var routine = Routine()
-    var routineMinutes: Int = 0
-    var etaMinutes: Int = 0
-    var transportationMode: String = "Driving"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Fix iOS 9 bug in mildy hacky way...
         timePicker.datePickerMode = .DateAndTime
         timePicker.datePickerMode = .Time
-        locationLabel.text = ""
-        routineLabel.text = "0 minutes"
-        updateTimeLabels(timePicker)
-        saveButton.enabled = false
+        
+        // Data model
+        locationLabel.text = "\(alarm.getDestination())"
+        routineLabel.text = "\(alarm.getRoutine()) minutes"
+        
+        // Don't allow saving until fill out destination
+        if (locationLabel.text == "") {
+            saveButton.enabled = false
+        }
         
         // Uncomment the following line to preserve selection between presentations
          self.clearsSelectionOnViewWillAppear = true
@@ -44,14 +48,16 @@ class HomeTableViewController: UITableViewController {
     }
 
     func updateTimeLabels (sender: UIDatePicker) {
-        let parsed = splitMinutes(routineLabel.text!)
-        routineMinutes = Int(parsed)!
-        let  totalTime = subtractTimes(sender.date, routineMinutes: Int(parsed)!, etaMinutes: etaMinutes)
+        // Data model
+        let totalTime = subtractTimes(sender.date, routineMinutes: alarm.getRoutine(), etaMinutes: alarm.getETA())
+        
+        // Format labels
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        let timeString = dateFormatter.stringFromDate(totalTime)
-        wakeupLabel.text = timeString
-        travelTime.text = "\(etaMinutes) minutes"
+        let estimatedWakeup = dateFormatter.stringFromDate(totalTime)
+        alarm.setWakeup(estimatedWakeup)
+        wakeupLabel.text = estimatedWakeup
+        travelTime.text = "\(alarm.getETA()) minutes"
     }
     
     func subtractTimes (date: NSDate, routineMinutes: Int, etaMinutes: Int) -> NSDate {
@@ -85,18 +91,19 @@ class HomeTableViewController: UITableViewController {
         let location = locationVC.searchBar.text!
         if location != "" {
             locationLabel.text = location
-            etaMinutes = Int(round(locationVC.etaMinutes))
+            alarm.setETA(Int(round(locationVC.etaMinutes)))
+            alarm.setDestination(location)
             switch (locationVC.transportationType.selectedSegmentIndex) {
                 case 0:
-                    transportationMode = "Driving"
+                    alarm.setTransportation("Driving")
                     break
                 case 1:
-                    transportationMode = "Transit"
+                    alarm.setTransportation("Transit")
                     break
                 default:
                     break
             }
-            print("ETA: \(etaMinutes)")
+            print("ETA: \(alarm.getETA())")
             updateTimeLabels(timePicker)
             self.saveButton.enabled = true
         }
@@ -119,6 +126,7 @@ class HomeTableViewController: UITableViewController {
             time += a.getTime()
         }
         routineLabel.text = "\(time) minutes"
+        alarm.setRoutine(time)
         updateTimeLabels(timePicker)
     }
     
