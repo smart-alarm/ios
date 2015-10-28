@@ -71,6 +71,10 @@ class Alarm {
         return self.wakeup
     }
     
+    func setArrival (time: NSDate) {
+        self.arrival = time
+    }
+    
     func setDestination (location: String) {
         self.destination = location
     }

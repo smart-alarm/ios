@@ -89,26 +89,42 @@ class AlarmTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         // TODO: Pass data when editing alarm...
+        
+        let navVC = segue.destinationViewController as! UINavigationController
+        let homeTVC = navVC.viewControllers.first as! HomeTableViewController
+        
+        if (segue.identifier == "editAlarm") {
+            homeTVC.alarm = self.alarmToEdit
+            homeTVC.title = "Edit Alarm"
+        } else {
+            homeTVC.title = "Add Alarm"
+        }
     }
     
     
     /* UNWIND SEGUES */
     
     @IBAction func saveAlarm (segue:UIStoryboardSegue) {
-        print("New Alarm Saved")
         let alarmTVC = segue.sourceViewController as! HomeTableViewController
         let newAlarm = alarmTVC.alarm
         
-        if (newAlarm.getDestination() == "") {
-            return
-        }
+        if (self.tableView.editing == false) {
+            print("New Alarm Saved")
+            
+            if (newAlarm.getDestination() == "") {
+                return
+            }
         
-        let indexPath = NSIndexPath(forRow: alarms.count, inSection: 0)
-        alarms.append(newAlarm)
+            let indexPath = NSIndexPath(forRow: alarms.count, inSection: 0)
+            alarms.append(newAlarm)
 
-        self.tableView.beginUpdates()
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        self.tableView.endUpdates()
+            self.tableView.beginUpdates()
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.endUpdates()
+        } else {
+            print("Editing!")
+            // TODO: Edit original cell
+        }
     }
     
     @IBAction func cancelAlarm (segue:UIStoryboardSegue) {

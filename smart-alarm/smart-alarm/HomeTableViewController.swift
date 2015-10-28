@@ -12,10 +12,11 @@ class HomeTableViewController: UITableViewController {
 
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var routineLabel: UILabel!
-    @IBOutlet weak var wakeupLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var travelTime: UILabel!
+    @IBOutlet weak var wakeupLabel: UILabel!
+
     
     var alarm = Alarm()
     var routine = Routine()
@@ -28,8 +29,10 @@ class HomeTableViewController: UITableViewController {
         timePicker.datePickerMode = .Time
         
         // Data model
-        locationLabel.text = "\(alarm.getDestination())"
-        routineLabel.text = "\(alarm.getRoutine()) minutes"
+        timePicker.setDate(alarm.getArrival(), animated: true) // set time
+        routineLabel.text = "\(alarm.getRoutine()) minutes" // set routine
+        locationLabel.text = "\(alarm.getDestination())" // set location
+        updateTimeLabels(timePicker)
         
         // Don't allow saving until fill out destination
         if (locationLabel.text == "") {
@@ -37,7 +40,7 @@ class HomeTableViewController: UITableViewController {
         }
         
         // Uncomment the following line to preserve selection between presentations
-         self.clearsSelectionOnViewWillAppear = true
+        // self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -55,6 +58,7 @@ class HomeTableViewController: UITableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         let estimatedWakeup = dateFormatter.stringFromDate(totalTime)
+        alarm.setArrival(sender.date)
         alarm.setWakeup(estimatedWakeup)
         wakeupLabel.text = estimatedWakeup
         travelTime.text = "\(alarm.getETA()) minutes"

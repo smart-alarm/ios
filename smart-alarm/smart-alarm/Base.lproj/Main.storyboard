@@ -486,7 +486,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="activityCell" textLabel="eOK-QZ-30F" detailTextLabel="N0j-78-eXm" style="IBUITableViewCellStyleValue1" id="ClV-Nc-IJf">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ClV-Nc-IJf" id="2YM-bf-i4o">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
