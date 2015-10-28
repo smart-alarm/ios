@@ -10,7 +10,8 @@ import UIKit
 
 class AlarmTableViewController: UITableViewController {
 
-    var alarms:[Alarm] = Alarm.getAlarms() // Data source
+//    var alarms:[Alarm] = Alarm.getAlarms() // Data source
+    var alarms:[Alarm] = [] // Data source
     var alarmToEdit: Alarm = Alarm()
     
     override func viewDidLoad() {
@@ -70,8 +71,6 @@ class AlarmTableViewController: UITableViewController {
             // Delete the row from the data source
             alarms.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
@@ -94,19 +93,21 @@ class AlarmTableViewController: UITableViewController {
         let homeTVC = navVC.viewControllers.first as! HomeTableViewController
         
         if (segue.identifier == "editAlarm") {
-            homeTVC.alarm = self.alarmToEdit
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            homeTVC.alarm = alarms[indexPath.row]
             homeTVC.title = "Edit Alarm"
         } else {
             homeTVC.title = "Add Alarm"
         }
     }
     
-    
     /* UNWIND SEGUES */
     
     @IBAction func saveAlarm (segue:UIStoryboardSegue) {
-        let alarmTVC = segue.sourceViewController as! HomeTableViewController
-        let newAlarm = alarmTVC.alarm
+        let homeTVC = segue.sourceViewController as! HomeTableViewController
+        let newAlarm = homeTVC.alarm
+        let arrival = homeTVC.timePicker.date
+        let wakeup = homeTVC.wakeupLabel.text!
         
         if (self.tableView.editing == false) {
             print("New Alarm Saved")
@@ -114,6 +115,10 @@ class AlarmTableViewController: UITableViewController {
             if (newAlarm.getDestination() == "") {
                 return
             }
+            
+            // Update model
+            newAlarm.setArrival(arrival)
+            newAlarm.setWakeup(wakeup)
         
             let indexPath = NSIndexPath(forRow: alarms.count, inSection: 0)
             alarms.append(newAlarm)
@@ -123,11 +128,28 @@ class AlarmTableViewController: UITableViewController {
             self.tableView.endUpdates()
         } else {
             print("Editing!")
-            // TODO: Edit original cell
+
+            // Update model
+            newAlarm.setArrival(arrival)
+            newAlarm.setWakeup(wakeup)
+            
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            self.alarms[indexPath.row] = homeTVC.alarm
+
+            self.tableView.beginUpdates()
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            self.tableView.endUpdates()
         }
     }
     
     @IBAction func cancelAlarm (segue:UIStoryboardSegue) {
         print("New Alarm Cancelled")
+        if (self.tableView.editing == true) {
+            let homeTVC = segue.sourceViewController as! HomeTableViewController
+            let indexPath = self.tableView.indexPathForSelectedRow!
+            homeTVC.alarm = self.alarms[indexPath.row] // Reset edited alarm to clean state
+            print(homeTVC.alarm.getRoutine())
+            print(self.alarms[indexPath.row].getRoutine())
+        }
     }
 }

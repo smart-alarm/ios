@@ -8,43 +8,47 @@
 
 import Foundation
 
-class Alarm {
+class Alarm: NSObject {
     private var arrival: NSDate
     private var destination: String
     private var transportation: String
-    private var routine: Int
-    private var eta: Int
+    private var routineMinutes: Int
+    private var etaMinutes: Int
     private var wakeup: String
     
     // TODO: Add Routine object instance variable
+    var routine: Routine
     
     private static var alarms:[Alarm] = []
     
-    init () {
+    override init () {
         self.arrival = NSDate()
         self.destination = ""
         self.transportation = ""
-        self.routine = 0
-        self.eta = 0
+        self.routineMinutes = 0
+        self.etaMinutes = 0
         self.wakeup = ""
+        self.routine = Routine()
     } // default constructor
     
     init (arrival: NSDate, destination: String, transportation: String, wakeup: String) {
         self.arrival = arrival
         self.destination = destination
         self.transportation = transportation
-        self.routine = 0
-        self.eta = 0
+        self.routineMinutes = 0
+        self.etaMinutes = 0
         self.wakeup = wakeup
+        self.routine = Routine()
     }
     
     init (arrival: NSDate, destination: String, transportation: String, routine: Int, wakeup: String) {
         self.arrival = arrival
         self.destination = destination
         self.transportation = transportation
-        self.routine = routine
-        self.eta = 0
+        self.routineMinutes = routine
+        self.etaMinutes = 0
         self.wakeup = wakeup
+        self.routine = Routine()
     }
     
     func getArrival() -> NSDate {
@@ -60,11 +64,11 @@ class Alarm {
     }
     
     func getRoutine () -> Int {
-        return self.routine
+        return self.routineMinutes
     }
     
     func getETA () -> Int {
-        return self.eta
+        return self.etaMinutes
     }
     
     func getWakeup() -> String {
@@ -85,11 +89,11 @@ class Alarm {
     
     
     func setRoutine (minutes: Int) {
-        self.routine = minutes
+        self.routineMinutes = minutes
     }
     
     func setETA (minutes: Int) {
-        self.eta = minutes
+        self.etaMinutes = minutes
     }
     
     func setWakeup (time: String) {

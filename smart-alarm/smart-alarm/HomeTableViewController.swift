@@ -16,10 +16,8 @@ class HomeTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var travelTime: UILabel!
     @IBOutlet weak var wakeupLabel: UILabel!
-
     
     var alarm = Alarm()
-    var routine = Routine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +56,6 @@ class HomeTableViewController: UITableViewController {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         let estimatedWakeup = dateFormatter.stringFromDate(totalTime)
-        alarm.setArrival(sender.date)
-        alarm.setWakeup(estimatedWakeup)
         wakeupLabel.text = estimatedWakeup
         travelTime.text = "\(alarm.getETA()) minutes"
     }
@@ -83,7 +79,7 @@ class HomeTableViewController: UITableViewController {
         // Update model and pass routine to destination controller
         if (segue.identifier == "addRoutine") {
             let routineTVC = segue.destinationViewController as! RoutineTableViewController
-            routineTVC.routine = self.routine
+            routineTVC.routine = self.alarm.routine
         }
     }
     
@@ -122,13 +118,9 @@ class HomeTableViewController: UITableViewController {
         let routineTVC = segue.sourceViewController as! RoutineTableViewController
         
         // Update model
-        routine = routineTVC.routine
+        self.alarm.routine = routineTVC.routine
         
-        let activities = routineTVC.routine.getActivities()
-        var time = 0
-        for a in activities {
-            time += a.getTime()
-        }
+        let time = alarm.routine.getTotalTime()
         routineLabel.text = "\(time) minutes"
         alarm.setRoutine(time)
         updateTimeLabels(timePicker)

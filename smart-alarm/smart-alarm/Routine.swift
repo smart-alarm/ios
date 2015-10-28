@@ -40,4 +40,12 @@ class Routine {
         self.activities = newActivities
         self.count = newActivities.count
     }
+    
+    func getTotalTime () -> Int {
+        var total = 0
+        for a in activities {
+            total += a.getTime()
+        }
+        return total
+    }
 }
