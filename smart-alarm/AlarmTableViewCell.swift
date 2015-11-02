@@ -17,6 +17,7 @@ class AlarmTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.alarmToggle.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -24,5 +25,17 @@ class AlarmTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func stateChanged(switchState: UISwitch) {
+        if switchState.on {
+            alarmTime.textColor = UIColor.blackColor()
+            alarmDestination.textColor = UIColor.blackColor()
+        } else {
+            alarmTime.textColor = UIColor.lightGrayColor()
+            alarmDestination.textColor = UIColor.lightGrayColor()
+        }
+    }
+    
+    
 
 }
