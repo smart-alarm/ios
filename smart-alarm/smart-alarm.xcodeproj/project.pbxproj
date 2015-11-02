@@ -119,8 +119,8 @@
 		2092ED181BDEE10500D8F112 /* helper-classes */ = {
 			isa = PBXGroup;
 			children = (
-				2034B68D1BDFD3A700CB6FCA /* Routine.swift */,
 				2034B68B1BDFD2D300CB6FCA /* Activity.swift */,
+				2034B68D1BDFD3A700CB6FCA /* Routine.swift */,
 				2092ED131BDEC97700D8F112 /* Alarm.swift */,
 				6439B6501BCC325D006306DE /* DateUtil.swift */,
 				2093B6971BBC746C00EC5C7C /* HTTP.swift */,

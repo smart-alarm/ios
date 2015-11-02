@@ -10,7 +10,6 @@ import UIKit
 
 class AlarmTableViewController: UITableViewController {
 
-//    var alarms:[Alarm] = Alarm.getAlarms() // Data source
     var alarms:[Alarm] = [] // Data source
     var alarmToEdit: Alarm = Alarm()
     
@@ -85,16 +84,12 @@ class AlarmTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        // TODO: Pass data when editing alarm...
-        
         let navVC = segue.destinationViewController as! UINavigationController
         let homeTVC = navVC.viewControllers.first as! HomeTableViewController
         
         if (segue.identifier == "editAlarm") {
             let indexPath = self.tableView.indexPathForSelectedRow!
-            homeTVC.alarm = alarms[indexPath.row]
+            homeTVC.alarm = alarms[indexPath.row].copy()
             homeTVC.title = "Edit Alarm"
         } else {
             homeTVC.title = "Add Alarm"
@@ -105,9 +100,7 @@ class AlarmTableViewController: UITableViewController {
     
     @IBAction func saveAlarm (segue:UIStoryboardSegue) {
         let homeTVC = segue.sourceViewController as! HomeTableViewController
-        let newAlarm = homeTVC.alarm
-        let arrival = homeTVC.timePicker.date
-        let wakeup = homeTVC.wakeupLabel.text!
+        let newAlarm = homeTVC.alarm.copy()
         
         if (self.tableView.editing == false) {
             print("New Alarm Saved")
@@ -115,10 +108,6 @@ class AlarmTableViewController: UITableViewController {
             if (newAlarm.getDestination() == "") {
                 return
             }
-            
-            // Update model
-            newAlarm.setArrival(arrival)
-            newAlarm.setWakeup(wakeup)
         
             let indexPath = NSIndexPath(forRow: alarms.count, inSection: 0)
             alarms.append(newAlarm)
@@ -128,13 +117,9 @@ class AlarmTableViewController: UITableViewController {
             self.tableView.endUpdates()
         } else {
             print("Editing!")
-
-            // Update model
-            newAlarm.setArrival(arrival)
-            newAlarm.setWakeup(wakeup)
             
             let indexPath = self.tableView.indexPathForSelectedRow!
-            self.alarms[indexPath.row] = homeTVC.alarm
+            self.alarms[indexPath.row] = homeTVC.alarm.copy()
 
             self.tableView.beginUpdates()
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -147,7 +132,7 @@ class AlarmTableViewController: UITableViewController {
         if (self.tableView.editing == true) {
             let homeTVC = segue.sourceViewController as! HomeTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-            homeTVC.alarm = self.alarms[indexPath.row] // Reset edited alarm to clean state
+            homeTVC.alarm = self.alarms[indexPath.row].copy() // Reset edited alarm to clean state
             print(homeTVC.alarm.getRoutine())
             print(self.alarms[indexPath.row].getRoutine())
         }

@@ -58,6 +58,10 @@ class HomeTableViewController: UITableViewController {
         let estimatedWakeup = dateFormatter.stringFromDate(totalTime)
         wakeupLabel.text = estimatedWakeup
         travelTime.text = "\(alarm.getETA()) minutes"
+        
+        // Update model
+        alarm.setArrival(sender.date)
+        alarm.setWakeup(estimatedWakeup)
     }
     
     func subtractTimes (date: NSDate, routineMinutes: Int, etaMinutes: Int) -> NSDate {

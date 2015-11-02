@@ -22,6 +22,18 @@ class Routine {
         self.count = newActivities.count
     }
     
+    init (newRoutine: Routine) {
+        self.activities = []
+        for a in newRoutine.activities {
+            self.activities.append(a.copy())
+        }
+        self.count = newRoutine.count
+    } // copy constructor
+    
+    func copy() -> Routine {
+        return Routine(newRoutine: self)
+    }
+    
     func getActivities () -> [Activity] {
         return self.activities
     }

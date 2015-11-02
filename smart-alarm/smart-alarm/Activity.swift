@@ -22,6 +22,15 @@ class Activity {
         self.time = time
     }
     
+    init (newActivity: Activity) {
+        self.name = newActivity.name
+        self.time = newActivity.time
+    } // copy constructor
+    
+    func copy() -> Activity {
+        return Activity(newActivity: self)
+    }
+    
     func getName () -> String {
         return self.name
     }

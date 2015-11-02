@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Alarm: NSObject {
+class Alarm {
     private var arrival: NSDate
     private var destination: String
     private var transportation: String
@@ -16,12 +16,11 @@ class Alarm: NSObject {
     private var etaMinutes: Int
     private var wakeup: String
     
-    // TODO: Add Routine object instance variable
     var routine: Routine
     
     private static var alarms:[Alarm] = []
     
-    override init () {
+    init () {
         self.arrival = NSDate()
         self.destination = ""
         self.transportation = ""
@@ -49,6 +48,20 @@ class Alarm: NSObject {
         self.etaMinutes = 0
         self.wakeup = wakeup
         self.routine = Routine()
+    }
+    
+    init (newAlarm: Alarm) {
+        self.arrival = newAlarm.arrival
+        self.destination = newAlarm.destination
+        self.transportation = newAlarm.transportation
+        self.routineMinutes = newAlarm.routineMinutes
+        self.etaMinutes = newAlarm.etaMinutes
+        self.wakeup = newAlarm.wakeup
+        self.routine = newAlarm.routine.copy()
+    } // Copy constructor
+    
+    func copy() -> Alarm {
+        return Alarm(newAlarm: self)
     }
     
     func getArrival() -> NSDate {
