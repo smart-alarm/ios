@@ -36,6 +36,7 @@
 		20A092B61BD0234200745784 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A092B51BD0234200745784 /* HomeTableViewController.swift */; };
 		20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; };
 		20C7473C1BCC5AAC00AC3109 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; };
+		64228B951BEAF76B00263DBF /* AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64228B941BEAF76B00263DBF /* AlarmTests.swift */; };
 		6439B6511BCC325D006306DE /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6501BCC325D006306DE /* DateUtil.swift */; };
 		6439B6591BCC49F8006306DE /* DateUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6439B6581BCC49F8006306DE /* DateUtilTests.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		20A092B51BD0234200745784 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		64228B941BEAF76B00263DBF /* AlarmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTests.swift; sourceTree = "<group>"; };
 		6439B6501BCC325D006306DE /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		6439B6581BCC49F8006306DE /* DateUtilTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtilTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,6 +180,7 @@
 				2093B67E1BBC740200EC5C7C /* smart_alarmTests.swift */,
 				2093B6801BBC740200EC5C7C /* Info.plist */,
 				6439B6581BCC49F8006306DE /* DateUtilTests.swift */,
+				64228B941BEAF76B00263DBF /* AlarmTests.swift */,
 			);
 			path = "smart-alarmTests";
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				2093B6991BBC746C00EC5C7C /* HTTP.swift in Sources */,
 				20C7473B1BCC5AAC00AC3109 /* DateUtil.swift in Sources */,
 				2093B6A51BBC748D00EC5C7C /* LoginViewController.swift in Sources */,
+				64228B951BEAF76B00263DBF /* AlarmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

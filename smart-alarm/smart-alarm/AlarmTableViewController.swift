@@ -43,7 +43,7 @@ class AlarmTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as! AlarmTableViewCell
         print(cell.alarmTime.text!)
         cell.alarmTime.text! = alarms[indexPath.row].getWakeup()
-        cell.alarmDestination!.text = alarms[indexPath.row].getDestination()
+        cell.alarmDestination!.text = alarms[indexPath.row].getDestinationName()
         cell.accessoryView = cell.alarmToggle
         // TODO: Fix toggling of alarms
         return cell
@@ -105,7 +105,7 @@ class AlarmTableViewController: UITableViewController {
         if (self.tableView.editing == false) {
             print("New Alarm Saved")
             
-            if (newAlarm.getDestination() == "") {
+            if (newAlarm.getDestinationName() == "") {
                 return
             }
         

@@ -25,6 +25,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
     
     let locationManager = CLLocationManager()
     var etaMinutes: Double = 0.0
+    var destination: MKMapItem?
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -55,7 +56,8 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
             searchBar.text = localSearchResponse?.mapItems.first?.name
             let directionsRequest = MKDirectionsRequest()
             directionsRequest.source = MKMapItem.mapItemForCurrentLocation()
-            directionsRequest.destination = localSearchResponse?.mapItems.first
+            self.destination = localSearchResponse?.mapItems.first
+            directionsRequest.destination = self.destination
             directionsRequest.requestsAlternateRoutes = false
             
             // Determine which transportation method to use in ETA

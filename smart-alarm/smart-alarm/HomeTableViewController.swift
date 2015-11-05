@@ -28,8 +28,8 @@ class HomeTableViewController: UITableViewController {
         
         // Data model
         timePicker.setDate(alarm.getArrival(), animated: true) // set time
-        routineLabel.text = "\(alarm.getRoutine()) minutes" // set routine
-        locationLabel.text = "\(alarm.getDestination())" // set location
+        routineLabel.text = "\(alarm.getRoutineMinutes()) minutes" // set routine
+        locationLabel.text = "\(alarm.getDestinationName())" // set location
         updateTimeLabels(timePicker)
         
         // Don't allow saving until fill out destination
@@ -49,27 +49,12 @@ class HomeTableViewController: UITableViewController {
     }
 
     func updateTimeLabels (sender: UIDatePicker) {
-        // Data model
-        let totalTime = subtractTimes(sender.date, routineMinutes: alarm.getRoutine(), etaMinutes: alarm.getETA())
-        
-        // Format labels
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        let estimatedWakeup = dateFormatter.stringFromDate(totalTime)
-        wakeupLabel.text = estimatedWakeup
-        travelTime.text = "\(alarm.getETA()) minutes"
-        
         // Update model
         alarm.setArrival(sender.date)
-        alarm.setWakeup(estimatedWakeup)
-    }
-    
-    func subtractTimes (date: NSDate, routineMinutes: Int, etaMinutes: Int) -> NSDate {
-        let components: NSDateComponents = NSDateComponents()
-        let combinedTime = routineMinutes + etaMinutes
-        components.setValue(combinedTime*(-1), forComponent: NSCalendarUnit.Minute);
-        let result = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: date, options: NSCalendarOptions(rawValue: 0))
-        return result!
+        
+        wakeupLabel.text = alarm.getWakeup()
+        travelTime.text = "\(alarm.getETA()) minutes"
+        routineLabel.text = "\(alarm.getRoutineMinutes()) minutes"
     }
     
     func splitMinutes (label: String) -> String {
@@ -83,7 +68,7 @@ class HomeTableViewController: UITableViewController {
         // Update model and pass routine to destination controller
         if (segue.identifier == "addRoutine") {
             let routineTVC = segue.destinationViewController as! RoutineTableViewController
-            routineTVC.routine = self.alarm.routine
+            routineTVC.routine = self.alarm.getRoutine()
         }
     }
     
@@ -96,7 +81,7 @@ class HomeTableViewController: UITableViewController {
         if location != "" {
             locationLabel.text = location
             alarm.setETA(Int(round(locationVC.etaMinutes)))
-            alarm.setDestination(location)
+            alarm.setDestination(locationVC.destination!)
             switch (locationVC.transportationType.selectedSegmentIndex) {
                 case 0:
                     alarm.setTransportation("Driving")
@@ -122,11 +107,8 @@ class HomeTableViewController: UITableViewController {
         let routineTVC = segue.sourceViewController as! RoutineTableViewController
         
         // Update model
-        self.alarm.routine = routineTVC.routine
+        self.alarm.setRoutine(routineTVC.routine)
         
-        let time = alarm.routine.getTotalTime()
-        routineLabel.text = "\(time) minutes"
-        alarm.setRoutine(time)
         updateTimeLabels(timePicker)
     }
     

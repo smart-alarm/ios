@@ -7,57 +7,46 @@
 //
 
 import Foundation
+import MapKit
 
 class Alarm {
     private var arrival: NSDate
-    private var destination: String
     private var transportation: String
-    private var routineMinutes: Int
+    private var routine: Routine
     private var etaMinutes: Int
     private var wakeup: String
-    
-    var routine: Routine
+    private var active: Bool
+    private var destination: MKMapItem?
+
     
     private static var alarms:[Alarm] = []
     
     init () {
         self.arrival = NSDate()
-        self.destination = ""
         self.transportation = ""
-        self.routineMinutes = 0
         self.etaMinutes = 0
         self.wakeup = ""
         self.routine = Routine()
+        self.active = true
     } // default constructor
     
-    init (arrival: NSDate, destination: String, transportation: String, wakeup: String) {
+    init (arrival: NSDate, destinationName: String, transportation: String, wakeup: String) {
         self.arrival = arrival
-        self.destination = destination
         self.transportation = transportation
-        self.routineMinutes = 0
         self.etaMinutes = 0
         self.wakeup = wakeup
         self.routine = Routine()
-    }
-    
-    init (arrival: NSDate, destination: String, transportation: String, routine: Int, wakeup: String) {
-        self.arrival = arrival
-        self.destination = destination
-        self.transportation = transportation
-        self.routineMinutes = routine
-        self.etaMinutes = 0
-        self.wakeup = wakeup
-        self.routine = Routine()
+        self.active = true
     }
     
     init (newAlarm: Alarm) {
         self.arrival = newAlarm.arrival
-        self.destination = newAlarm.destination
         self.transportation = newAlarm.transportation
-        self.routineMinutes = newAlarm.routineMinutes
         self.etaMinutes = newAlarm.etaMinutes
         self.wakeup = newAlarm.wakeup
         self.routine = newAlarm.routine.copy()
+        self.active = newAlarm.active
+        self.destination = MKMapItem(placemark: newAlarm.destination!.placemark)
     } // Copy constructor
     
     func copy() -> Alarm {
@@ -68,32 +57,52 @@ class Alarm {
         return self.arrival
     }
     
-    func getDestination() -> String {
-        return self.destination
+    func getDestination() -> MKMapItem {
+        return self.destination!
+    }
+    
+    func getDestinationName() -> String {
+        if destination != nil {
+            return (destination?.name)!
+        }
+        return ""
     }
     
     func getTransportation() -> String {
         return self.transportation
     }
     
-    func getRoutine () -> Int {
-        return self.routineMinutes
+    func getRoutine() -> Routine {
+        return self.routine
+    }
+    
+    func getRoutineMinutes() -> Int {
+        return self.routine.getTotalTime()
     }
     
     func getETA () -> Int {
         return self.etaMinutes
     }
     
+    //Returns the Wakeup time formatted as a string
     func getWakeup() -> String {
-        return self.wakeup
+        //return self.wakeup
+        // Format labels
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        return dateFormatter.stringFromDate(self.getWakeUpTime())
+    }
+    
+    func isActive() -> Bool {
+        return self.active
     }
     
     func setArrival (time: NSDate) {
         self.arrival = time
     }
     
-    func setDestination (location: String) {
-        self.destination = location
+    func setDestination(destination: MKMapItem) {
+        self.destination = destination
     }
     
     func setTransportation (mode: String) {
@@ -101,8 +110,8 @@ class Alarm {
     }
     
     
-    func setRoutine (minutes: Int) {
-        self.routineMinutes = minutes
+    func setRoutine (routine: Routine) {
+        self.routine = routine
     }
     
     func setETA (minutes: Int) {
@@ -111,6 +120,23 @@ class Alarm {
     
     func setWakeup (time: String) {
         self.wakeup = time
+    }
+    
+    func turnOn() {
+        self.active = true
+    }
+    
+    func turnOff() {
+        self.active = false
+    }
+    
+    //Returns the Wakeup time as an NSDate object (Arrival time minus the routine and ETA)
+    func getWakeUpTime() -> NSDate {
+        let components: NSDateComponents = NSDateComponents()
+        let combinedTime = self.getRoutineMinutes() + self.getETA()
+        components.setValue(combinedTime*(-1), forComponent: NSCalendarUnit.Minute);
+        let result = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: self.getArrival(), options: NSCalendarOptions(rawValue: 0))
+        return result!
     }
     
     static func getAlarms () -> [Alarm] {
