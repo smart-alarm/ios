@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
-class AlarmTableViewController: UITableViewController {
+class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     var alarms:[Alarm] = [] // Data source
     var alarmToEdit: Alarm = Alarm()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,13 @@ class AlarmTableViewController: UITableViewController {
         // Manage selection during editing mode
         self.tableView.allowsSelection = false
         self.tableView.allowsSelectionDuringEditing = true
+        
+        // Set up the CLLocationManager, adjust location updates here
+        self.locationManager.delegate = self
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        self.locationManager.distanceFilter = kCLLocationAccuracyKilometer
     }
 
     // MARK: - Table view data source
@@ -136,5 +145,38 @@ class AlarmTableViewController: UITableViewController {
             print(homeTVC.alarm.getRoutine())
             print(self.alarms[indexPath.row].getRoutine())
         }
+    }
+    
+    // MARK: - Delegate Methods
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        for alarm in self.alarms {
+            if alarm.isActive() {
+                let request = MKDirectionsRequest()
+                request.source = MKMapItem(placemark: MKPlacemark(coordinate: newLocation.coordinate, addressDictionary: nil))
+                request.destination = alarm.getDestination()
+                if alarm.getTransportation() == "Transit" {
+                    request.transportType = .Transit
+                }
+                else {
+                    request.transportType = .Automobile
+                }
+                request.requestsAlternateRoutes = false
+                let direction = MKDirections(request: request)
+                direction.calculateETAWithCompletionHandler({
+                    (response, err) -> Void in
+                    if response == nil {
+                        print("Inside didUpdateToLocation: Failed to get routes.")
+                        alarm.setETA(0)
+                        return
+                    }
+                    let minutes = (response?.expectedTravelTime)! / 60.0
+                    alarm.setETA(Int(round(minutes)))
+                    print("Inside didUpdateToLocation: \(minutes)")
+                    print("The estimated time is: \(alarm.getWakeup())")
+                })
+            }
+        }
+        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
 }

@@ -263,6 +263,11 @@
 					2093B6621BBC740200EC5C7C = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 4FRADE5ZJB;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					2093B6791BBC740200EC5C7C = {
 						CreatedOnToolsVersion = 7.0;
