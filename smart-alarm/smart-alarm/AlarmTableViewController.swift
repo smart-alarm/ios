@@ -35,6 +35,14 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         self.locationManager.distanceFilter = kCLLocationAccuracyKilometer
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Test if alarm status gets set
+//        print("Alarm Status")
+//        for alarm in self.alarms {
+//            print(alarm.isActive())
+//        }
+    }
 
     // MARK: - Table view data source
 
@@ -55,6 +63,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         cell.alarmDestination!.text = alarms[indexPath.row].getDestinationName()
         cell.accessoryView = cell.alarmToggle
         // TODO: Fix toggling of alarms
+        cell.myAlarm = alarms[indexPath.row]
         return cell
     }
     
