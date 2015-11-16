@@ -37,7 +37,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     }
     
     override func viewWillAppear(animated: Bool) {
-        // Test if alarm status gets set
+        // Test if Alarm status set
 //        print("Alarm Status")
 //        for alarm in self.alarms {
 //            print(alarm.isActive())
@@ -57,8 +57,8 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Configure the cell...
+        //print("cellForRowAtIndexPath: \(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as! AlarmTableViewCell
-        print(cell.alarmTime.text!)
         cell.alarmTime.text! = alarms[indexPath.row].getWakeup()
         cell.alarmDestination!.text = alarms[indexPath.row].getDestinationName()
         cell.accessoryView = cell.alarmToggle
@@ -177,15 +177,17 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
                     if response == nil {
                         print("Inside didUpdateToLocation: Failed to get routes.")
                         alarm.setETA(0)
+                        self.tableView.reloadData()
                         return
                     }
                     let minutes = (response?.expectedTravelTime)! / 60.0
                     alarm.setETA(Int(round(minutes)))
                     print("Inside didUpdateToLocation: \(minutes)")
                     print("The estimated time is: \(alarm.getWakeup())")
+                    self.tableView.reloadData()
                 })
             }
         }
-        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+        //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
 }
