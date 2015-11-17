@@ -11,17 +11,16 @@ import MapKit
 
 class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate {
 
-    var alarms:[Alarm] = [] // Data source
-    var alarmToEdit: Alarm = Alarm()
+    var alarms:[Alarm] = []
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // Configure data source
+        alarms = AlarmList.sharedInstance.allAlarms()
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // Enable edit button
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         // Manage selection during editing mode
@@ -35,16 +34,8 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         self.locationManager.distanceFilter = kCLLocationAccuracyKilometer
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        // Test if Alarm status set
-//        print("Alarm Status")
-//        for alarm in self.alarms {
-//            print(alarm.isActive())
-//        }
-    }
 
-    // MARK: - Table view data source
+    /* CONFIGURE ROWS AND SECTIONS */
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -53,39 +44,22 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
-
+    
+    /* CONFIGURE CELL */
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Configure the cell...
-        //print("cellForRowAtIndexPath: \(indexPath.row)")
         let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as! AlarmTableViewCell
-        cell.alarmTime.text! = alarms[indexPath.row].getWakeup()
+        cell.alarmTime.text! = alarms[indexPath.row].getWakeupString()
         cell.alarmDestination!.text = alarms[indexPath.row].getDestinationName()
         cell.accessoryView = cell.alarmToggle
-        // TODO: Fix toggling of alarms
-        cell.myAlarm = alarms[indexPath.row]
         return cell
     }
-    
-    // TODO: Fix toggling of alarms
-    private func toggleAlarm(sender: UISwitch) {
-        if sender.on {
-            print("On")
-        } else {
-            print("Off")
-        }
-    }
-    
-    private func formatDate(date: NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
-        return dateFormatter.stringFromDate(date)
-    }
 
-    // Override to support editing the table view.
+    /* ENABLE EDITING */
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            AlarmList.sharedInstance.removeAlarm(alarms[indexPath.row]) // remove from persistent data
             alarms.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
@@ -93,13 +67,11 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (self.editing == true) {
-            let indexPath = tableView.indexPathForSelectedRow
-            self.alarmToEdit = alarms[indexPath!.row]
             performSegueWithIdentifier("editAlarm", sender: self)
         }
     }
 
-    // MARK: - Navigation
+    /* NAVIGATION */
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let navVC = segue.destinationViewController as! UINavigationController
@@ -129,6 +101,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         
             let indexPath = NSIndexPath(forRow: alarms.count, inSection: 0)
             alarms.append(newAlarm)
+            AlarmList.sharedInstance.addAlarm(newAlarm)
 
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -151,8 +124,8 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             let homeTVC = segue.sourceViewController as! HomeTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
             homeTVC.alarm = self.alarms[indexPath.row].copy() // Reset edited alarm to clean state
-            print(homeTVC.alarm.getRoutine())
-            print(self.alarms[indexPath.row].getRoutine())
+            print(homeTVC.alarm.routine)
+            print(self.alarms[indexPath.row].routine)
         }
     }
     
@@ -160,11 +133,11 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         for alarm in self.alarms {
-            if alarm.isActive() {
+            if alarm.isActive {
                 let request = MKDirectionsRequest()
                 request.source = MKMapItem(placemark: MKPlacemark(coordinate: newLocation.coordinate, addressDictionary: nil))
-                request.destination = alarm.getDestination()
-                if alarm.getTransportation() == "Transit" {
+                request.destination = alarm.destination
+                if alarm.transportation == .Transit {
                     request.transportType = .Transit
                 }
                 else {
@@ -183,7 +156,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
                     let minutes = (response?.expectedTravelTime)! / 60.0
                     alarm.setETA(Int(round(minutes)))
                     print("Inside didUpdateToLocation: \(minutes)")
-                    print("The estimated time is: \(alarm.getWakeup())")
+                    print("The estimated time is: \(alarm.getWakeupString())")
                     self.tableView.reloadData()
                 })
             }

@@ -27,51 +27,40 @@ class HomeTableViewController: UITableViewController {
         timePicker.datePickerMode = .Time
         
         // Data model
-        timePicker.setDate(alarm.getArrival(), animated: true) // set time
-        routineLabel.text = "\(alarm.getRoutineMinutes()) minutes" // set routine
-        locationLabel.text = "\(alarm.getDestinationName())" // set location
+        timePicker.setDate(alarm.arrival, animated: true)
+        routineLabel.text = "\(alarm.routine.getTotalTime()) minutes"
+        locationLabel.text = "\(alarm.getDestinationName())"
         updateTimeLabels(timePicker)
         
         // Don't allow saving until fill out destination
         if (locationLabel.text == "") {
             saveButton.enabled = false
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = true
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    /* FUNCTIONS */
     
     @IBAction func timeChanged(sender: UIDatePicker) {
         updateTimeLabels(sender)
     }
 
     func updateTimeLabels (sender: UIDatePicker) {
-        // Update model
         alarm.setArrival(sender.date)
-        
-        wakeupLabel.text = alarm.getWakeup()
-        travelTime.text = "\(alarm.getETA()) minutes"
-        routineLabel.text = "\(alarm.getRoutineMinutes()) minutes"
+        alarm.setWakeup(alarm.calculateWakeup())
+        travelTime.text = "\(alarm.etaMinutes) minutes"
+        routineLabel.text = "\(alarm.routine.getTotalTime()) minutes"
+        wakeupLabel.text = alarm.getWakeupString()
     }
     
-    func splitMinutes (label: String) -> String {
-        let split = label.characters.split{$0 == " "}.map(String.init)
-        return split[0]
-    }
-    
-    // MARK: - Navigation
+    /* NAVIGATION */
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Update model and pass routine to destination controller
         if (segue.identifier == "addRoutine") {
             let routineTVC = segue.destinationViewController as! RoutineTableViewController
-            routineTVC.routine = self.alarm.getRoutine()
+            routineTVC.routine = self.alarm.routine.copy()
         }
     }
-    
     
     /* UNWIND SEGUES */
 
@@ -84,15 +73,15 @@ class HomeTableViewController: UITableViewController {
             alarm.setDestination(locationVC.destination!)
             switch (locationVC.transportationType.selectedSegmentIndex) {
                 case 0:
-                    alarm.setTransportation("Driving")
+                    alarm.setTransportation(.Automobile)
                     break
                 case 1:
-                    alarm.setTransportation("Transit")
+                    alarm.setTransportation(.Transit)
                     break
                 default:
                     break
             }
-            print("ETA: \(alarm.getETA())")
+            print("ETA: \(alarm.etaMinutes)")
             updateTimeLabels(timePicker)
             self.saveButton.enabled = true
         }
@@ -115,5 +104,4 @@ class HomeTableViewController: UITableViewController {
     @IBAction func cancelRoutine (segue:UIStoryboardSegue) {
         print("Cancelled Routine")
     }
-
 }

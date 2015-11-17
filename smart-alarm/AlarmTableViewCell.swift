@@ -13,7 +13,6 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var alarmTime: UILabel!
     @IBOutlet weak var alarmDestination: UILabel!
     @IBOutlet weak var alarmToggle: UISwitch!
-    var myAlarm: Alarm!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +30,9 @@ class AlarmTableViewCell: UITableViewCell {
         if switchState.on {
             alarmTime.textColor = UIColor.blackColor()
             alarmDestination.textColor = UIColor.blackColor()
-            myAlarm.turnOn()
         } else {
             alarmTime.textColor = UIColor.lightGrayColor()
             alarmDestination.textColor = UIColor.lightGrayColor()
-            myAlarm.turnOff()
         }
     }
     
