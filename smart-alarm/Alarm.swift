@@ -22,6 +22,8 @@ class Alarm {
     private(set) var destination: Destination
     private(set) var wakeup: NSDate
     
+    // TODO: CONFIRMATION NOTIFICATION UUID
+    
     enum Transportation: String {
         case Automobile = "Automobile"
         case Transit = "Transit"

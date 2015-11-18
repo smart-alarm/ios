@@ -52,6 +52,11 @@ class AlarmList {
         notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
         notification.userInfo = ["UUID": newAlarm.UUID]
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        // TODO: SCHEDULE ANOTHER NOTIFICATION TO ASK
+        // USER AT ARRIVAL TIME, "DID YOU ARRIVE ON TIME?"
+        // AND ADD "YES" AND "NO" ACTIONS...
+        // ALSO, UPDATE IF ALARM ARRIVAL TIME IS MODIFIED
     }
     
     func removeAlarm (alarmToRemove: Alarm) {
@@ -91,6 +96,8 @@ class AlarmList {
                 notification.fireDate = alarmToUpdate.wakeup
                 break
             }
+            
+            // TODO: ALSO UPDATE CONFIRMATIONS NOTIFICATION
         }
     }
     

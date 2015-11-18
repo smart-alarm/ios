@@ -112,6 +112,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             
             let indexPath = self.tableView.indexPathForSelectedRow!
             self.alarms[indexPath.row] = homeTVC.alarm.copy()
+            AlarmList.sharedInstance.updateAlarm(self.alarms[indexPath.row])
 
             self.tableView.beginUpdates()
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
