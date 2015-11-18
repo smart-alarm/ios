@@ -27,38 +27,25 @@ class AlarmList {
         var alarmItems:[Alarm] = []
         
         for data in alarmDictionary.values {
-            let UUID = data.valueForKey("UUID") as! String
-            let arrival = data.valueForKey("arrival") as! NSDate
-//            let routine = data.valueForKey("routine")
-//            let transportation = data.valueForKey("transportation")
-//            let destination = data.valueForKey("destination")
-            
-            let alarm = Alarm(UUID: UUID, arrival: arrival, routine: Routine(), transportation: .Automobile, destination: MKMapItem())
+            let dict = data as! NSDictionary
+            let alarm = Alarm()
+            alarm.fromDictionary(dict)
             alarmItems.append(alarm)
         }
         return alarmItems
     }
     
     
-    // STILL WORK IN PROGRESS! NEED TO ENCODE AND DECODE ALARM
-    // OBJECT PROPERLY TO SAVE IN NSUSERDEFAULTS
-    // THIS IS A TEMPORARY TEST!!!
-    // SOME FIELDS WILL BE LOST WHEN REOPENING APP UNTIL THEN!!!
+    // TODO: NEED TO ENCODE AND DECODE
+    // MAPKIT FIELDS PROPERLY - CURRENTLY THE DESTINATION DATA
+    // IS LOST WHEN THE APP IS FORCED CLOSED
+    
     func addAlarm (newAlarm: Alarm) {
         // Create persistent dictionary of data
         var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
         
         // Copy alarm object into persistent data
-        alarmDictionary[newAlarm.UUID] = [
-            "UUID": newAlarm.UUID,
-            "isActive": newAlarm.isActive,
-            "arrival": newAlarm.arrival,
-            "routine": [],
-            "etaMinutes": newAlarm.etaMinutes,
-            "transportation": "",
-            "destination": "",
-            "wakeup": newAlarm.wakeup
-        ]
+        alarmDictionary[newAlarm.UUID] = newAlarm.toDictionary()
         
         // Save or overwrite data
         NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)
@@ -67,7 +54,7 @@ class AlarmList {
         let notification = UILocalNotification()
         notification.alertBody = "Time to wakeup!"
         notification.fireDate = newAlarm.wakeup
-        notification.soundName = UILocalNotificationDefaultSoundName
+        notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
         notification.userInfo = ["UUID": newAlarm.UUID]
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
@@ -92,4 +79,8 @@ class AlarmList {
             print(alarmDictionary)
             NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)        }
     }
+    
+    // TODO: FUNCTION TO UPDATE LOCAL NOTIFICATION FIRE DATE
+    // WHEN THE ALARM IS EDITED
+    
 }

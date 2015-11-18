@@ -38,4 +38,12 @@ class Activity {
     func getTime () -> Int {
         return self.time
     }
+    
+    func toDictionary () -> NSDictionary {
+        let dict: NSDictionary = [
+            "name": self.name,
+            "time": self.time
+        ]
+        return dict
+    }
 }

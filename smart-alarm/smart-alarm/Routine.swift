@@ -60,4 +60,23 @@ class Routine {
         }
         return total
     }
+    
+    /* SERIALIZATION */
+    
+    func toArray () -> NSArray {
+        var array = Array<NSDictionary>()
+        for activity in self.activities {
+            array.append(activity.toDictionary())
+        }
+        return array
+    }
+    
+    func fromArray (array: NSArray) {
+        for data in array {
+            let name = data.valueForKey("name") as! String
+            let time = data.valueForKey("time") as! Int
+            let activity = Activity(name: name, time: time)
+            self.addActivity(activity)
+        }
+    }
 }

@@ -22,8 +22,9 @@ class Alarm {
     private(set) var destination: MKMapItem?
     private(set) var wakeup: NSDate
     
-    enum Transportation {
-        case Automobile, Transit
+    enum Transportation: String {
+        case Automobile = "Automobile"
+        case Transit = "Transit"
     }
     
     /* CONSTRUCTORS */
@@ -77,17 +78,21 @@ class Alarm {
         }
     }
     
-    func getWakeupString() -> String {
+    func getWakeupString () -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         return dateFormatter.stringFromDate(self.wakeup)
     }
     
-    func getDestinationName() -> String {
+    func getDestinationName () -> String {
         if destination != nil {
             return (destination?.name)!
         }
         return ""
+    }
+    
+    func getTransportString () -> String {
+        return (self.transportation.rawValue)
     }
     
     func calculateWakeup() -> NSDate {
@@ -122,5 +127,32 @@ class Alarm {
     
     func setWakeup (wakeup: NSDate) {
         self.wakeup = wakeup
+    }
+    
+    /* SERIALIZATION */
+    
+    func toDictionary () -> NSDictionary {
+        let dict: NSDictionary = [
+            "UUID": self.UUID,
+            "isActive": self.isActive,
+            "arrival": self.arrival,
+            "routine": self.routine.toArray(),
+            "etaMinutes": self.etaMinutes,
+            "transportation": self.transportation.rawValue,
+            "destination": self.destination!.name!,
+            "wakeup": self.wakeup
+        ]
+        return dict
+    }
+    
+    func fromDictionary (dict: NSDictionary) {
+        self.UUID = dict.valueForKey("UUID") as! String
+        self.isActive = dict.valueForKey("isActive") as! Bool
+        self.arrival = dict.valueForKey("arrival") as! NSDate
+        self.routine.fromArray(dict.valueForKey("routine") as! NSArray)
+        self.etaMinutes = dict.valueForKey("etaMinutes") as! Int
+        self.transportation = Transportation(rawValue: dict.valueForKey("transportation") as! String)!
+        self.destination = MKMapItem() // STILL NEED TO FIX!!!
+        self.wakeup = dict.valueForKey("wakeup") as! NSDate
     }
 }
