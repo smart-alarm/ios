@@ -9,8 +9,10 @@
 import Foundation
 
 class Activity {
-    private var name: String
-    private var time: Int
+    private(set) var name: String
+    private(set) var time: Int
+    
+    /* CONSTRUCTORS */
     
     init () {
         name = ""
@@ -27,17 +29,13 @@ class Activity {
         self.time = newActivity.time
     } // copy constructor
     
+    /* METHODS */
+    
     func copy() -> Activity {
         return Activity(newActivity: self)
     }
     
-    func getName () -> String {
-        return self.name
-    }
-    
-    func getTime () -> Int {
-        return self.time
-    }
+    /* SERIALIZATION */
     
     func toDictionary () -> NSDictionary {
         let dict: NSDictionary = [

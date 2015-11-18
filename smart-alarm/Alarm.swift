@@ -19,7 +19,7 @@ class Alarm {
     private(set) var routine: Routine
     private(set) var etaMinutes: Int
     private(set) var transportation: Transportation
-    private(set) var destination: MKMapItem?
+    private(set) var destination: Destination
     private(set) var wakeup: NSDate
     
     enum Transportation: String {
@@ -36,12 +36,12 @@ class Alarm {
         self.routine = Routine()
         self.etaMinutes = 0
         self.transportation = .Automobile
-        self.destination = MKMapItem()
+        self.destination = Destination()
         self.wakeup = NSDate()
         self.wakeup = calculateWakeup()
     }
     
-    init (UUID: String = NSUUID().UUIDString, arrival: NSDate, routine: Routine, transportation: Transportation, destination: MKMapItem) {
+    init (UUID: String = NSUUID().UUIDString, arrival: NSDate, routine: Routine, transportation: Transportation, destination: Destination) {
         self.UUID = UUID
         self.isActive = true
         self.arrival = arrival
@@ -57,10 +57,10 @@ class Alarm {
         self.UUID = copiedAlarm.UUID
         self.isActive = copiedAlarm.isActive
         self.arrival = copiedAlarm.arrival
-        self.routine = copiedAlarm.routine
+        self.routine = copiedAlarm.routine.copy()
         self.etaMinutes = copiedAlarm.etaMinutes
         self.transportation = copiedAlarm.transportation
-        self.destination = copiedAlarm.destination
+        self.destination = copiedAlarm.destination.copy()
         self.wakeup = copiedAlarm.wakeup
     }
     
@@ -70,25 +70,18 @@ class Alarm {
         return Alarm(copiedAlarm: self)
     }
     
-    func toggleAlarm () {
-        if self.isActive {
-            isActive = false
-        } else {
-            isActive = true
-        }
+    func turnOn () {
+        self.isActive = true
+    }
+    
+    func turnOff () {
+        self.isActive = false
     }
     
     func getWakeupString () -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
         return dateFormatter.stringFromDate(self.wakeup)
-    }
-    
-    func getDestinationName () -> String {
-        if destination != nil {
-            return (destination?.name)!
-        }
-        return ""
     }
     
     func getTransportString () -> String {
@@ -121,8 +114,8 @@ class Alarm {
         self.transportation = transportation
     }
     
-    func setDestination(destination: MKMapItem) {
-        self.destination = destination
+    func setDestination(mapItem: MKMapItem) {
+        self.destination = Destination(mapItem: mapItem)
     }
     
     func setWakeup (wakeup: NSDate) {
@@ -139,7 +132,7 @@ class Alarm {
             "routine": self.routine.toArray(),
             "etaMinutes": self.etaMinutes,
             "transportation": self.transportation.rawValue,
-            "destination": self.destination!.name!,
+            "destination": self.destination.toDictionary(),
             "wakeup": self.wakeup
         ]
         return dict
@@ -152,7 +145,7 @@ class Alarm {
         self.routine.fromArray(dict.valueForKey("routine") as! NSArray)
         self.etaMinutes = dict.valueForKey("etaMinutes") as! Int
         self.transportation = Transportation(rawValue: dict.valueForKey("transportation") as! String)!
-        self.destination = MKMapItem() // STILL NEED TO FIX!!!
+        self.destination.fromDictionary(dict.valueForKey("destination") as! NSDictionary)
         self.wakeup = dict.valueForKey("wakeup") as! NSDate
     }
 }

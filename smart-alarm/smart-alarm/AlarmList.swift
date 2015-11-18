@@ -35,11 +35,6 @@ class AlarmList {
         return alarmItems
     }
     
-    
-    // TODO: NEED TO ENCODE AND DECODE
-    // MAPKIT FIELDS PROPERLY - CURRENTLY THE DESTINATION DATA
-    // IS LOST WHEN THE APP IS FORCED CLOSED
-    
     func addAlarm (newAlarm: Alarm) {
         // Create persistent dictionary of data
         var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
@@ -72,15 +67,31 @@ class AlarmList {
         
         // Remove alarm from persistent data
         if var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) {
-            print("HERE!")
-            print(alarmToRemove.UUID)
+            print("AlarmList: ", alarmToRemove.UUID)
             alarmDictionary.removeValueForKey(alarmToRemove.UUID as String)
-            
-            print(alarmDictionary)
             NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)        }
     }
     
-    // TODO: FUNCTION TO UPDATE LOCAL NOTIFICATION FIRE DATE
-    // WHEN THE ALARM IS EDITED
+    // TODO: CHECK ISACTIVE FIELD BEFORE UPDATING!!!
+    func updateAlarm (alarmToUpdate: Alarm) {
+        // Create persistent dictionary of data
+        var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
+        
+        // Copy alarm object into persistent data
+        alarmDictionary[alarmToUpdate.UUID] = alarmToUpdate.toDictionary()
+        
+        // Save or overwrite data
+        NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)
+        
+        // Update fire date
+        for event in UIApplication.sharedApplication().scheduledLocalNotifications! {
+            let notification = event as UILocalNotification
+            
+            if (notification.userInfo!["UUID"] as! String == alarmToUpdate.UUID) {
+                notification.fireDate = alarmToUpdate.wakeup
+                break
+            }
+        }
+    }
     
 }

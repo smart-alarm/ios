@@ -26,7 +26,10 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
     let locationManager = CLLocationManager()
     var etaMinutes: Double = 0.0
     var destination: MKMapItem?
+    var isValidDest: Bool = false
     
+    
+    // TODO: CHECK FOR VALID DESTINATION!!!
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         localSearchRequest = MKLocalSearchRequest()
@@ -42,6 +45,7 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
                 return
             }
             
+            self.isValidDest = true
             self.pointAnnotation = MKPointAnnotation()
             self.pointAnnotation.title = searchBar.text
             self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude: localSearchResponse!.boundingRegion.center.longitude)

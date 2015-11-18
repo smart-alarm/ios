@@ -24,15 +24,15 @@ class AlarmTests: XCTestCase {
     func testDefaultConstructor() {
         let alarm = Alarm()
         XCTAssert("" == alarm.getDestinationName())
-        XCTAssert(0 == alarm.getETA())
-        XCTAssert(0 == alarm.getRoutineMinutes())
-        XCTAssert("" == alarm.getTransportation())
+        XCTAssert(0 == alarm.etaMinutes)
+        XCTAssert(0 == alarm.routine.getTotalTime())
+        XCTAssert("" == alarm.transportation)
         XCTAssert(alarm.isActive())
     }
     
     func testAlarmToggle() {
         let alarm = Alarm()
-        XCTAssert(alarm.isActive())
+        XCTAssert(alarm.isActive)
         alarm.turnOff()
         XCTAssert(false == alarm.isActive())
         alarm.turnOn()

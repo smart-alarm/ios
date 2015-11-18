@@ -50,7 +50,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as! AlarmTableViewCell
         cell.alarmTime.text! = alarms[indexPath.row].getWakeupString()
-        cell.alarmDestination!.text = alarms[indexPath.row].getDestinationName()
+        cell.alarmDestination!.text = alarms[indexPath.row].destination.name
         cell.accessoryView = cell.alarmToggle
         return cell
     }
@@ -93,9 +93,10 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         let newAlarm = homeTVC.alarm.copy()
         
         if (self.tableView.editing == false) {
-            print("New Alarm Saved")
+            print("AlarmTableViewController: New Alarm Saved")
             
-            if (newAlarm.getDestinationName() == "") {
+            // TODO: FIX THIS!!!
+            if (newAlarm.destination.name == "") {
                 return
             }
         
@@ -107,7 +108,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.endUpdates()
         } else {
-            print("Editing!")
+            print("AlarmTableViewController: Editing!")
             
             let indexPath = self.tableView.indexPathForSelectedRow!
             self.alarms[indexPath.row] = homeTVC.alarm.copy()
@@ -119,37 +120,37 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     }
     
     @IBAction func cancelAlarm (segue:UIStoryboardSegue) {
-        print("New Alarm Cancelled")
-        if (self.tableView.editing == true) {
-            let homeTVC = segue.sourceViewController as! HomeTableViewController
-            let indexPath = self.tableView.indexPathForSelectedRow!
-            homeTVC.alarm = self.alarms[indexPath.row].copy() // Reset edited alarm to clean state
-            print(homeTVC.alarm.routine)
-            print(self.alarms[indexPath.row].routine)
-        }
+        print("AlarmTableViewController: New Alarm Cancelled")
+//        if (self.tableView.editing == true) {
+//            let homeTVC = segue.sourceViewController as! HomeTableViewController
+//            let indexPath = self.tableView.indexPathForSelectedRow!
+//            homeTVC.alarm = self.alarms[indexPath.row] // Reset edited alarm to clean state
+//        }
     }
     
-    // MARK: - Delegate Methods
+    /* BACKGROUND REFRESH */
+    
+    // TODO: FIX!!!
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         for alarm in self.alarms {
             if alarm.isActive {
                 let request = MKDirectionsRequest()
                 request.source = MKMapItem(placemark: MKPlacemark(coordinate: newLocation.coordinate, addressDictionary: nil))
-                request.destination = alarm.destination
+                request.destination = alarm.destination.toMKMapItem()
+                
                 if alarm.transportation == .Transit {
                     request.transportType = .Transit
-                }
-                else {
+                } else {
                     request.transportType = .Automobile
                 }
+                
                 request.requestsAlternateRoutes = false
                 let direction = MKDirections(request: request)
                 direction.calculateETAWithCompletionHandler({
                     (response, err) -> Void in
                     if response == nil {
                         print("Inside didUpdateToLocation: Failed to get routes.")
-                        alarm.setETA(0)
                         self.tableView.reloadData()
                         return
                     }
@@ -161,6 +162,5 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
                 })
             }
         }
-        //self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
     }
 }

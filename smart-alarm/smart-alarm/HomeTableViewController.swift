@@ -29,12 +29,15 @@ class HomeTableViewController: UITableViewController {
         // Data model
         timePicker.setDate(alarm.arrival, animated: true)
         routineLabel.text = "\(alarm.routine.getTotalTime()) minutes"
-        locationLabel.text = "\(alarm.getDestinationName())"
+        locationLabel.text = "\(alarm.destination.name)"
         updateTimeLabels(timePicker)
-        
-        // Don't allow saving until fill out destination
-        if (locationLabel.text == "") {
-            saveButton.enabled = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if alarm.destination.name == "" {
+            self.saveButton.enabled = false
+        } else {
+            self.saveButton.enabled = true
         }
     }
     
@@ -67,7 +70,7 @@ class HomeTableViewController: UITableViewController {
     @IBAction func saveLocation (segue:UIStoryboardSegue) {
         let locationVC = segue.sourceViewController as! LocationViewController
         let location = locationVC.searchBar.text!
-        if location != "" {
+        if location != "" &&  locationVC.isValidDest {
             locationLabel.text = location
             alarm.setETA(Int(round(locationVC.etaMinutes)))
             alarm.setDestination(locationVC.destination!)
@@ -83,7 +86,6 @@ class HomeTableViewController: UITableViewController {
             }
             print("ETA: \(alarm.etaMinutes)")
             updateTimeLabels(timePicker)
-            self.saveButton.enabled = true
         }
     }
     
