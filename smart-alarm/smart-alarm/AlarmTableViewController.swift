@@ -51,10 +51,30 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         let cell = tableView.dequeueReusableCellWithIdentifier("alarmCell", forIndexPath: indexPath) as! AlarmTableViewCell
         cell.alarmTime.text! = alarms[indexPath.row].getWakeupString()
         cell.alarmDestination!.text = alarms[indexPath.row].destination.name
+        cell.alarmToggle.tag = indexPath.row
+        cell.alarmToggle.addTarget(self, action: Selector("toggleAlarm:"), forControlEvents: UIControlEvents.ValueChanged)
         cell.accessoryView = cell.alarmToggle
         return cell
     }
-
+    
+    /* TOGGLE ALARM STATE */
+    
+    // TODO: UPDATE 
+    func toggleAlarm (switchState: UISwitch) {
+        let index = switchState.tag
+        print("CELL INDEX: ", index)
+        
+        if switchState.on {
+            alarms[index].turnOn()
+            print("IS ON: ", alarms[index].isActive)
+            AlarmList.sharedInstance.updateAlarm(alarms[index])
+        } else {
+            alarms[index].turnOff()
+            print("IS ON: ", alarms[index].isActive)
+            AlarmList.sharedInstance.updateAlarm(alarms[index])
+        }
+    }
+    
     /* ENABLE EDITING */
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -62,6 +82,12 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             AlarmList.sharedInstance.removeAlarm(alarms[indexPath.row]) // remove from persistent data
             alarms.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            // Update tags for alarm state
+            var t = 0
+            for cell in tableView.visibleCells as! [AlarmTableViewCell] {
+                cell.alarmToggle.tag = t++
+            }
         }
     }
     
@@ -75,22 +101,22 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let navVC = segue.destinationViewController as! UINavigationController
-        let homeTVC = navVC.viewControllers.first as! HomeTableViewController
+        let detailTVC = navVC.viewControllers.first as! DetailTableViewController
         
         if (segue.identifier == "editAlarm") {
             let indexPath = self.tableView.indexPathForSelectedRow!
-            homeTVC.alarm = alarms[indexPath.row].copy()
-            homeTVC.title = "Edit Alarm"
+            detailTVC.alarm = alarms[indexPath.row].copy()
+            detailTVC.title = "Edit Alarm"
         } else {
-            homeTVC.title = "Add Alarm"
+            detailTVC.title = "Add Alarm"
         }
     }
     
     /* UNWIND SEGUES */
     
     @IBAction func saveAlarm (segue:UIStoryboardSegue) {
-        let homeTVC = segue.sourceViewController as! HomeTableViewController
-        let newAlarm = homeTVC.alarm.copy()
+        let detailTVC = segue.sourceViewController as! DetailTableViewController
+        let newAlarm = detailTVC.alarm.copy()
         
         if (self.tableView.editing == false) {
             print("AlarmTableViewController: New Alarm Saved")
@@ -111,7 +137,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             print("AlarmTableViewController: Editing!")
             
             let indexPath = self.tableView.indexPathForSelectedRow!
-            self.alarms[indexPath.row] = homeTVC.alarm.copy()
+            self.alarms[indexPath.row] = detailTVC.alarm.copy()
             AlarmList.sharedInstance.updateAlarm(self.alarms[indexPath.row])
 
             self.tableView.beginUpdates()
@@ -122,11 +148,6 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     
     @IBAction func cancelAlarm (segue:UIStoryboardSegue) {
         print("AlarmTableViewController: New Alarm Cancelled")
-//        if (self.tableView.editing == true) {
-//            let homeTVC = segue.sourceViewController as! HomeTableViewController
-//            let indexPath = self.tableView.indexPathForSelectedRow!
-//            homeTVC.alarm = self.alarms[indexPath.row] // Reset edited alarm to clean state
-//        }
     }
     
     /* BACKGROUND REFRESH */

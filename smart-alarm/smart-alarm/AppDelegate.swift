@@ -16,13 +16,79 @@ import Crashlytics
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let ALARMS_KEY = "alarmItems"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        /* FABRIC IO */
         Fabric.with([Crashlytics.self()])
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+//        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
+        
+        /* BACKGROUND NOTIFICATION TASKS */
+        
+        // ALARM NOTIFICATIONS
+        
+        // AWAKE ACTION
+        let awakeAction = UIMutableUserNotificationAction()
+        awakeAction.identifier = "AWAKE_ACTION" // the unique identifier for this action
+        awakeAction.title = "Ok, I'm up!" // title for the action button
+        awakeAction.activationMode = .Background // UIUserNotificationActivationMode.Background - don't bring app to foreground
+        awakeAction.authenticationRequired = false // don't require unlocking before performing action
+        awakeAction.destructive = true // display action in red
+        
+        // ALARM CATEGORY
+        let alarmCategory = UIMutableUserNotificationCategory()
+        alarmCategory.identifier = "ALARM_CATEGORY"
+        alarmCategory.setActions([awakeAction], forContext: .Default)
+        alarmCategory.setActions([awakeAction], forContext: .Minimal)
+        
+    
+        // FOLLOWUP NOTIFICATIONS
+        
+        // ARRIVE ACTION
+        let arriveAction = UIMutableUserNotificationAction()
+        arriveAction.identifier = "ARRIVE_ACTION"
+        arriveAction.title = "Yes! I've arrived."
+        arriveAction.activationMode = .Background
+        arriveAction.authenticationRequired = false
+        arriveAction.destructive = false
+        
+        // LATE ACTION
+        let lateAction = UIMutableUserNotificationAction()
+        lateAction.identifier = "LATE_ACTION"
+        lateAction.title = "No, I'm late"
+        lateAction.activationMode = .Background
+        lateAction.authenticationRequired = false
+        lateAction.destructive = true
+        
+        // FOLLOWUP CATEGORY
+        let followupCategory = UIMutableUserNotificationCategory()
+        followupCategory.identifier = "FOLLOWUP_CATEGORY"
+        followupCategory.setActions([arriveAction, lateAction], forContext: .Default)
+        followupCategory.setActions([arriveAction, lateAction], forContext: .Minimal)
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: [alarmCategory, followupCategory]))
         return true
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        switch (identifier!) {
+        case "AWAKE_ACTION":
+            print("APP DELEGATE: AWAKE_ACTION")
+            break
+        case "ARRIVE_ACTION":
+            // SEND TO SERVER HERE
+            print("APP DELEGATE: ARRIVE_ACTION")
+            break
+        case "LATE_ACTION":
+            // SEND TO SERVER HERE
+            print("APP DELEGATE: LATE_ACTION")
+            break
+        default:
+            print("Error: unexpected notification action identifier!")
+        }
+        completionHandler() // per developer documentation, app will terminate if we fail to call this
     }
 
     func applicationWillResignActive(application: UIApplication) {

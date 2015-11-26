@@ -35,7 +35,7 @@
 		2093B6A51BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; };
 		2093B6A61BBC748D00EC5C7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */; };
 		209443DD1BFB7274000E46B0 /* AlarmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209443DC1BFB7274000E46B0 /* AlarmList.swift */; };
-		20A092B61BD0234200745784 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A092B51BD0234200745784 /* HomeTableViewController.swift */; };
+		20A092B61BD0234200745784 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A092B51BD0234200745784 /* DetailTableViewController.swift */; };
 		64228B951BEAF76B00263DBF /* AlarmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64228B941BEAF76B00263DBF /* AlarmTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +85,7 @@
 		2093B69B1BBC747B00EC5C7C /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2093B6A31BBC748D00EC5C7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		209443DC1BFB7274000E46B0 /* AlarmList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmList.swift; sourceTree = "<group>"; };
-		20A092B51BD0234200745784 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		20A092B51BD0234200745784 /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		64228B941BEAF76B00263DBF /* AlarmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,7 +130,7 @@
 			children = (
 				2092ED151BDEC99E00D8F112 /* AlarmTableViewCell.swift */,
 				200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */,
-				20A092B51BD0234200745784 /* HomeTableViewController.swift */,
+				20A092B51BD0234200745784 /* DetailTableViewController.swift */,
 				202F0FCB1BD54B8C00799850 /* LocationViewController.swift */,
 				2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */,
 				208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */,
@@ -368,7 +368,7 @@
 				200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */,
 				209443DD1BFB7274000E46B0 /* AlarmList.swift in Sources */,
 				2093B69C1BBC747B00EC5C7C /* RegisterViewController.swift in Sources */,
-				20A092B61BD0234200745784 /* HomeTableViewController.swift in Sources */,
+				20A092B61BD0234200745784 /* DetailTableViewController.swift in Sources */,
 				2092ED161BDEC99E00D8F112 /* AlarmTableViewCell.swift in Sources */,
 				2093B6981BBC746C00EC5C7C /* HTTP.swift in Sources */,
 				202F0FCC1BD54B8C00799850 /* LocationViewController.swift in Sources */,

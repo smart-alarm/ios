@@ -51,12 +51,14 @@ class AlarmList {
         notification.fireDate = newAlarm.wakeup
         notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
         notification.userInfo = ["UUID": newAlarm.UUID]
+        notification.category = "ALARM_CATEGORY"
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
         // TODO: SCHEDULE ANOTHER NOTIFICATION TO ASK
         // USER AT ARRIVAL TIME, "DID YOU ARRIVE ON TIME?"
         // AND ADD "YES" AND "NO" ACTIONS...
         // ALSO, UPDATE IF ALARM ARRIVAL TIME IS MODIFIED
+        scheduleFollowupNotification(newAlarm)
     }
     
     func removeAlarm (alarmToRemove: Alarm) {
@@ -70,6 +72,8 @@ class AlarmList {
             }
         }
         
+        cancelFollowupNotification(alarmToRemove)
+        
         // Remove alarm from persistent data
         if var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) {
             print("AlarmList: ", alarmToRemove.UUID)
@@ -78,6 +82,7 @@ class AlarmList {
     }
     
     // TODO: CHECK ISACTIVE FIELD BEFORE UPDATING!!!
+    // TODO: FIX UPDATED NOTIFICATION!
     func updateAlarm (alarmToUpdate: Alarm) {
         // Create persistent dictionary of data
         var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
@@ -98,6 +103,27 @@ class AlarmList {
             }
             
             // TODO: ALSO UPDATE CONFIRMATIONS NOTIFICATION
+        }
+    }
+    
+    func scheduleFollowupNotification (alarm: Alarm) {
+        let notification = UILocalNotification()
+        notification.alertBody = "Did you arrive on time?"
+        notification.fireDate = alarm.arrival
+        notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
+        notification.userInfo = ["UUID": alarm.followupID]
+        notification.category = "FOLLOWUP_CATEGORY"
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
+    
+    func cancelFollowupNotification (alarm: Alarm) {
+        for event in UIApplication.sharedApplication().scheduledLocalNotifications! {
+            let notification = event as UILocalNotification
+            
+            if (notification.userInfo!["UUID"] as! String == alarm.followupID) {
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+                break
+            }
         }
     }
     

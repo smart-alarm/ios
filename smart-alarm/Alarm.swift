@@ -14,6 +14,7 @@ class Alarm {
     /* FIELDS */
     
     private(set) var UUID: String
+    private(set) var followupID: String
     private(set) var isActive: Bool
     private(set) var arrival: NSDate
     private(set) var routine: Routine
@@ -33,6 +34,7 @@ class Alarm {
     
     init () {
         self.UUID = NSUUID().UUIDString
+        self.followupID = NSUUID().UUIDString
         self.isActive = true
         self.arrival = NSDate()
         self.routine = Routine()
@@ -43,8 +45,9 @@ class Alarm {
         self.wakeup = calculateWakeup()
     }
     
-    init (UUID: String = NSUUID().UUIDString, arrival: NSDate, routine: Routine, transportation: Transportation, destination: Destination) {
+    init (UUID: String = NSUUID().UUIDString, followupID: String = NSUUID().UUIDString, arrival: NSDate, routine: Routine, transportation: Transportation, destination: Destination) {
         self.UUID = UUID
+        self.followupID = followupID
         self.isActive = true
         self.arrival = arrival
         self.routine = routine
@@ -57,6 +60,7 @@ class Alarm {
     
     init (copiedAlarm: Alarm) {
         self.UUID = copiedAlarm.UUID
+        self.followupID = copiedAlarm.followupID
         self.isActive = copiedAlarm.isActive
         self.arrival = copiedAlarm.arrival
         self.routine = copiedAlarm.routine.copy()
@@ -129,6 +133,7 @@ class Alarm {
     func toDictionary () -> NSDictionary {
         let dict: NSDictionary = [
             "UUID": self.UUID,
+            "followupID": self.followupID,
             "isActive": self.isActive,
             "arrival": self.arrival,
             "routine": self.routine.toArray(),
@@ -142,6 +147,7 @@ class Alarm {
     
     func fromDictionary (dict: NSDictionary) {
         self.UUID = dict.valueForKey("UUID") as! String
+        self.followupID = dict.valueForKey("followupID") as! String
         self.isActive = dict.valueForKey("isActive") as! Bool
         self.arrival = dict.valueForKey("arrival") as! NSDate
         self.routine.fromArray(dict.valueForKey("routine") as! NSArray)
