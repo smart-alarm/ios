@@ -22,9 +22,7 @@ class Alarm {
     private(set) var transportation: Transportation
     private(set) var destination: Destination
     private(set) var wakeup: NSDate
-    
-    // TODO: CONFIRMATION NOTIFICATION UUID
-    
+        
     enum Transportation: String {
         case Automobile = "Automobile"
         case Transit = "Transit"
@@ -103,6 +101,14 @@ class Alarm {
     }
     
     /* ACCESS CONTROL METHODS */
+    
+    func setUUID (newID: String) {
+        self.UUID = newID
+    }
+    
+    func setFollowupID (newID: String) {
+        self.followupID = newID
+    }
     
     func setArrival (arrival: NSDate) {
         self.arrival = arrival

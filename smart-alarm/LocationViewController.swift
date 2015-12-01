@@ -67,10 +67,8 @@ class LocationViewController: UIViewController, UISearchBarDelegate, CLLocationM
             // Determine which transportation method to use in ETA
             if (self.transportationType.selectedSegmentIndex == 0) {
                 directionsRequest.transportType = .Automobile
-                print("Driving directions")
             } else {
                 directionsRequest.transportType = .Transit
-                print("Transit directions")
             }
             
             let direction = MKDirections(request: directionsRequest)

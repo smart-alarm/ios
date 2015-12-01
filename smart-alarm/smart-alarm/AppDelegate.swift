@@ -19,15 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let ALARMS_KEY = "alarmItems"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
         /* FABRIC IO */
         Fabric.with([Crashlytics.self()])
-//        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))
         
-        /* BACKGROUND NOTIFICATION TASKS */
-        
-        // ALARM NOTIFICATIONS
+        /* REGISTER NOTIFICATION ACTIONS */
         
         // AWAKE ACTION
         let awakeAction = UIMutableUserNotificationAction()
@@ -42,9 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         alarmCategory.identifier = "ALARM_CATEGORY"
         alarmCategory.setActions([awakeAction], forContext: .Default)
         alarmCategory.setActions([awakeAction], forContext: .Minimal)
-        
-    
-        // FOLLOWUP NOTIFICATIONS
         
         // ARRIVE ACTION
         let arriveAction = UIMutableUserNotificationAction()
@@ -68,9 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         followupCategory.setActions([arriveAction, lateAction], forContext: .Default)
         followupCategory.setActions([arriveAction, lateAction], forContext: .Minimal)
         
+        // REGISTER NOTIFICATIONS
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: [alarmCategory, followupCategory]))
         return true
     }
+    
+    /* HANDLE NOTIFICATION ACTIONS */
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         switch (identifier!) {
@@ -78,15 +73,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("APP DELEGATE: AWAKE_ACTION")
             break
         case "ARRIVE_ACTION":
-            // SEND TO SERVER HERE
             print("APP DELEGATE: ARRIVE_ACTION")
+            // TODO: HTTP POST {deviceUUID, arrivalTime, didArrive = TRUE}
+            let http = HTTP()
+            let data = http.toJSON(NSUserDefaults.standardUserDefaults().valueForKey("ALARM_INDEX_HERE") as! NSDictionary)
+            http.POST("URL_HERE", requestJSON: data!, postComplete: { (success: Bool, msg: String) -> () in
+                // TODO: HANDLE RESPONSE HERE
+            })
             break
         case "LATE_ACTION":
-            // SEND TO SERVER HERE
             print("APP DELEGATE: LATE_ACTION")
+            // TODO: HTTP POST {deviceUUID, arrivalTime, didArrive = FALSE}
             break
         default:
-            print("Error: unexpected notification action identifier!")
+            print("ERROR HANDLING NOTIFICATION ACTIONS")
         }
         completionHandler() // per developer documentation, app will terminate if we fail to call this
     }

@@ -44,18 +44,16 @@ class RoutineTableViewController: UITableViewController {
         if editingStyle == .Delete {
             routine.removeActivity(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            print("Deleted Activity")
         }
     }
     
     /* UNWIND SEGUES */
     
     @IBAction func cancelActivity (segue:UIStoryboardSegue) {
-        print("Cancelled Activity")
+        // Do nothing!
     }
     
     @IBAction func saveActivity (segue:UIStoryboardSegue) {
-        print("Save")
         let activityTVC = segue.sourceViewController as! ActivityTableViewController
         if activityTVC.activityName.text != "" && activityTVC.activityTime.text != "" {
             let name = activityTVC.activityName.text!
@@ -67,8 +65,6 @@ class RoutineTableViewController: UITableViewController {
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.endUpdates()
-            
-            print("Saved Activity")
         }
     }
 

@@ -59,19 +59,17 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     
     /* TOGGLE ALARM STATE */
     
-    // TODO: UPDATE 
     func toggleAlarm (switchState: UISwitch) {
         let index = switchState.tag
-        print("CELL INDEX: ", index)
         
         if switchState.on {
             alarms[index].turnOn()
-            print("IS ON: ", alarms[index].isActive)
-            AlarmList.sharedInstance.updateAlarm(alarms[index])
+            AlarmList.sharedInstance.scheduleNotification(alarms[index], category: "ALARM_CATEGORY")
+            AlarmList.sharedInstance.scheduleNotification(alarms[index], category: "FOLLOWUP_CATEGORY")
         } else {
             alarms[index].turnOff()
-            print("IS ON: ", alarms[index].isActive)
-            AlarmList.sharedInstance.updateAlarm(alarms[index])
+            AlarmList.sharedInstance.cancelNotification(alarms[index], category: "ALARM_CATEGORY")
+            AlarmList.sharedInstance.cancelNotification(alarms[index], category: "FOLLOWUP_CATEGORY")
         }
     }
     
@@ -119,8 +117,6 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         let newAlarm = detailTVC.alarm.copy()
         
         if (self.tableView.editing == false) {
-            print("AlarmTableViewController: New Alarm Saved")
-            
             // TODO: FIX THIS!!!
             if (newAlarm.destination.name == "") {
                 return
@@ -134,8 +130,6 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.endUpdates()
         } else {
-            print("AlarmTableViewController: Editing!")
-            
             let indexPath = self.tableView.indexPathForSelectedRow!
             self.alarms[indexPath.row] = detailTVC.alarm.copy()
             AlarmList.sharedInstance.updateAlarm(self.alarms[indexPath.row])
@@ -147,7 +141,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     }
     
     @IBAction func cancelAlarm (segue:UIStoryboardSegue) {
-        print("AlarmTableViewController: New Alarm Cancelled")
+        // Do nothing!
     }
     
     /* BACKGROUND REFRESH */

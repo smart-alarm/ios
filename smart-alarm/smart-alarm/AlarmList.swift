@@ -12,7 +12,10 @@ import MapKit
 
 class AlarmList {
     
-    // Singleton pattern ensures single instance of AlarmList
+    private let ALARMS_KEY = "alarmItems"
+    
+    /* SINGLETON CONSTRUCTOR */
+    
     class var sharedInstance: AlarmList {
         struct Static {
             static let instance: AlarmList = AlarmList()
@@ -20,7 +23,7 @@ class AlarmList {
         return Static.instance
     }
     
-    private let ALARMS_KEY = "alarmItems"
+    /* ALARM FUNCTIONS */
     
     func allAlarms () -> [Alarm] {
         let alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
@@ -45,86 +48,92 @@ class AlarmList {
         // Save or overwrite data
         NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)
         
-        // Set up local notifications here
-        let notification = UILocalNotification()
-        notification.alertBody = "Time to wakeup!"
-        notification.fireDate = newAlarm.wakeup
-        notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
-        notification.userInfo = ["UUID": newAlarm.UUID]
-        notification.category = "ALARM_CATEGORY"
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        
-        // TODO: SCHEDULE ANOTHER NOTIFICATION TO ASK
-        // USER AT ARRIVAL TIME, "DID YOU ARRIVE ON TIME?"
-        // AND ADD "YES" AND "NO" ACTIONS...
-        // ALSO, UPDATE IF ALARM ARRIVAL TIME IS MODIFIED
-        scheduleFollowupNotification(newAlarm)
+        // Schedule notifications
+        scheduleNotification(newAlarm, category: "ALARM_CATEGORY")
+        scheduleNotification(newAlarm, category: "FOLLOWUP_CATEGORY")
     }
     
     func removeAlarm (alarmToRemove: Alarm) {
-        // Remove alarm notification
-        for event in UIApplication.sharedApplication().scheduledLocalNotifications! {
-            let notification = event as UILocalNotification
-
-            if (notification.userInfo!["UUID"] as! String == alarmToRemove.UUID) {
-                UIApplication.sharedApplication().cancelLocalNotification(notification)
-                break
-            }
-        }
-        
-        cancelFollowupNotification(alarmToRemove)
+        // Remove alarm notifications
+        cancelNotification(alarmToRemove, category: "ALARM_CATEGORY")
+        cancelNotification(alarmToRemove, category: "FOLLOWUP_CATEGORY")
         
         // Remove alarm from persistent data
         if var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) {
-            print("AlarmList: ", alarmToRemove.UUID)
             alarmDictionary.removeValueForKey(alarmToRemove.UUID as String)
             NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)        }
     }
     
-    // TODO: CHECK ISACTIVE FIELD BEFORE UPDATING!!!
-    // TODO: FIX UPDATED NOTIFICATION!
     func updateAlarm (alarmToUpdate: Alarm) {
-        // Create persistent dictionary of data
-        var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
+        // Remove old alarm
+        removeAlarm(alarmToUpdate)
         
-        // Copy alarm object into persistent data
-        alarmDictionary[alarmToUpdate.UUID] = alarmToUpdate.toDictionary()
+        // Create new unique IDs
+        let newUUID = NSUUID().UUIDString
+        let newFollowupID = NSUUID().UUIDString
         
-        // Save or overwrite data
-        NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)
+        // Associate with the alarm by updating IDs
+        alarmToUpdate.setUUID(newUUID)
+        alarmToUpdate.setFollowupID(newFollowupID)
         
-        // Update fire date
-        for event in UIApplication.sharedApplication().scheduledLocalNotifications! {
-            let notification = event as UILocalNotification
-            
-            if (notification.userInfo!["UUID"] as! String == alarmToUpdate.UUID) {
-                notification.fireDate = alarmToUpdate.wakeup
-                break
-            }
-            
-            // TODO: ALSO UPDATE CONFIRMATIONS NOTIFICATION
-        }
+        // Reschedule new alarm
+        addAlarm(alarmToUpdate)        
     }
     
-    func scheduleFollowupNotification (alarm: Alarm) {
+    /* NOTIFICATION FUNCTIONS */
+    
+    func scheduleNotification (alarm: Alarm, category: String) {
         let notification = UILocalNotification()
-        notification.alertBody = "Did you arrive on time?"
-        notification.fireDate = alarm.arrival
-        notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
-        notification.userInfo = ["UUID": alarm.followupID]
-        notification.category = "FOLLOWUP_CATEGORY"
+        notification.category = category
+        notification.repeatInterval = NSCalendarUnit.Day
+        
+        switch category {
+        case "ALARM_CATEGORY":
+            notification.userInfo = ["UUID": alarm.UUID]
+            notification.alertBody = "Time to wake up!"
+            notification.fireDate = alarm.wakeup
+            notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
+            break
+        case "FOLLOWUP_CATEGORY":
+            notification.userInfo = ["UUID": alarm.followupID]
+            notification.alertBody = "Did you arrive yet?"
+            notification.fireDate = alarm.arrival
+            notification.soundName = UILocalNotificationDefaultSoundName
+            break
+        default:
+            print("ERROR SCHEDULING NOTIFICATION")
+            return
+        }
+        
+        // For debugging purposes
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        print("ALARM SCHEDULED FOR :", dateFormatter.stringFromDate(notification.fireDate!))
+        
         UIApplication.sharedApplication().scheduleLocalNotification(notification)
     }
     
-    func cancelFollowupNotification (alarm: Alarm) {
+    func cancelNotification (alarm: Alarm, category: String) {
+        var ID: String
+        switch category {
+        case "ALARM_CATEGORY":
+            ID = alarm.UUID
+            break
+        case "FOLLOWUP_CATEGORY":
+            ID = alarm.followupID
+            break
+        default:
+            print("ERROR CANCELLING NOTIFICATION")
+            return
+        }
+        
         for event in UIApplication.sharedApplication().scheduledLocalNotifications! {
             let notification = event as UILocalNotification
-            
-            if (notification.userInfo!["UUID"] as! String == alarm.followupID) {
+            if (notification.userInfo!["UUID"] as! String == ID) {
                 UIApplication.sharedApplication().cancelLocalNotification(notification)
                 break
             }
         }
     }
-    
 }

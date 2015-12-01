@@ -84,26 +84,21 @@ class DetailTableViewController: UITableViewController {
                 default:
                     break
             }
-            print("ETA: \(alarm.etaMinutes)")
             updateTimeLabels(timePicker)
         }
     }
     
     @IBAction func cancelLocation (segue:UIStoryboardSegue) {
-        print("cancelled")
+        // Do nothing!
     }
     
     @IBAction func saveRoutine (segue:UIStoryboardSegue) {
-        print("Saved Routine")
         let routineTVC = segue.sourceViewController as! RoutineTableViewController
-        
-        // Update model
         self.alarm.setRoutine(routineTVC.routine)
-        
         updateTimeLabels(timePicker)
     }
     
     @IBAction func cancelRoutine (segue:UIStoryboardSegue) {
-        print("Cancelled Routine")
+        // Do nothing!
     }
 }
