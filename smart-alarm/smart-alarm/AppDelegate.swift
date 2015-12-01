@@ -75,15 +75,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case "ARRIVE_ACTION":
             print("APP DELEGATE: ARRIVE_ACTION")
             // TODO: HTTP POST {deviceUUID, arrivalTime, didArrive = TRUE}
+            
+            let alarmDictionary: NSDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey("alarmItems") ?? Dictionary()
+            let alarmID = notification.userInfo!["UUID"] as! String
+            let alarm = alarmDictionary.valueForKey(alarmID)
+            
+            let dataDictionary: NSDictionary = [
+                "deviceUUID": UIDevice.currentDevice().identifierForVendor!.UUIDString,
+                "arrivalTime": alarm!.valueForKey("arrival")!, // TODO: FIX FORMAT OF THE DATE OBJECT
+                "didArrive": true
+            ]
+            
             let http = HTTP()
-            let data = http.toJSON(NSUserDefaults.standardUserDefaults().valueForKey("ALARM_INDEX_HERE") as! NSDictionary)
-            http.POST("URL_HERE", requestJSON: data!, postComplete: { (success: Bool, msg: String) -> () in
+            let dataJSON = http.toJSON(dataDictionary)
+            http.POST("URL_HERE", requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
                 // TODO: HANDLE RESPONSE HERE
             })
             break
         case "LATE_ACTION":
             print("APP DELEGATE: LATE_ACTION")
             // TODO: HTTP POST {deviceUUID, arrivalTime, didArrive = FALSE}
+            
+            let alarmDictionary: NSDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey("alarmItems") ?? Dictionary()
+            let alarmID = notification.userInfo!["UUID"] as! String
+            let alarm = alarmDictionary.valueForKey(alarmID)
+            
+            let dataDictionary: NSDictionary = [
+                "deviceUUID": UIDevice.currentDevice().identifierForVendor!.UUIDString,
+                "arrivalTime": alarm!.valueForKey("arrival")!, // TODO: FIX FORMAT OF THE DATE OBJECT
+                "didArrive": false
+            ]
+            
+            let http = HTTP()
+            let dataJSON = http.toJSON(dataDictionary)
+            http.POST("URL_HERE", requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
+                // TODO: HANDLE RESPONSE HERE
+            })
             break
         default:
             print("ERROR HANDLING NOTIFICATION ACTIONS")
