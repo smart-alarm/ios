@@ -303,7 +303,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2093B65E1BBC740200EC5C7C /* Build configuration list for PBXProject "Smart Alarm" */;
+			buildConfigurationList = 2093B65E1BBC740200EC5C7C /* Build configuration list for PBXProject "smart-alarm" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -612,7 +612,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2093B65E1BBC740200EC5C7C /* Build configuration list for PBXProject "Smart Alarm" */ = {
+		2093B65E1BBC740200EC5C7C /* Build configuration list for PBXProject "smart-alarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2093B68C1BBC740200EC5C7C /* Debug */,

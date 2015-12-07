@@ -17,7 +17,7 @@
                BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
                BuildableName = "smart-alarm.app"
                BlueprintName = "smart-alarm"
-               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+               ReferencedContainer = "container:smart-alarm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "2093B6791BBC740200EC5C7C"
                BuildableName = "smart-alarmTests.xctest"
                BlueprintName = "smart-alarmTests"
-               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+               ReferencedContainer = "container:smart-alarm.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "2093B6841BBC740200EC5C7C"
                BuildableName = "smart-alarmUITests.xctest"
                BlueprintName = "smart-alarmUITests"
-               ReferencedContainer = "container:Smart Alarm.xcodeproj">
+               ReferencedContainer = "container:smart-alarm.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
             BuildableName = "smart-alarm.app"
             BlueprintName = "smart-alarm"
-            ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            ReferencedContainer = "container:smart-alarm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
             BuildableName = "smart-alarm.app"
             BlueprintName = "smart-alarm"
-            ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            ReferencedContainer = "container:smart-alarm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "2093B6621BBC740200EC5C7C"
             BuildableName = "smart-alarm.app"
             BlueprintName = "smart-alarm"
-            ReferencedContainer = "container:Smart Alarm.xcodeproj">
+            ReferencedContainer = "container:smart-alarm.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
