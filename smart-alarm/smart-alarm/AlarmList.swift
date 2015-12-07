@@ -92,7 +92,7 @@ class AlarmList {
             notification.userInfo = ["UUID": alarm.UUID]
             notification.alertBody = "Time to wake up!"
             notification.fireDate = alarm.wakeup
-            notification.soundName = UILocalNotificationDefaultSoundName // TODO: FIND LONGER SOUND FILE
+            notification.soundName = "loud_alarm.caf"
             break
         case "FOLLOWUP_CATEGORY":
             notification.userInfo = ["UUID": alarm.followupID]

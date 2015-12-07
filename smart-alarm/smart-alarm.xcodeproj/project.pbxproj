@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200371061C15CC9D0025EEC3 /* loud_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 200371051C15CC9D0025EEC3 /* loud_alarm.caf */; };
 		200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */; };
 		200B12A71BC576280015B40F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A51BC576280015B40F /* Fabric.framework */; };
 		200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A61BC576280015B40F /* Crashlytics.framework */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200371051C15CC9D0025EEC3 /* loud_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = loud_alarm.caf; path = ../../../Desktop/loud_alarm.caf; sourceTree = "<group>"; };
 		200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		200B12A61BC576280015B40F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		2093B6651BBC740200EC5C7C /* smart-alarm */ = {
 			isa = PBXGroup;
 			children = (
+				200371051C15CC9D0025EEC3 /* loud_alarm.caf */,
 				2092ED181BDEE10500D8F112 /* helper-classes */,
 				205014441BFAD3C700ABB9A1 /* login-controllers */,
 				205014451BFAD40800ABB9A1 /* alarm-controllers */,
@@ -322,6 +325,7 @@
 			files = (
 				2093B6741BBC740200EC5C7C /* LaunchScreen.storyboard in Resources */,
 				2093B6711BBC740200EC5C7C /* Assets.xcassets in Resources */,
+				200371061C15CC9D0025EEC3 /* loud_alarm.caf in Resources */,
 				2093B66C1BBC740200EC5C7C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
