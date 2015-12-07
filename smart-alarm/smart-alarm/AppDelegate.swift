@@ -18,11 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let ALARMS_KEY = "alarmItems"
     let POST_URL = "https://smart-alarm-server.herokuapp.com/user_history_records.json"
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         /* FABRIC IO */
         Fabric.with([Crashlytics.self()])
         
+//        /* Fix button tint */
+//        UINavigationBar.appearance().tintAdjustmentMode = UIViewTintAdjustmentMode.Normal
+//        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+//        
         /* REGISTER NOTIFICATION ACTIONS */
         
         // AWAKE ACTION
