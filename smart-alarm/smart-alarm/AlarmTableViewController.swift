@@ -13,12 +13,23 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
 
     var alarms:[Alarm] = []
     let locationManager = CLLocationManager()
+    let noDataLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.clearsSelectionOnViewWillAppear = true
         
         // Configure data source
         alarms = AlarmList.sharedInstance.allAlarms()
+        
+        // Check if empty
+        noDataLabel.text = "No scheduled alarms"
+        noDataLabel.font = UIFont(name: "Lato", size: 20)
+        noDataLabel.textAlignment = NSTextAlignment.Center
+        noDataLabel.textColor = UIColor(hue: 0.5833, saturation: 0.44, brightness: 0.36, alpha: 1.0)
+        noDataLabel.alpha = 0.0
+        self.tableView.backgroundView = noDataLabel
+        checkScheduledAlarms()
 
         // Enable edit button
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
@@ -33,6 +44,22 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         self.locationManager.startUpdatingLocation()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         self.locationManager.distanceFilter = kCLLocationAccuracyKilometer
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        checkScheduledAlarms()
+    }
+    
+    /* HANDLE EMPTY DATA SOURCE */
+    
+    func checkScheduledAlarms () {
+        UIView.animateWithDuration(0.25, animations: {
+            if self.alarms.count == 0 {
+                self.noDataLabel.alpha = 1.0
+            } else {
+                self.noDataLabel.alpha = 0.0
+            }
+        })  
     }
 
     /* CONFIGURE ROWS AND SECTIONS */
@@ -86,10 +113,14 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             for cell in tableView.visibleCells as! [AlarmTableViewCell] {
                 cell.alarmToggle.tag = t++
             }
+            
+            checkScheduledAlarms()
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
         if (self.editing == true) {
             performSegueWithIdentifier("editAlarm", sender: self)
         }

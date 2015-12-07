@@ -21,6 +21,7 @@ class DetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.clearsSelectionOnViewWillAppear = true
         
         // Fix iOS 9 bug in mildy hacky way...
         timePicker.datePickerMode = .DateAndTime
@@ -39,6 +40,11 @@ class DetailTableViewController: UITableViewController {
         } else {
             self.saveButton.enabled = true
         }
+        if let selected = self.tableView.indexPathForSelectedRow {
+            print("deselect")
+            self.tableView.deselectRowAtIndexPath(selected, animated: true)
+        }
+
     }
     
     /* FUNCTIONS */
