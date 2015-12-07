@@ -3,11 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="KlinicSlabBook.otf">
-            <string>KlinicSlab-Book</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -21,18 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Smart Alarm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fs2-Js-WCf">
-                                <rect key="frame" x="218" y="138" width="166" height="32"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="yQJ-pW-LHp">
+                                <rect key="frame" x="250" y="249" width="101" height="101"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="KlinicSlab-Book" family="Klinic Slab" pointSize="32"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.14117647059999999" green="0.4823529412" blue="0.62745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fs2-Js-WCf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="soU-gh-jrs"/>
+                            <constraint firstItem="yQJ-pW-LHp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dXf-Wh-8Ne"/>
+                            <constraint firstItem="yQJ-pW-LHp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ur0-2q-vjU"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,4 +35,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clock" width="170" height="170"/>
+    </resources>
 </document>
