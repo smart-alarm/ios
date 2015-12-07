@@ -119,7 +119,7 @@ class HTTP: NSObject {
             if let responseData = parsed {
                 let success = responseData["status"] as! String
                 // TODO: MODIFY FOR APPROPRIATE RESPONSE
-                if (success == "1") {
+                if (success == "Successfully uploaded!") {
                     postComplete(success: true, msg: "SUCCESS")
                     print("Success!")
                 } else {

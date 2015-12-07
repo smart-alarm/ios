@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let ALARMS_KEY = "alarmItems"
+    let POST_URL = "https://smart-alarm-server.herokuapp.com/user_history_records.json"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         /* FABRIC IO */
@@ -74,42 +75,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             break
         case "ARRIVE_ACTION":
             print("APP DELEGATE: ARRIVE_ACTION")
-            // TODO: HTTP POST {deviceUUID, arrivalTime, didArrive = TRUE}
             
-            let alarmDictionary: NSDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey("alarmItems") ?? Dictionary()
-            let alarmID = notification.userInfo!["UUID"] as! String
-            let alarm = alarmDictionary.valueForKey(alarmID)
+            // Format NSDate before POST
+            let arrivalTime = notification.fireDate!
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let formattedArrival = dateFormatter.stringFromDate(arrivalTime)
             
             let dataDictionary: NSDictionary = [
-                "deviceUUID": UIDevice.currentDevice().identifierForVendor!.UUIDString,
-                "arrivalTime": alarm!.valueForKey("arrival")!, // TODO: FIX FORMAT OF THE DATE OBJECT
-                "didArrive": true
+                "uuid": UIDevice.currentDevice().identifierForVendor!.UUIDString,
+                "arrival": formattedArrival,
+                "on_time": true
             ]
             
             let http = HTTP()
             let dataJSON = http.toJSON(dataDictionary)
-            http.POST("URL_HERE", requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
+            http.POST(POST_URL, requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
                 // TODO: HANDLE RESPONSE HERE
+                if success {
+                    print("HTTP REQUEST SUCCESS")
+                    print(msg)
+                } else {
+                    print("HTTP REQUEST FAILED")
+                    print(msg)
+                }
             })
             break
         case "LATE_ACTION":
             print("APP DELEGATE: LATE_ACTION")
-            // TODO: HTTP POST {deviceUUID, arrivalTime, didArrive = FALSE}
             
-            let alarmDictionary: NSDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey("alarmItems") ?? Dictionary()
-            let alarmID = notification.userInfo!["UUID"] as! String
-            let alarm = alarmDictionary.valueForKey(alarmID)
+            // Format NSDate before POST
+            let arrivalTime = notification.fireDate!
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let formattedArrival = dateFormatter.stringFromDate(arrivalTime)
             
             let dataDictionary: NSDictionary = [
-                "deviceUUID": UIDevice.currentDevice().identifierForVendor!.UUIDString,
-                "arrivalTime": alarm!.valueForKey("arrival")!, // TODO: FIX FORMAT OF THE DATE OBJECT
-                "didArrive": false
+                "uuid": UIDevice.currentDevice().identifierForVendor!.UUIDString,
+                "arrival": formattedArrival,
+                "on_time": false
             ]
             
             let http = HTTP()
             let dataJSON = http.toJSON(dataDictionary)
-            http.POST("URL_HERE", requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
+            http.POST(POST_URL, requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
                 // TODO: HANDLE RESPONSE HERE
+                if success {
+                    print("HTTP REQUEST SUCCESS")
+                    print(msg)
+                } else {
+                    print("HTTP REQUEST FAILED")
+                    print(msg)
+                }
             })
             break
         default:
