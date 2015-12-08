@@ -85,6 +85,7 @@ class Alarm {
     func getWakeupString () -> String {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = NSDateFormatterStyle.ShortStyle
+        self.wakeup = calculateWakeup()
         return dateFormatter.stringFromDate(self.wakeup)
     }
     

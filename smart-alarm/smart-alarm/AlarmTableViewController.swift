@@ -180,7 +180,10 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
     // TODO: FIX!!!
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        for alarm in self.alarms {
+        //for alarm in self.alarms {
+        for var index = 0; index < alarms.count; index++ {
+            let alarm = alarms[index]
+            
             if alarm.isActive {
                 let request = MKDirectionsRequest()
                 request.source = MKMapItem(placemark: MKPlacemark(coordinate: newLocation.coordinate, addressDictionary: nil))
@@ -205,6 +208,7 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
                     alarm.setETA(Int(round(minutes)))
                     print("Inside didUpdateToLocation: \(minutes)")
                     print("The estimated time is: \(alarm.getWakeupString())")
+                    AlarmList.sharedInstance.updateAlarm(alarm)
                     self.tableView.reloadData()
                 })
             }
