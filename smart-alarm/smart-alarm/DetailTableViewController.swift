@@ -41,10 +41,8 @@ class DetailTableViewController: UITableViewController {
             self.saveButton.enabled = true
         }
         if let selected = self.tableView.indexPathForSelectedRow {
-            print("deselect")
             self.tableView.deselectRowAtIndexPath(selected, animated: true)
         }
-
     }
     
     /* FUNCTIONS */

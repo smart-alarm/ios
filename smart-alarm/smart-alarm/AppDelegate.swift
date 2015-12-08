@@ -97,7 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let http = HTTP()
             let dataJSON = http.toJSON(dataDictionary)
             http.POST(POST_URL, requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
-                // TODO: HANDLE RESPONSE HERE
                 if success {
                     print("HTTP REQUEST SUCCESS")
                     print(msg)
@@ -125,7 +124,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let http = HTTP()
             let dataJSON = http.toJSON(dataDictionary)
             http.POST(POST_URL, requestJSON: dataJSON!, postComplete: { (success: Bool, msg: String) -> () in
-                // TODO: HANDLE RESPONSE HERE
                 if success {
                     print("HTTP REQUEST SUCCESS")
                     print(msg)
