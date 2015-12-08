@@ -214,4 +214,48 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             }
         }
     }
+    
+    func backgroundFetchDone() {
+        print("Fetch completion handler called.")
+        //locationManager.stopUpdatingLocation()
+    }
+    
+    func fetch(completionHandler: () -> Void) {
+        for var index = 0; index < alarms.count; index++ {
+            let alarm = alarms[index]
+            
+            if alarm.isActive {
+                let request = MKDirectionsRequest()
+                let location = locationManager.location
+                request.source = MKMapItem(placemark: MKPlacemark(coordinate: (location?.coordinate)!, addressDictionary: nil))
+                request.destination = alarm.destination.toMKMapItem()
+                
+                if alarm.transportation == .Transit {
+                    request.transportType = .Transit
+                } else {
+                    request.transportType = .Automobile
+                }
+                
+                request.requestsAlternateRoutes = false
+                let direction = MKDirections(request: request)
+                direction.calculateETAWithCompletionHandler({
+                    (response, err) -> Void in
+                    if response == nil {
+                        print("Inside fetch: Failed to get routes.")
+                        self.tableView.reloadData()
+                        return
+                    }
+                    let minutes = (response?.expectedTravelTime)! / 60.0
+                    alarm.setETA(Int(round(minutes)))
+                    print("Inside fetch: \(minutes)")
+                    print("The estimated time is: \(alarm.getWakeupString())")
+                    AlarmList.sharedInstance.updateAlarm(alarm)
+                    self.tableView.reloadData()
+                })
+            }
+        }
+        //Call completionHandler
+        completionHandler()
+    }
+    
 }

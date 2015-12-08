@@ -26,7 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        /* Fix button tint */
 //        UINavigationBar.appearance().tintAdjustmentMode = UIViewTintAdjustmentMode.Normal
 //        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-//        
+        
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(UIApplicationBackgroundFetchIntervalMinimum)
+        
         /* REGISTER NOTIFICATION ACTIONS */
         
         // AWAKE ACTION
@@ -137,6 +139,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("ERROR HANDLING NOTIFICATION ACTIONS")
         }
         completionHandler() // per developer documentation, app will terminate if we fail to call this
+    }
+    
+    /* BACKGROUND FETCH */
+    
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler:
+        (UIBackgroundFetchResult) -> Void) {
+            print("Fetch called.")
+            if let navController = window?.rootViewController as! UINavigationController? {
+                let viewControllers = navController.viewControllers as [UIViewController]
+                for viewController in viewControllers {
+                    if let atvc = viewController as? AlarmTableViewController {
+                        atvc.fetch({
+                            atvc.backgroundFetchDone()
+                            completionHandler(.NewData)
+                        })
+                    }
+                }
+            }
     }
 
     func applicationWillResignActive(application: UIApplication) {
