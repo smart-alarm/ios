@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		200371061C15CC9D0025EEC3 /* loud_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 200371051C15CC9D0025EEC3 /* loud_alarm.caf */; };
 		200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */; };
 		200B12A71BC576280015B40F /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A51BC576280015B40F /* Fabric.framework */; };
 		200B12A81BC576280015B40F /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B12A61BC576280015B40F /* Crashlytics.framework */; };
@@ -16,6 +15,7 @@
 		2034B68E1BDFD3A700CB6FCA /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68D1BDFD3A700CB6FCA /* Routine.swift */; };
 		2037BDA71BD33CFA00F45644 /* RoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */; };
 		2051920A1BFD233300457CEB /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205192091BFD233300457CEB /* Destination.swift */; };
+		205A2B521C173A8F00AC6F27 /* loud_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 205A2B511C173A8F00AC6F27 /* loud_alarm.caf */; };
 		208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */; };
 		2092ED141BDEC97700D8F112 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED131BDEC97700D8F112 /* Alarm.swift */; };
 		2092ED161BDEC99E00D8F112 /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED151BDEC99E00D8F112 /* AlarmTableViewCell.swift */; };
@@ -57,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		200371051C15CC9D0025EEC3 /* loud_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = loud_alarm.caf; path = ../../../Desktop/loud_alarm.caf; sourceTree = "<group>"; };
 		200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		200B12A61BC576280015B40F /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		2034B68D1BDFD3A700CB6FCA /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTableViewController.swift; sourceTree = "<group>"; };
 		205192091BFD233300457CEB /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		205A2B511C173A8F00AC6F27 /* loud_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = loud_alarm.caf; sourceTree = "<group>"; };
 		208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		2092ED131BDEC97700D8F112 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = ../Alarm.swift; sourceTree = "<group>"; };
 		2092ED151BDEC99E00D8F112 /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlarmTableViewCell.swift; path = ../AlarmTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,12 +206,12 @@
 		20EA727E1C15E01F00F0C5A4 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				205A2B511C173A8F00AC6F27 /* loud_alarm.caf */,
 				20A5CA441C15FE140074DAD2 /* Lato-Black.ttf */,
 				20A5CA451C15FE140074DAD2 /* Lato-Bold.ttf */,
 				20A5CA461C15FE140074DAD2 /* Lato-Hairline.ttf */,
 				20A5CA471C15FE140074DAD2 /* Lato-Light.ttf */,
 				20A5CA481C15FE140074DAD2 /* Lato-Regular.ttf */,
-				200371051C15CC9D0025EEC3 /* loud_alarm.caf */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -332,8 +332,8 @@
 				20A5CA4B1C15FE140074DAD2 /* Lato-Hairline.ttf in Resources */,
 				20A5CA4A1C15FE140074DAD2 /* Lato-Bold.ttf in Resources */,
 				2093B6711BBC740200EC5C7C /* Assets.xcassets in Resources */,
+				205A2B521C173A8F00AC6F27 /* loud_alarm.caf in Resources */,
 				20A5CA4D1C15FE140074DAD2 /* Lato-Regular.ttf in Resources */,
-				200371061C15CC9D0025EEC3 /* loud_alarm.caf in Resources */,
 				20A5CA491C15FE140074DAD2 /* Lato-Black.ttf in Resources */,
 				2093B66C1BBC740200EC5C7C /* Main.storyboard in Resources */,
 				20A5CA4C1C15FE140074DAD2 /* Lato-Light.ttf in Resources */,
