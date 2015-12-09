@@ -898,6 +898,7 @@
 				2047690E1C17715C000244D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		204769111C17715C000244D6 /* Build configuration list for PBXNativeTarget "smart-alarm-watch" */ = {
 			isa = XCConfigurationList;
@@ -906,6 +907,7 @@
 				2047690C1C17715C000244D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2093B65E1BBC740200EC5C7C /* Build configuration list for PBXProject "smart-alarm" */ = {
 			isa = XCConfigurationList;
