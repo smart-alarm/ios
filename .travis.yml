@@ -1,4 +1,4 @@
 language: objective-c
 script:
-- xctool -project smart-alarm/smart-alarm.xcodeproj -scheme unit-tests -destination "platform=iOS Simulator,name=iPhone 6s" run-tests
-- xctool -project smart-alarm/smart-alarm.xcodeproj -scheme unit-tests -destination "platform=iOS Simulator,name=iPhone 6s" sdk=phonesimulator build-tests
+- xctool -project smart-alarm/smart-alarm.xcodeproj -scheme unit-tests -destination "platform=iOS Simulator,name=iPhone 6" run-tests
+- xctool -project smart-alarm/smart-alarm.xcodeproj -scheme unit-tests -destination "platform=iOS Simulator,name=iPhone 6" sdk=phonesimulator build-tests
