@@ -13,6 +13,8 @@ class Alarm {
     
     /* FIELDS */
     
+    private var ALARM_KEY = "alarmItems"
+    
     private(set) var UUID: String
     private(set) var followupID: String
     private(set) var isActive: Bool
@@ -43,10 +45,10 @@ class Alarm {
         self.wakeup = calculateWakeup()
     }
     
-    init (UUID: String = NSUUID().UUIDString, followupID: String = NSUUID().UUIDString, arrival: NSDate, routine: Routine, transportation: Transportation, destination: Destination) {
+    init (UUID: String = NSUUID().UUIDString, followupID: String = NSUUID().UUIDString, isActive: Bool, arrival: NSDate, routine: Routine, transportation: Transportation, destination: Destination) {
         self.UUID = UUID
         self.followupID = followupID
-        self.isActive = true
+        self.isActive = isActive
         self.arrival = arrival
         self.routine = routine
         self.etaMinutes = 0
@@ -76,10 +78,20 @@ class Alarm {
     
     func turnOn () {
         self.isActive = true
+        
+        // Copy alarm object into persistent data
+        var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARM_KEY) ?? Dictionary()
+        alarmDictionary[self.UUID] = self.toDictionary()
+        NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARM_KEY)
     }
     
     func turnOff () {
         self.isActive = false
+        
+        // Copy alarm object into persistent data
+        var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARM_KEY) ?? Dictionary()
+        alarmDictionary[self.UUID] = self.toDictionary()
+        NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARM_KEY)
     }
     
     func getWakeupString () -> String {

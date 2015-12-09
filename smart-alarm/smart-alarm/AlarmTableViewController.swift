@@ -8,12 +8,14 @@
 
 import UIKit
 import MapKit
+import WatchConnectivity
 
-class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate {
+class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate, WCSessionDelegate {
 
     var alarms:[Alarm] = []
     let locationManager = CLLocationManager()
     let noDataLabel = UILabel()
+    var session: WCSession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +46,36 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         self.locationManager.startUpdatingLocation()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         self.locationManager.distanceFilter = kCLLocationAccuracyKilometer
+
+        // Check if session is supported
+        if (WCSession.isSupported()) {
+            session = WCSession.defaultSession()
+            session.delegate = self;
+            session.activateSession()
+            print("PHONE SESSION SUPPORTED")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         checkScheduledAlarms()
+        
+        // Send data to watch if supported
+        if (WCSession.isSupported()) {
+            sendAlarmsToWatch(AlarmList.sharedInstance.allAlarmsRaw())
+        }
+    }
+    
+    /* WATCH CONNECTIVITY */
+    
+    func sendAlarmsToWatch (phoneAlarms: NSArray) {
+        print("PHONE SESSION SENDING")
+
+        let applicationDict = ["phone-alarms": phoneAlarms]
+        do {
+            try session.updateApplicationContext(applicationDict)
+        } catch {
+            print("ERROR CONNECTING TO WATCH")
+        }
     }
     
     /* HANDLE EMPTY DATA SOURCE */
@@ -80,6 +108,8 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
         cell.alarmDestination!.text = alarms[indexPath.row].destination.name
         cell.alarmToggle.tag = indexPath.row
         cell.alarmToggle.addTarget(self, action: Selector("toggleAlarm:"), forControlEvents: UIControlEvents.ValueChanged)
+        let alarm = alarms[indexPath.row]
+        cell.alarmToggle.setOn(alarm.isActive, animated: false)
         cell.accessoryView = cell.alarmToggle
         return cell
     }
@@ -93,10 +123,16 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             alarms[index].turnOn()
             AlarmList.sharedInstance.scheduleNotification(alarms[index], category: "ALARM_CATEGORY")
             AlarmList.sharedInstance.scheduleNotification(alarms[index], category: "FOLLOWUP_CATEGORY")
+            if (WCSession.isSupported()) {
+                sendAlarmsToWatch(AlarmList.sharedInstance.allAlarmsRaw())
+            }
         } else {
             alarms[index].turnOff()
             AlarmList.sharedInstance.cancelNotification(alarms[index], category: "ALARM_CATEGORY")
             AlarmList.sharedInstance.cancelNotification(alarms[index], category: "FOLLOWUP_CATEGORY")
+            if (WCSession.isSupported()) {
+                sendAlarmsToWatch(AlarmList.sharedInstance.allAlarmsRaw())
+            }
         }
     }
     
@@ -115,12 +151,15 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             }
             
             checkScheduledAlarms()
+            
+            // Send data to watch if supported
+            if (WCSession.isSupported()) {
+                sendAlarmsToWatch(AlarmList.sharedInstance.allAlarmsRaw())
+            }
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
         if (self.editing == true) {
             performSegueWithIdentifier("editAlarm", sender: self)
         }
@@ -160,6 +199,11 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.endUpdates()
+            
+            // Send data to watch if supported
+            if (WCSession.isSupported()) {
+                sendAlarmsToWatch(AlarmList.sharedInstance.allAlarmsRaw())
+            }
         } else {
             let indexPath = self.tableView.indexPathForSelectedRow!
             self.alarms[indexPath.row] = detailTVC.alarm.copy()
@@ -168,6 +212,11 @@ class AlarmTableViewController: UITableViewController, CLLocationManagerDelegate
             self.tableView.beginUpdates()
             self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             self.tableView.endUpdates()
+            
+            // Send data to watch if supported
+            if (WCSession.isSupported()) {
+                sendAlarmsToWatch(AlarmList.sharedInstance.allAlarmsRaw())
+            }
         }
     }
     

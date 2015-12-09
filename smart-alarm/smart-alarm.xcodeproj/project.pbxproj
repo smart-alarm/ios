@@ -14,6 +14,21 @@
 		2034B68C1BDFD2D300CB6FCA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68B1BDFD2D300CB6FCA /* Activity.swift */; };
 		2034B68E1BDFD3A700CB6FCA /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68D1BDFD3A700CB6FCA /* Routine.swift */; };
 		2037BDA71BD33CFA00F45644 /* RoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */; };
+		204768EE1C17715C000244D6 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 204768EC1C17715C000244D6 /* Interface.storyboard */; };
+		204768F01C17715C000244D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 204768EF1C17715C000244D6 /* Assets.xcassets */; };
+		204768F71C17715C000244D6 /* smart-alarm-watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 204768F61C17715C000244D6 /* smart-alarm-watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		204768FE1C17715C000244D6 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204768FD1C17715C000244D6 /* InterfaceController.swift */; };
+		204769001C17715C000244D6 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204768FF1C17715C000244D6 /* ExtensionDelegate.swift */; };
+		204769021C17715C000244D6 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204769011C17715C000244D6 /* NotificationController.swift */; };
+		204769041C17715C000244D6 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204769031C17715C000244D6 /* GlanceController.swift */; };
+		204769061C17715C000244D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 204769051C17715C000244D6 /* Assets.xcassets */; };
+		2047690A1C17715C000244D6 /* smart-alarm-watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 204768EA1C17715C000244D6 /* smart-alarm-watch.app */; };
+		204769171C17797A000244D6 /* WKAlarmRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204769161C17797A000244D6 /* WKAlarmRowController.swift */; };
+		204769181C17797A000244D6 /* WKAlarmRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204769161C17797A000244D6 /* WKAlarmRowController.swift */; };
+		2047691F1C1785E4000244D6 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2092ED131BDEC97700D8F112 /* Alarm.swift */; };
+		204769201C1788D3000244D6 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68B1BDFD2D300CB6FCA /* Activity.swift */; };
+		204769211C1788D3000244D6 /* Routine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034B68D1BDFD3A700CB6FCA /* Routine.swift */; };
+		204769221C1788D3000244D6 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205192091BFD233300457CEB /* Destination.swift */; };
 		2051920A1BFD233300457CEB /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205192091BFD233300457CEB /* Destination.swift */; };
 		205A2B521C173A8F00AC6F27 /* loud_alarm.caf in Resources */ = {isa = PBXBuildFile; fileRef = 205A2B511C173A8F00AC6F27 /* loud_alarm.caf */; };
 		208D95B31BD3F0C60099611F /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */; };
@@ -40,6 +55,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		204768F81C17715C000244D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2093B65B1BBC740200EC5C7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 204768F51C17715C000244D6;
+			remoteInfo = "smart-alarm-watch Extension";
+		};
+		204769081C17715C000244D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2093B65B1BBC740200EC5C7C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 204768E91C17715C000244D6;
+			remoteInfo = "smart-alarm-watch";
+		};
 		2093B67B1BBC740200EC5C7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2093B65B1BBC740200EC5C7C /* Project object */;
@@ -56,6 +85,31 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		204769101C17715C000244D6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				204768F71C17715C000244D6 /* smart-alarm-watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		204769121C17715C000244D6 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				2047690A1C17715C000244D6 /* smart-alarm-watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		200638BF1BDEBADE00799CFC /* AlarmTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmTableViewController.swift; sourceTree = "<group>"; };
 		200B12A51BC576280015B40F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -64,6 +118,19 @@
 		2034B68B1BDFD2D300CB6FCA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		2034B68D1BDFD3A700CB6FCA /* Routine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routine.swift; sourceTree = "<group>"; };
 		2037BDA61BD33CFA00F45644 /* RoutineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutineTableViewController.swift; sourceTree = "<group>"; };
+		204768EA1C17715C000244D6 /* smart-alarm-watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "smart-alarm-watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		204768ED1C17715C000244D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		204768EF1C17715C000244D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		204768F11C17715C000244D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		204768F61C17715C000244D6 /* smart-alarm-watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "smart-alarm-watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		204768FC1C17715C000244D6 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		204768FD1C17715C000244D6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		204768FF1C17715C000244D6 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		204769011C17715C000244D6 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		204769031C17715C000244D6 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		204769051C17715C000244D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		204769071C17715C000244D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		204769161C17797A000244D6 /* WKAlarmRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WKAlarmRowController.swift; path = "../smart-alarm-watch/WKAlarmRowController.swift"; sourceTree = "<group>"; };
 		205192091BFD233300457CEB /* Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		205A2B511C173A8F00AC6F27 /* loud_alarm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = loud_alarm.caf; sourceTree = "<group>"; };
 		208D95B21BD3F0C60099611F /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +161,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		204768F31C17715C000244D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2093B6601BBC740200EC5C7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,6 +194,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		204768EB1C17715C000244D6 /* smart-alarm-watch */ = {
+			isa = PBXGroup;
+			children = (
+				204768EC1C17715C000244D6 /* Interface.storyboard */,
+				204768EF1C17715C000244D6 /* Assets.xcassets */,
+				204768F11C17715C000244D6 /* Info.plist */,
+			);
+			path = "smart-alarm-watch";
+			sourceTree = "<group>";
+		};
+		204768FA1C17715C000244D6 /* smart-alarm-watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				204768FD1C17715C000244D6 /* InterfaceController.swift */,
+				204769161C17797A000244D6 /* WKAlarmRowController.swift */,
+				204768FF1C17715C000244D6 /* ExtensionDelegate.swift */,
+				204769011C17715C000244D6 /* NotificationController.swift */,
+				204769031C17715C000244D6 /* GlanceController.swift */,
+				204769051C17715C000244D6 /* Assets.xcassets */,
+				204769071C17715C000244D6 /* Info.plist */,
+				204768FB1C17715C000244D6 /* Supporting Files */,
+			);
+			path = "smart-alarm-watch Extension";
+			sourceTree = "<group>";
+		};
+		204768FB1C17715C000244D6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				204768FC1C17715C000244D6 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		205014451BFAD40800ABB9A1 /* alarm-controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +259,8 @@
 				2093B6651BBC740200EC5C7C /* smart-alarm */,
 				2093B67D1BBC740200EC5C7C /* smart-alarmTests */,
 				2093B6881BBC740200EC5C7C /* smart-alarmUITests */,
+				204768EB1C17715C000244D6 /* smart-alarm-watch */,
+				204768FA1C17715C000244D6 /* smart-alarm-watch Extension */,
 				2093B6641BBC740200EC5C7C /* Products */,
 				200B12A51BC576280015B40F /* Fabric.framework */,
 				200B12A61BC576280015B40F /* Crashlytics.framework */,
@@ -164,6 +273,8 @@
 				2093B6631BBC740200EC5C7C /* smart-alarm.app */,
 				2093B67A1BBC740200EC5C7C /* smart-alarmTests.xctest */,
 				2093B6851BBC740200EC5C7C /* smart-alarmUITests.xctest */,
+				204768EA1C17715C000244D6 /* smart-alarm-watch.app */,
+				204768F61C17715C000244D6 /* smart-alarm-watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,6 +330,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		204768E91C17715C000244D6 /* smart-alarm-watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 204769111C17715C000244D6 /* Build configuration list for PBXNativeTarget "smart-alarm-watch" */;
+			buildPhases = (
+				204768E81C17715C000244D6 /* Resources */,
+				204769101C17715C000244D6 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				204768F91C17715C000244D6 /* PBXTargetDependency */,
+			);
+			name = "smart-alarm-watch";
+			productName = "smart-alarm-watch";
+			productReference = 204768EA1C17715C000244D6 /* smart-alarm-watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		204768F51C17715C000244D6 /* smart-alarm-watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2047690F1C17715C000244D6 /* Build configuration list for PBXNativeTarget "smart-alarm-watch Extension" */;
+			buildPhases = (
+				204768F21C17715C000244D6 /* Sources */,
+				204768F31C17715C000244D6 /* Frameworks */,
+				204768F41C17715C000244D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "smart-alarm-watch Extension";
+			productName = "smart-alarm-watch Extension";
+			productReference = 204768F61C17715C000244D6 /* smart-alarm-watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		2093B6621BBC740200EC5C7C /* smart-alarm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2093B68E1BBC740200EC5C7C /* Build configuration list for PBXNativeTarget "smart-alarm" */;
@@ -227,10 +372,12 @@
 				2093B6601BBC740200EC5C7C /* Frameworks */,
 				2093B6611BBC740200EC5C7C /* Resources */,
 				203272211BC573A800E1D35F /* ShellScript */,
+				204769121C17715C000244D6 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				204769091C17715C000244D6 /* PBXTargetDependency */,
 			);
 			name = "smart-alarm";
 			productName = "smart-alarm";
@@ -279,13 +426,25 @@
 		2093B65B1BBC740200EC5C7C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Gideon I. Glass";
 				TargetAttributes = {
+					204768E91C17715C000244D6 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 4FRADE5ZJB;
+					};
+					204768F51C17715C000244D6 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 4FRADE5ZJB;
+					};
 					2093B6621BBC740200EC5C7C = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 4FRADE5ZJB;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -319,11 +478,30 @@
 				2093B6621BBC740200EC5C7C /* smart-alarm */,
 				2093B6791BBC740200EC5C7C /* smart-alarmTests */,
 				2093B6841BBC740200EC5C7C /* smart-alarmUITests */,
+				204768E91C17715C000244D6 /* smart-alarm-watch */,
+				204768F51C17715C000244D6 /* smart-alarm-watch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		204768E81C17715C000244D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				204768F01C17715C000244D6 /* Assets.xcassets in Resources */,
+				204768EE1C17715C000244D6 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		204768F41C17715C000244D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				204769061C17715C000244D6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2093B6611BBC740200EC5C7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,12 +551,29 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		204768F21C17715C000244D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				204769021C17715C000244D6 /* NotificationController.swift in Sources */,
+				204769001C17715C000244D6 /* ExtensionDelegate.swift in Sources */,
+				204769201C1788D3000244D6 /* Activity.swift in Sources */,
+				204768FE1C17715C000244D6 /* InterfaceController.swift in Sources */,
+				204769181C17797A000244D6 /* WKAlarmRowController.swift in Sources */,
+				204769221C1788D3000244D6 /* Destination.swift in Sources */,
+				204769041C17715C000244D6 /* GlanceController.swift in Sources */,
+				204769211C1788D3000244D6 /* Routine.swift in Sources */,
+				2047691F1C1785E4000244D6 /* Alarm.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2093B65F1BBC740200EC5C7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2034B68C1BDFD2D300CB6FCA /* Activity.swift in Sources */,
 				200638C01BDEBADE00799CFC /* AlarmTableViewController.swift in Sources */,
+				204769171C17797A000244D6 /* WKAlarmRowController.swift in Sources */,
 				209443DD1BFB7274000E46B0 /* AlarmList.swift in Sources */,
 				20A092B61BD0234200745784 /* DetailTableViewController.swift in Sources */,
 				2092ED161BDEC99E00D8F112 /* AlarmTableViewCell.swift in Sources */,
@@ -416,6 +611,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		204768F91C17715C000244D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 204768F51C17715C000244D6 /* smart-alarm-watch Extension */;
+			targetProxy = 204768F81C17715C000244D6 /* PBXContainerItemProxy */;
+		};
+		204769091C17715C000244D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 204768E91C17715C000244D6 /* smart-alarm-watch */;
+			targetProxy = 204769081C17715C000244D6 /* PBXContainerItemProxy */;
+		};
 		2093B67C1BBC740200EC5C7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2093B6621BBC740200EC5C7C /* smart-alarm */;
@@ -429,6 +634,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		204768EC1C17715C000244D6 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				204768ED1C17715C000244D6 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		2093B66A1BBC740200EC5C7C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -448,6 +661,68 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2047690B1C17715C000244D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = smart_alarm_watch_Extension;
+				INFOPLIST_FILE = "smart-alarm-watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		2047690C1C17715C000244D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = smart_alarm_watch_Extension;
+				INFOPLIST_FILE = "smart-alarm-watch/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		2047690D1C17715C000244D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "smart-alarm-watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		2047690E1C17715C000244D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "smart-alarm-watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 		2093B68C1BBC740200EC5C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -534,6 +809,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -542,6 +818,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -550,6 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -558,6 +836,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.cornell.tech.smart-alarm";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -612,6 +891,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2047690F1C17715C000244D6 /* Build configuration list for PBXNativeTarget "smart-alarm-watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2047690D1C17715C000244D6 /* Debug */,
+				2047690E1C17715C000244D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		204769111C17715C000244D6 /* Build configuration list for PBXNativeTarget "smart-alarm-watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2047690B1C17715C000244D6 /* Debug */,
+				2047690C1C17715C000244D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		2093B65E1BBC740200EC5C7C /* Build configuration list for PBXProject "smart-alarm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

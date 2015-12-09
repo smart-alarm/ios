@@ -43,7 +43,7 @@
                             <tableViewSection headerTitle="Arrive by" id="uHZ-Xf-mk1" userLabel="Arrival Info">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="165" id="1lj-kk-2Ga">
-                                        <rect key="frame" x="0.0" y="113.5" width="320" height="165"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="320" height="165"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1lj-kk-2Ga" id="lnB-rG-c9G">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="164.5"/>
@@ -70,7 +70,7 @@
                             <tableViewSection id="NRI-FX-T2A" userLabel="Routine Info">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="WD6-MV-Ovo" detailTextLabel="Vj1-ey-whT" style="IBUITableViewCellStyleValue1" id="K4V-U8-niQ" userLabel="Routine">
-                                        <rect key="frame" x="0.0" y="298.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="234.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K4V-U8-niQ" id="hL7-OC-ck5">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -105,7 +105,7 @@
                             <tableViewSection id="SSm-id-xk6" userLabel="Travel Estimate">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="p3x-tk-5NB" detailTextLabel="Hah-6h-RsZ" style="IBUITableViewCellStyleValue1" id="GxZ-2h-30g" userLabel="Destination">
-                                        <rect key="frame" x="0.0" y="362.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="298.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GxZ-2h-30g" id="i9c-vh-eqj">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
@@ -136,7 +136,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="UDX-Ma-fjY" detailTextLabel="lOg-eY-fhv" rowHeight="44" style="IBUITableViewCellStyleValue1" id="99S-WO-VkP" userLabel="Travel Time">
-                                        <rect key="frame" x="0.0" y="406.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="342.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="99S-WO-VkP" id="B9P-dJ-hE2" userLabel="Traffic">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -175,7 +175,7 @@
                             <tableViewSection id="Zfk-54-NGg" userLabel="Wakeup Estimate">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="T16-7l-tdl" detailTextLabel="YGt-1p-fIi" rowHeight="62" style="IBUITableViewCellStyleValue1" id="YmS-Tq-OQw" userLabel="Wakeup">
-                                        <rect key="frame" x="0.0" y="470.5" width="320" height="62"/>
+                                        <rect key="frame" x="0.0" y="406.5" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YmS-Tq-OQw" id="DO6-V0-AzF">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
@@ -484,7 +484,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="mGQ-10-QZh">
+                                        <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="mGQ-10-QZh">
                                             <rect key="frame" x="258" y="26" width="51" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <animations/>

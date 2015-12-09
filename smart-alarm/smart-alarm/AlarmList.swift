@@ -38,6 +38,17 @@ class AlarmList {
         return alarmItems
     }
     
+    func allAlarmsRaw () -> NSArray {
+        let alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
+        var alarmItems:[NSDictionary] = []
+        
+        for data in alarmDictionary.values {
+            let alarmDict = data as! NSDictionary
+            alarmItems.append(alarmDict)
+        }
+        return alarmItems
+    }
+    
     func addAlarm (newAlarm: Alarm) {
         // Create persistent dictionary of data
         var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) ?? Dictionary()
@@ -61,7 +72,8 @@ class AlarmList {
         // Remove alarm from persistent data
         if var alarmDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(ALARMS_KEY) {
             alarmDictionary.removeValueForKey(alarmToRemove.UUID as String)
-            NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)        }
+            NSUserDefaults.standardUserDefaults().setObject(alarmDictionary, forKey: ALARMS_KEY)
+        }
     }
     
     func updateAlarm (alarmToUpdate: Alarm) {
@@ -77,7 +89,9 @@ class AlarmList {
         alarmToUpdate.setFollowupID(newFollowupID)
         
         // Reschedule new alarm
-        addAlarm(alarmToUpdate)        
+        addAlarm(alarmToUpdate)
+        
+        print("UPDATING: ", alarmToUpdate.isActive)
     }
     
     /* NOTIFICATION FUNCTIONS */
